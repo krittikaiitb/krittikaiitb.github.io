@@ -19,7 +19,6 @@ export default function Home() {
 {/* <link rel="stylesheet" href="{% static 'js/darkmode/dark-mode.css' %}"></link> */}
   {/* {% include 'includes/script_tags.html' %} */}
       </Head>
-      <Navbar/>
      
       <main>
       <div className="p-3" id="about">
@@ -55,7 +54,6 @@ export default function Home() {
 </div>
 <Apod/>
       </main>
-      <Footer/>
     </div>
   )
 }
