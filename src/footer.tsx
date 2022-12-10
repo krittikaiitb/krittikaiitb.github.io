@@ -14,23 +14,23 @@ const Footer = () => (
       <div className="card-text px-0 pb-3">
         <ul className="nav justify-content-end list-unstyled d-flex mr-auto ml-auto">
           <li className="ms-3">
-            <a href="https://www.facebook.com/KrittikaIITB/" target="_blank" className="mx-sm-2 mx-1">
+            <a href="https://www.facebook.com/KrittikaIITB/" target="_blank" rel="noreferrer" className="mx-sm-2 mx-1">
 
               <FontAwesomeIcon id="social_fb" icon={["fab", "facebook" ]} className="fa-2x rounded-lg p-2 social-icons" style={{backgroundColor: '#eee'}} />
             </a>
           </li>
           <li className="ms-3">
-            <a href="https://www.instagram.com/krittika.iitb/" target="_blank" className="mx-sm-2 mx-1">
+            <a href="https://www.instagram.com/krittika.iitb/" target="_blank" rel="noreferrer" className="mx-sm-2 mx-1">
               <FontAwesomeIcon id="social_insta" icon={["fab", "instagram" ]} className="fa-2x rounded-lg p-2 social-icons" style={{backgroundColor: '#eee'}} />
             </a>
           </li>
           <li className="ms-3">
-            <a href="https://github.com/krittikaiitb" target="_blank" className="mx-sm-2 mx-1">
+            <a href="https://github.com/krittikaiitb" target="_blank" rel="noreferrer" className="mx-sm-2 mx-1">
               <FontAwesomeIcon id="social_github" icon={["fab", "github" ]} className="fa-2x rounded-lg p-2 social-icons" style={{backgroundColor: '#eee'}} />
             </a>
           </li>
           <li className="ms-3">
-            <a href="mailto:krittika.club@iitb.ac.in" target="_blank" className="mx-sm-2 mx-1">
+            <a href="mailto:krittika.club@iitb.ac.in" target="_blank" rel="noreferrer" className="mx-sm-2 mx-1">
               <FontAwesomeIcon id="social_mail" icon="envelope" className="fa-2x rounded-lg p-2 social-icons" style={{backgroundColor: '#eee'}} />
             </a>
           </li>

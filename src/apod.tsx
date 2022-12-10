@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
+import Image from 'next/image';
 function Apod(){
     const [apod, setApod] = useState();
     useEffect(() => {
-        fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
+        fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NEXT_PUBLIC_APOD_KEY}`)
            .then((response) => response.json())
            .then((data) => {
               console.log(data);
@@ -22,10 +22,12 @@ function Apod(){
   <h3 className="mb-4">Astronomy Picture Of The Day, By NASA</h3>
   <div className="row">
     <div className="col-lg-7">
-      {apod['media_type'] == 'video'? <iframe src="{{ apod_url }}" width="100%" height="100%" frameBorder={0} /> :  <img
+      {apod['media_type'] == 'video'? <iframe src={apod["url"]} width="100%" height="100%" frameBorder={0} /> :  <img
         src={apod['url']}
         alt="Picture of the day"
         className="img-fluid shadow-lg w-100 rounded-lg"
+
+        // placeholder="blur"
       />}
       
       
@@ -45,6 +47,7 @@ function Apod(){
               className="text-secondary"
               href="https://apod.nasa.gov/apod/"
               target="_blank"
+              rel="noreferrer"
             >
               APOD
             </a>
@@ -65,6 +68,7 @@ function Apod(){
               className="text-secondary"
               href="https://apod.nasa.gov/apod/"
               target="_blank"
+            rel="noreferrer"
             >
               APOD
             </a>

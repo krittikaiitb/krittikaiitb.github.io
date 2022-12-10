@@ -1,14 +1,15 @@
+import Link from 'next/link'
 
 const Navbar = ()=> (
     <nav className="navbar fixed-top navbar-inverse navbar-expand-lg navbar-dark bg-dark topNavBar cinzel">
-  <a className="" href="/">
+  <Link href="/">
     <img
       src="/img/logo_gif.gif"
       alt="logo_gif"
       className="rounded-lg"
       height="50px"
     />
-  </a>
+  </Link>
   <a className="navbar-brand mx-md-4 font-weight-light" href="{% url 'home' %}">
     {" "}
     <h3 style={{ marginBottom: 0 }}>Krittika</h3>
