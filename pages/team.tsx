@@ -1,27 +1,17 @@
 import { PersonProps } from "../src/personCard"
 import ConvenerList from "../src/teamDetails/conveners"
 import ManagerList from "../src/teamDetails/managerAndSecy"
+import Tab from 'react-bootstrap/Tab'; // See https://react-bootstrap.github.io/components/tabs/ for working of tabs
+import Nav from 'react-bootstrap/Nav';
 
-function TeamYearLabel({year, ariaSelected=false}: {year:string, ariaSelected?:boolean}){
-    let a = (ariaSelected)?" active": "";
+
+function TeamYearLabel({year}: {year:string}){
     return(
-        <li className="nav-item">
-        <a
-            className={"nav-link text-secondary" + a}
-            id={'team-' + year + "-tab"}
-            data-toggle="tab"
-            href={"#team-" + year}
-            role="tab"
-            aria-controls={`team-`+year}
-            aria-selected={ariaSelected}
-        >
-        Team {year}
-      </a>
-    </li>
+        <Nav.Link eventKey={year} className="nav-link text-secondary">Team {year}</Nav.Link>
     )
 }
 
-function TeamContent({year, mans, convs, active=false}: {year:string, mans:PersonProps[], convs:PersonProps[], active?:boolean}){
+function TeamContent({year, mans, convs, active=true}: {year:string, mans:PersonProps[], convs:PersonProps[], active?:boolean}){
     let a = (active)?" show active":"";
     return(
         <div className={"tab-pane fade p-3" + a} id={"team-" + year} role="tabpanel" aria-labelledby={"team-" + year + "-tab"}>
@@ -97,25 +87,36 @@ var convs2022:PersonProps[] = [
 
 
 export default function Team(){
-    return(
-    <div className="mt-4">
-  <ul
-    className="nav nav-pills justify-content-center pillsColor"
-    id="myTab"
-    role="tablist"
-  >
-    <TeamYearLabel year="2019"></TeamYearLabel>
-    <TeamYearLabel year="2020"></TeamYearLabel>
-    <TeamYearLabel year="2021"></TeamYearLabel>
-    <TeamYearLabel year="2022" ariaSelected={true}></TeamYearLabel>
-  </ul>
-  <div className="tab-content" id="myTabContent">
-    <TeamContent year="2019" mans={mans2019} convs={convs2019}></TeamContent> 
-    <TeamContent year="2020" mans={mans2020} convs={convs2020}></TeamContent> 
-    <TeamContent year="2021" mans={mans2021} convs={convs2021}></TeamContent> 
-    <TeamContent year="2022" mans={mans2022} convs={convs2022} active={true}></TeamContent> 
+    return(<div className="mt-4">
+
+        <Tab.Container
+            defaultActiveKey="2022"
+            id="myTab"
+        >
+            <Nav variant="pills" className="justify-content-center pillsColor">
+                <TeamYearLabel year="2019"></TeamYearLabel>
+                <TeamYearLabel year="2020"></TeamYearLabel>
+                <TeamYearLabel year="2021"></TeamYearLabel>
+                <TeamYearLabel year="2022"></TeamYearLabel>
+            </Nav>
+            <Tab.Content>
+                <Tab.Pane eventKey="2022" title="2022 (Present)" className="abc">
+                    <TeamContent year="2022" mans={mans2022} convs={convs2022}></TeamContent>
+                </Tab.Pane>
+                <Tab.Pane eventKey="2021" title="2021">
+                    <TeamContent year="2021" mans={mans2021} convs={convs2021}></TeamContent>
+                </Tab.Pane>
+                <Tab.Pane eventKey="2020" title="2020">
+                    <TeamContent year="2020" mans={mans2020} convs={convs2020}></TeamContent>
+                </Tab.Pane>
+                <Tab.Pane eventKey="2019" title="2019">
+                    <TeamContent year="2019" mans={mans2019} convs={convs2019}></TeamContent>
+                </Tab.Pane>
+
+            </Tab.Content>
+
+        </Tab.Container>
   </div>
-</div>
     )
 
 }
