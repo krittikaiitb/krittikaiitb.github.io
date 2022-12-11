@@ -92,3 +92,10 @@ nav a:hover {
 .dropdown-item:hover {
   background-color: #111 !important;
 }
+.carousel-img{
+  height: 92vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
