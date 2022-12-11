@@ -62,3 +62,34 @@ nav a:hover {
   justify-content: center;
   /* min-height: 100vh; */
 }
+
+.navbar {
+  background-color: #111 !important;
+}
+
+nav a:hover {
+  text-decoration: none !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: #fff !important;
+  background-color: #444 !important;
+}
+
+/*Mobile-friendly hoverable dropdown*/
+@media(min-width:480px) {
+  .dropdown:hover .dropdown-menu {
+    display: block !important;
+    margin-top: 0 !important;
+    /* remove the gap so it doesn't close */
+  }
+}
+
+.dropdown-menu {
+  background-color: #222 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #111 !important;
+}

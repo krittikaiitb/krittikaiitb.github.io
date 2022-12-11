@@ -5,6 +5,7 @@ import Navbar from '../src/navbar'
 import Footer from '../src/footer'
 import type { AppProps } from 'next/app'
 import React, { useState, useEffect } from 'react';
+
 // let darkSwitch: HTMLInputElement = document.getElementById('darkSwitch') as HTMLInputElement;
 let darkSwitch: HTMLInputElement;
 
@@ -58,8 +59,44 @@ export default function App({ Component, pageProps }: AppProps) {
       });
     }
   }, [])
+
+  let css = `    .navbar {
+    background-color: #111 !important;
+  }
+  nav a{
+    text-decoration: none !important;
+  }
+  nav a:hover {
+    text-decoration: none !important;
+  }
+
+  .nav-pills .nav-link.active,
+  .nav-pills .show>.nav-link {
+    color: #fff !important;
+    background-color: #444 !important;
+  }
+
+  // /*Mobile-friendly hoverable dropdown*/
+  // @media(min-width:480px) {
+  //   .dropdown:hover .dropdown-menu {
+  //     display: block !important;
+  //     margin-top: 0 !important;
+  //     /* remove the gap so it doesn't close */
+  //   }
+  // }
+
+  .dropdown-menu {
+    background-color: #222 !important;
+  }
+
+  .dropdown-item:hover {
+    background-color: #111 !important;
+  }`
   return (
     <>
+    <style jsx>
+      {css}
+    </style>
     <Navbar/>
   <Component {...pageProps} />
   <Footer/>

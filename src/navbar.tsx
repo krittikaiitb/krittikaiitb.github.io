@@ -10,11 +10,10 @@ const Navbar = ()=> (
       height="50px"
     />
   </Link>
-  <a className="navbar-brand mx-md-4 font-weight-light" href="{% url 'home' %}">
+  <Link className="navbar-brand mx-md-4 font-weight-light" href="/">
     {" "}
     <h3 style={{ marginBottom: 0 }}>Krittika</h3>
-    {/* <a class="font-weight-light h3 mx-md-4 mx-0" href="{% url 'home' %}">Krittika</a> */}
-  </a>
+  </Link>
   <button
     className="navbar-toggler"
     type="button"
@@ -29,12 +28,12 @@ const Navbar = ()=> (
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav ml-auto">
       <li className="nav-item mx-1">
-        <a
+        <Link
           className="btn btn-link text-light my-2 my-sm-0 mx-4"
-          href="{% url 'team' %}"
+          href="/team"
         >
           <b className="lead">Our Team</b>
-        </a>
+        </Link>
       </li>
       <li className="nav-item my-2 mx-md-0 mx-3">
         {/*DARK-MODE-SWITCH*/}
@@ -48,7 +47,6 @@ const Navbar = ()=> (
             className="custom-control-label darkToggle"
             htmlFor="darkSwitch"
           >
-            {/* <img src="{% static 'img/dark-mode-toggle-2.svg' %}" width="25px" alt="dark_mode" id="darkModeImg" onclick="changeImage()"> */}
             <div className="dark-mode-img" />
           </label>
         </div>
