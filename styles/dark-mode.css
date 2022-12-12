@@ -107,10 +107,10 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   width: 25px;
   height: 25px;
   cursor:pointer;
-  background: url('/img/sun.png') !important;
+  background: url('img/sun.png') !important;
 }
 [data-theme="dark"] .dark-mode-img{
-  background: url('/img/moon.svg') !important;
+  background: url('img/moon.svg') !important;
 }
 
 /*Designing the toggle button*/
