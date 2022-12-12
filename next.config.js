@@ -7,7 +7,7 @@ const nextConfig = {
 module.exports = nextConfig
 
 // Required for setting up github pages
-if (process.env.NEXT_PUBLIC_APOD_KEY){
+if (process.env.NEXT_PUBLIC_IS_GITHUB){
   const repo = 'krittika-website'
   const assetPrefix = `/${repo}/`
   const basePath = `/${repo}`
