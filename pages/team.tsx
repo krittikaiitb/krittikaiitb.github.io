@@ -34,7 +34,7 @@ var mans2020:PersonProps[] = [
           {name: "Siddhant Tripathy", post: "Secretary", img: "img/team/2019/Siddhant_Tripathy.jpg"},
 ]
 var mans2021:PersonProps[] = [
-    {name: "Manan Seth", post: "Secretary", img: "/img/team/default_profile.png"},
+    {name: "Manan Seth", post: "Secretary", img: "img/team/default_profile.png"},
 ]
 var mans2022:PersonProps[] = [
     {name: "Advait Mehla", post: "Manager", img: "img/team/2022/advait.jpg"},
@@ -50,30 +50,30 @@ var convs2019:PersonProps[] = [
           {name: "Siddhant", post: "Convener", img: "img/team/2019/Siddhant_Tripathy.jpg"},
 ]
 var convs2020:PersonProps[] = [
-    {name: "Ananya", post: "Convener", img: "/img/team/default_profile.png"},
-          {name: "Aneesh", post: "Convener", img: "/img/team/default_profile.png"},
-          {name: "Devansh", post: "Convener", img: "/img/team/default_profile.png"},
+    {name: "Ananya", post: "Convener", img: "img/team/default_profile.png"},
+          {name: "Aneesh", post: "Convener", img: "img/team/default_profile.png"},
+          {name: "Devansh", post: "Convener", img: "img/team/default_profile.png"},
           {name: "Harshada", post: "Convener", img: "img/team/2020/harshda.png"},
-          {name: "Manan", post: "Convener", img: "/img/team/default_profile.png"},
-          {name: "Omkar", post: "Convener", img: "/img/team/default_profile.png"},
-          {name: "Soham", post: "Convener", img: "/img/team/default_profile.png"},
-          {name: "Sreeman", post: "Convener", img: "/img/team/default_profile.png"},
-          {name: "Unnatee", post: "Convener", img: "/img/team/default_profile.png"},
-          {name: "Vaishnav", post: "Convener", img: "/img/team/default_profile.png"},
+          {name: "Manan", post: "Convener", img: "img/team/default_profile.png"},
+          {name: "Omkar", post: "Convener", img: "img/team/default_profile.png"},
+          {name: "Soham", post: "Convener", img: "img/team/default_profile.png"},
+          {name: "Sreeman", post: "Convener", img: "img/team/default_profile.png"},
+          {name: "Unnatee", post: "Convener", img: "img/team/default_profile.png"},
+          {name: "Vaishnav", post: "Convener", img: "img/team/default_profile.png"},
 ]
 var convs2021:PersonProps[] = [
     {name: "Adish", post: "Convener", img: "img/team/2021/adish.jpeg"},
-          {name: "Utkarsha", post: "Convener", img: "/img/team/default_profile.png"},
+          {name: "Utkarsha", post: "Convener", img: "img/team/default_profile.png"},
           {name: "Advait", post: "Convener", img: "img/team/2022/advait.jpg"},
-          {name: "Aditya Kudre", post: "Convener", img: "/img/team/default_profile.png"},
+          {name: "Aditya Kudre", post: "Convener", img: "img/team/default_profile.png"},
 
           {name: "Aditya Maheshwari", post: "Convener", img: "img/team/2021/adityamaheshwari.jpeg"},
           {name: "Raksha", post: "Convener", img: "img/team/2022/raksha.jpg"},
-          {name: "Mohit", post: "Convener", img: "/img/team/default_profile.png"},
+          {name: "Mohit", post: "Convener", img: "img/team/default_profile.png"},
 
-          {name: "Kishan", post: "Convener", img: "/img/team/default_profile.png"},
+          {name: "Kishan", post: "Convener", img: "img/team/default_profile.png"},
 
-          {name: "Shreya", post: "Convener", img: "/img/team/default_profile.png"},
+          {name: "Shreya", post: "Convener", img: "img/team/default_profile.png"},
 ]
 var convs2022:PersonProps[] = [
     {name: "Tamojeet", post: "Convener", img: "img/team/2022/Tamojeet.jpeg"},

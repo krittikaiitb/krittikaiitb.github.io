@@ -4,14 +4,14 @@ const Navbar = ()=> (
     <nav className="navbar fixed-top navbar-inverse navbar-expand-lg navbar-dark bg-dark topNavBar cinzel">
   <Link href="/">
     <img
-      src="/img/logo_gif.gif"
+      src="img/logo_gif.gif"
       alt="logo_gif"
       className="rounded-lg"
       height="50px"
     />
   </Link>
-  <Link className="navbar-brand mx-md-4 font-weight-light" href="/">
-    {" "}
+  <Link className="navbar-brand mx-md-4 font-weight-light" href="/::">
+    {" "}:
     <h3 style={{ marginBottom: 0 }}>Krittika</h3>
   </Link>
   <button
