@@ -10,8 +10,7 @@ const Navbar = ()=> (
       height="50px"
     />
   </Link>
-  <Link className="navbar-brand mx-md-4 font-weight-light" href="/::">
-    {" "}:
+  <Link className="navbar-brand mx-md-4 font-weight-light" href="/">
     <h3 style={{ marginBottom: 0 }}>Krittika</h3>
   </Link>
   <button
