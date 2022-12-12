@@ -23,6 +23,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  NEXT_PUBLIC_APOD_KEY: ${{ secrets.NEXT_PUBLIC_APOD_KEY }}
+  NEXT_PUBLIC_IS_GITHUB: ${{ secrets.NEXT_PUBLIC_IS_GITHUB }}
+
 jobs:
   # Build job
   build:
