@@ -5,6 +5,7 @@ import Navbar from '../src/navbar'
 import Footer from '../src/footer'
 import type { AppProps } from 'next/app'
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 
 // let darkSwitch: HTMLInputElement = document.getElementById('darkSwitch') as HTMLInputElement;
 let darkSwitch: HTMLInputElement;
@@ -94,6 +95,17 @@ export default function App({ Component, pageProps }: AppProps) {
   }`
   return (
     <>
+      <Head>
+      {/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous"/> */}
+      {/* <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/> */}
+        <title>Krittika</title>
+        <meta name="description" content="Astronomy club, IIT Bombay" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta charSet="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+
+      </Head>
     <style jsx>
       {css}
     </style>
