@@ -5,7 +5,7 @@ const Navbar = ()=> (
   <Link href="/">
     <img
       src="img/logo_gif.gif"
-      alt="logo_gif"
+      alt="logo"
       className="rounded-lg"
       height="50px"
     />

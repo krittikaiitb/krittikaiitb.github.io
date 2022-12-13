@@ -2,6 +2,8 @@
 let nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  trailingSlash: true,
+
 }
 
 
@@ -16,6 +18,8 @@ if (process.env.NEXT_PUBLIC_IS_GITHUB){
     basePath: basePath,
     reactStrictMode: true,
     swcMinify: true,
+    trailingSlash: true,
+
   }
   console.log(repo)
 }
