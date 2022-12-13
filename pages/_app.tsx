@@ -93,6 +93,8 @@ export default function App({ Component, pageProps }: AppProps) {
   .dropdown-item:hover {
     background-color: #111 !important;
   }`
+  console.log(`${process.env.NEXT_PUBLIC_APOD_KEY}`)
+
   return (
     <>
       <Head>
@@ -109,6 +111,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <style jsx>
       {css}
     </style>
+    
     <Navbar/>
   <Component {...pageProps} />
   <Footer/>
