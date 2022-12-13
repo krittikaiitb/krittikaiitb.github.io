@@ -76,7 +76,16 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_DEBUG: false
+          envkey_SOME_API_KEY: "123456abcdef"
+          envkey_NEXT_PUBLIC_IS_GITHUB: ${{ secrets.NEXT_PUBLIC_IS_GITHUB }}
+          envkey_NEXT_PUBLIC_APOD_KEY: ${{ secrets.NEXT_PUBLIC_APOD_KEY }}
+          some_other_variable: foobar
+          file_name: .env
+          fail_on_empty: false
       - name: Make env file
         id: make-env
         run: |
@@ -86,6 +95,7 @@ jobs:
           echo NEXT_PUBLIC_IS_GITHUB=${{ secrets.NEXT_PUBLIC_IS_GITHUB }} >> .env.local
           ls -la
           cat .env.local
+          cat .env
 
 
       - name: Build with Next.js
