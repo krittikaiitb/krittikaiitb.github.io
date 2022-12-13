@@ -37,6 +37,7 @@ jobs:
       - name: Make env file
         id: make-env
         run: |
+          echo "Hello"
           echo NEXT_PUBLIC_APOD_KEY=${{ secrets.NEXT_PUBLIC_APOD_KEY }} >> .env
           echo NEXT_PUBLIC_IS_GITHUB=${{ secrets.NEXT_PUBLIC_IS_GITHUB }} >> .env
       - name: Detect package manager
