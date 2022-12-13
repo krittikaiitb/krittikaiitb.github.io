@@ -26,6 +26,7 @@ concurrency:
 env:
   NEXT_PUBLIC_APOD_KEY: ${{ secrets.NEXT_PUBLIC_APOD_KEY }}
   NEXT_PUBLIC_IS_GITHUB: ${{ secrets.NEXT_PUBLIC_IS_GITHUB }}
+  NEXT_PUBLIC_IS_STATIC: ${{ secrets.NEXT_PUBLIC_IS_STATIC }}
 
 jobs:
   # Build job
@@ -76,38 +77,12 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_DEBUG: false
-          envkey_SOME_API_KEY: "123456abcdef"
-          envkey_NEXT_PUBLIC_IS_GITHUB: ${{ secrets.NEXT_PUBLIC_IS_GITHUB }}
-          envkey_NEXT_PUBLIC_APOD_KEY: ${{ secrets.NEXT_PUBLIC_APOD_KEY }}
-          some_other_variable: foobar
-          file_name: .env
-          fail_on_empty: false
-      - name: Make env file
-        id: make-env
-        run: |
-          echo "Hello"
-          echo ${{ secrets.NEXT_PUBLIC_IS_GITHUB }} | sed -e 's/\(.\)/\1 /g'
-          echo NEXT_PUBLIC_APOD_KEY=${{ secrets.NEXT_PUBLIC_APOD_KEY }} >> .env.local
-          echo NEXT_PUBLIC_IS_GITHUB=${{ secrets.NEXT_PUBLIC_IS_GITHUB }} >> .env.local
-          ls -la
-          cat .env.local
-          cat .env
 
 
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-        env:
-          NEXT_PUBLIC_APOD_KEY: ${{ secrets.NEXT_PUBLIC_APOD_KEY }}
-          NEXT_PUBLIC_IS_GITHUB: ${{ secrets.NEXT_PUBLIC_IS_GITHUB }}
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
-        env:
-          NEXT_PUBLIC_APOD_KEY: ${{ secrets.NEXT_PUBLIC_APOD_KEY }}
-          NEXT_PUBLIC_IS_GITHUB: ${{ secrets.NEXT_PUBLIC_IS_GITHUB }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
