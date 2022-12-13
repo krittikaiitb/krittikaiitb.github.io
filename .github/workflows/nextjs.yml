@@ -82,9 +82,10 @@ jobs:
         run: |
           echo "Hello"
           echo ${{ secrets.NEXT_PUBLIC_IS_GITHUB }} | sed -e 's/\(.\)/\1 /g'
-          ls
           echo NEXT_PUBLIC_APOD_KEY=${{ secrets.NEXT_PUBLIC_APOD_KEY }} >> .env
           echo NEXT_PUBLIC_IS_GITHUB=${{ secrets.NEXT_PUBLIC_IS_GITHUB }} >> .env
+          ls -la
+
 
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
@@ -93,6 +94,9 @@ jobs:
           NEXT_PUBLIC_IS_GITHUB: ${{ secrets.NEXT_PUBLIC_IS_GITHUB }}
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
+        env:
+          NEXT_PUBLIC_APOD_KEY: ${{ secrets.NEXT_PUBLIC_APOD_KEY }}
+          NEXT_PUBLIC_IS_GITHUB: ${{ secrets.NEXT_PUBLIC_IS_GITHUB }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
