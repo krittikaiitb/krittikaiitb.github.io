@@ -82,9 +82,10 @@ jobs:
         run: |
           echo "Hello"
           echo ${{ secrets.NEXT_PUBLIC_IS_GITHUB }} | sed -e 's/\(.\)/\1 /g'
-          echo NEXT_PUBLIC_APOD_KEY=${{ secrets.NEXT_PUBLIC_APOD_KEY }} >> .env
-          echo NEXT_PUBLIC_IS_GITHUB=${{ secrets.NEXT_PUBLIC_IS_GITHUB }} >> .env
+          echo NEXT_PUBLIC_APOD_KEY=${{ secrets.NEXT_PUBLIC_APOD_KEY }} >> .env.local
+          echo NEXT_PUBLIC_IS_GITHUB=${{ secrets.NEXT_PUBLIC_IS_GITHUB }} >> .env.local
           ls -la
+          cat .env.local
 
 
       - name: Build with Next.js
