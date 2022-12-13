@@ -93,7 +93,7 @@ export default function App({ Component, pageProps }: AppProps) {
   .dropdown-item:hover {
     background-color: #111 !important;
   }`
-  console.log(`${process.env.NEXT_PUBLIC_APOD_KEY}`)
+  console.log(`${process.env.NEXT_PUBLIC_IS_GITHUB}`)
 
   return (
     <>

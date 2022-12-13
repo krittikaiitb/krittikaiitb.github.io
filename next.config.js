@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+let nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 }
 
-module.exports = nextConfig
 
 // Required for setting up github pages
 if (process.env.NEXT_PUBLIC_IS_GITHUB){
@@ -12,8 +11,14 @@ if (process.env.NEXT_PUBLIC_IS_GITHUB){
   const assetPrefix = `/${repo}/`
   const basePath = `/${repo}`
 
-  module.exports = {
+  nextConfig = {
     assetPrefix: assetPrefix,
     basePath: basePath,
+    reactStrictMode: true,
+    swcMinify: true,
   }
+  console.log(repo)
 }
+
+module.exports = nextConfig
+
