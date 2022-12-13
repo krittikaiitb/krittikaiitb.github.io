@@ -3,7 +3,7 @@ import Image from 'next/image';
 function Apod(){
     const [apod, setApod] = useState();
     useEffect(() => {
-        fetch("/api/apodAPI")
+        fetch("/krittika-website/api/apodAPI")
            .then((response) => {console.log(response); return response.json()})
            .then((data) => {
               console.log(data);

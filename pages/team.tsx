@@ -25,63 +25,63 @@ function TeamContent({year, mans, convs, active=true}: {year:string, mans:Person
 }
 
 var mans2019:PersonProps[] = [
-    {name: "Vedant Shenoy", post: "Manager", img: "img/team/2019/Vedant_Shenoy.jpg"},
+    {name: "Vedant Shenoy", post: "Manager", img: "/krittika-website/img/team/2019/Vedant_Shenoy.jpg"},
 
-    {name: "Kunal Deshmukh", post: "Secretary", img: "img/team/2019/Kunal_Deshmukh.jpg"}
+    {name: "Kunal Deshmukh", post: "Secretary", img: "/krittika-website/img/team/2019/Kunal_Deshmukh.jpg"}
 ]
 var mans2020:PersonProps[] = [
-    {name: "Kritti", post: "Manager", img: "img/team/2019/Kritti.jpg"},
-          {name: "Siddhant Tripathy", post: "Secretary", img: "img/team/2019/Siddhant_Tripathy.jpg"},
+    {name: "Kritti", post: "Manager", img: "/krittika-website/img/team/2019/Kritti.jpg"},
+          {name: "Siddhant Tripathy", post: "Secretary", img: "/krittika-website/img/team/2019/Siddhant_Tripathy.jpg"},
 ]
 var mans2021:PersonProps[] = [
-    {name: "Manan Seth", post: "Secretary", img: "img/team/default_profile.png"},
+    {name: "Manan Seth", post: "Secretary", img: "/krittika-website/img/team/default_profile.png"},
 ]
 var mans2022:PersonProps[] = [
-    {name: "Advait Mehla", post: "Manager", img: "img/team/2022/advait.jpg"},
+    {name: "Advait Mehla", post: "Manager", img: "/krittika-website/img/team/2022/advait.jpg"},
 
-          {name: "Raksha Maheshwari", post: "Secretary", img: "img/team/2022/raksha.jpg"},
+          {name: "Raksha Maheshwari", post: "Secretary", img: "/krittika-website/img/team/2022/raksha.jpg"},
 ]
 var convs2019:PersonProps[] = [
-    {name: "Arsh", post: "Convener", img: "img/team/2019/Arsh_Khan.jpg"},
-          {name: "Fathima", post: "Convener", img: "img/team/2019/Fathima.jpg"},
-          {name: "Kritti", post: "Convener", img: "img/team/2019/Kritti.jpg"},
-          {name: "Pranav", post: "Convener", img: "img/team/2019/Pranav_Page.jpg"},
-          {name: "Shravan", post: "Convener", img: "img/team/2019/Shravan_Godse.jpg"},
-          {name: "Siddhant", post: "Convener", img: "img/team/2019/Siddhant_Tripathy.jpg"},
+    {name: "Arsh", post: "Convener", img: "/krittika-website/img/team/2019/Arsh_Khan.jpg"},
+          {name: "Fathima", post: "Convener", img: "/krittika-website/img/team/2019/Fathima.jpg"},
+          {name: "Kritti", post: "Convener", img: "/krittika-website/img/team/2019/Kritti.jpg"},
+          {name: "Pranav", post: "Convener", img: "/krittika-website/img/team/2019/Pranav_Page.jpg"},
+          {name: "Shravan", post: "Convener", img: "/krittika-website/img/team/2019/Shravan_Godse.jpg"},
+          {name: "Siddhant", post: "Convener", img: "/krittika-website/img/team/2019/Siddhant_Tripathy.jpg"},
 ]
 var convs2020:PersonProps[] = [
-    {name: "Ananya", post: "Convener", img: "img/team/default_profile.png"},
-          {name: "Aneesh", post: "Convener", img: "img/team/default_profile.png"},
-          {name: "Devansh", post: "Convener", img: "img/team/default_profile.png"},
-          {name: "Harshada", post: "Convener", img: "img/team/2020/harshda.png"},
-          {name: "Manan", post: "Convener", img: "img/team/default_profile.png"},
-          {name: "Omkar", post: "Convener", img: "img/team/default_profile.png"},
-          {name: "Soham", post: "Convener", img: "img/team/default_profile.png"},
-          {name: "Sreeman", post: "Convener", img: "img/team/default_profile.png"},
-          {name: "Unnatee", post: "Convener", img: "img/team/default_profile.png"},
-          {name: "Vaishnav", post: "Convener", img: "img/team/default_profile.png"},
+    {name: "Ananya", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
+          {name: "Aneesh", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
+          {name: "Devansh", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
+          {name: "Harshada", post: "Convener", img: "/krittika-website/img/team/2020/harshda.png"},
+          {name: "Manan", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
+          {name: "Omkar", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
+          {name: "Soham", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
+          {name: "Sreeman", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
+          {name: "Unnatee", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
+          {name: "Vaishnav", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
 ]
 var convs2021:PersonProps[] = [
-    {name: "Adish", post: "Convener", img: "img/team/2021/adish.jpeg"},
-          {name: "Utkarsha", post: "Convener", img: "img/team/default_profile.png"},
-          {name: "Advait", post: "Convener", img: "img/team/2022/advait.jpg"},
-          {name: "Aditya Kudre", post: "Convener", img: "img/team/default_profile.png"},
+    {name: "Adish", post: "Convener", img: "/krittika-website/img/team/2021/adish.jpeg"},
+          {name: "Utkarsha", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
+          {name: "Advait", post: "Convener", img: "/krittika-website/img/team/2022/advait.jpg"},
+          {name: "Aditya Kudre", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
 
-          {name: "Aditya Maheshwari", post: "Convener", img: "img/team/2021/adityamaheshwari.jpeg"},
-          {name: "Raksha", post: "Convener", img: "img/team/2022/raksha.jpg"},
-          {name: "Mohit", post: "Convener", img: "img/team/default_profile.png"},
+          {name: "Aditya Maheshwari", post: "Convener", img: "/krittika-website/img/team/2021/adityamaheshwari.jpeg"},
+          {name: "Raksha", post: "Convener", img: "/krittika-website/img/team/2022/raksha.jpg"},
+          {name: "Mohit", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
 
-          {name: "Kishan", post: "Convener", img: "img/team/default_profile.png"},
+          {name: "Kishan", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
 
-          {name: "Shreya", post: "Convener", img: "img/team/default_profile.png"},
+          {name: "Shreya", post: "Convener", img: "/krittika-website/img/team/default_profile.png"},
 ]
 var convs2022:PersonProps[] = [
-    {name: "Tamojeet", post: "Convener", img: "img/team/2022/Tamojeet.jpeg"},
-          {name: "Shlesh", post: "Convener", img: "img/team/2022/Shlesh.jpg"},
-          {name: "Dhananjay", post: "Convener", img: "img/team/2022/Dhananjay.jpeg"},
-          {name: "Apoorva", post: "Convener", img: "img/team/2022/Apoorva.jpeg"},
-          {name: "Anushika", post: "Convener", img: "img/team/2022/Anushika.jpeg"},
-          {name: "Mayank", post: "Convener", img: "img/team/2022/Mayank.jpeg"},
+    {name: "Tamojeet", post: "Convener", img: "/krittika-website/img/team/2022/Tamojeet.jpeg"},
+          {name: "Shlesh", post: "Convener", img: "/krittika-website/img/team/2022/Shlesh.jpg"},
+          {name: "Dhananjay", post: "Convener", img: "/krittika-website/img/team/2022/Dhananjay.jpeg"},
+          {name: "Apoorva", post: "Convener", img: "/krittika-website/img/team/2022/Apoorva.jpeg"},
+          {name: "Anushika", post: "Convener", img: "/krittika-website/img/team/2022/Anushika.jpeg"},
+          {name: "Mayank", post: "Convener", img: "/krittika-website/img/team/2022/Mayank.jpeg"},
 ]
 
 

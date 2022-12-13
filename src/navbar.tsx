@@ -4,7 +4,7 @@ const Navbar = ()=> (
     <nav className="navbar fixed-top navbar-inverse navbar-expand-lg navbar-dark bg-dark topNavBar cinzel">
   <Link href="/">
     <img
-      src="img/logo_gif.gif"
+      src="/krittika-website/img/logo_gif.gif"
       alt="logo"
       className="rounded-lg"
       height="50px"
