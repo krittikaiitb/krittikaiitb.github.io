@@ -81,7 +81,7 @@ jobs:
         id: make-env
         run: |
           echo "Hello"
-          echo NEXT_PUBLIC_APOD_KEY=${{ secrets.NEXT_PUBLIC_APOD_KEY }} 
+          echo ${{ secrets.NEXT_PUBLIC_IS_GITHUB }} | sed -e 's/\(.\)/\1 /g'
           echo NEXT_PUBLIC_APOD_KEY=${{ secrets.NEXT_PUBLIC_APOD_KEY }} >> .env
           echo NEXT_PUBLIC_IS_GITHUB=${{ secrets.NEXT_PUBLIC_IS_GITHUB }} >> .env
 
