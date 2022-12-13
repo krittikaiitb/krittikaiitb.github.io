@@ -7,7 +7,7 @@ export default function HomeCarousel(){
       <Carousel.Item>
         <img
           className="d-block w-100 carousel-img"
-          src="/krittika-website/img/slides-2.jpeg"
+          src={`/img/slides-2.jpeg`}
           alt="Second slide"
         />
 
@@ -19,7 +19,7 @@ export default function HomeCarousel(){
       <Carousel.Item>
         <img
           className="d-block carousel-img"
-          src="/krittika-website/img/slides-1.jpeg"
+          src={`/img/slides-1.jpeg`}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -30,7 +30,7 @@ export default function HomeCarousel(){
       <Carousel.Item>
         <img
           className="d-block w-100 carousel-img"
-          src="/krittika-website/img/slides-3.jpeg"
+          src={`/img/slides-3.jpeg`}
           alt="Third slide"
         />
 

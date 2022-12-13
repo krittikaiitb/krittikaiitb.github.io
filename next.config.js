@@ -9,19 +9,19 @@ let nextConfig = {
 
 // Required for setting up github pages
 if (process.env.NEXT_PUBLIC_IS_GITHUB){
-  const repo = 'krittika-website'
-  const assetPrefix = `/${repo}/`
-  const basePath = `/${repo}`
+  // const repo = 'krittika-website'
+  // const assetPrefix = `/${repo}/`
+  // const basePath = `/${repo}`
 
-  nextConfig = {
-    assetPrefix: assetPrefix,
-    basePath: basePath,
-    reactStrictMode: true,
-    swcMinify: true,
-    trailingSlash: true,
+  // nextConfig = {
+  //   assetPrefix: assetPrefix,
+  //   basePath: basePath,
+  //   reactStrictMode: true,
+  //   swcMinify: true,
+  //   trailingSlash: true,
 
-  }
-  console.log(repo)
+  // }
+  // console.log(repo)
 }
 
 module.exports = nextConfig
