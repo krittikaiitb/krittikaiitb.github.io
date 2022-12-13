@@ -34,12 +34,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Make env file
-        id: make-env
-        run: |
-          echo "Hello"
-          echo NEXT_PUBLIC_APOD_KEY=${{ secrets.NEXT_PUBLIC_APOD_KEY }} >> .env
-          echo NEXT_PUBLIC_IS_GITHUB=${{ secrets.NEXT_PUBLIC_IS_GITHUB }} >> .env
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -82,6 +76,15 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      
+      - name: Make env file
+        id: make-env
+        run: |
+          echo "Hello"
+          echo NEXT_PUBLIC_APOD_KEY=${{ secrets.NEXT_PUBLIC_APOD_KEY }} 
+          echo NEXT_PUBLIC_APOD_KEY=${{ secrets.NEXT_PUBLIC_APOD_KEY }} >> .env
+          echo NEXT_PUBLIC_IS_GITHUB=${{ secrets.NEXT_PUBLIC_IS_GITHUB }} >> .env
+
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
