@@ -53,11 +53,11 @@ export default function HomeCarousel(){
       <Carousel.Item key={key}>
         <Image
           className="d-block w-100 carousel-img"
-          src={`require(${dataVal.img})`}
+          src={`${dataVal.img}`}
           alt={`${dataVal.alt}`}
           width={size.width}
           height={size.height-66}
-          placeholder="blur"
+          // placeholder="blur"
         />
 
         <Carousel.Caption>
