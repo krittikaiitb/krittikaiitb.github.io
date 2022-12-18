@@ -12,8 +12,8 @@ type Event = {
 
 export default function events({event}: {event:Event}){
     return (
-        <div className="mt-4">
-        <h1>{ event.title }</h1>
+        <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 6rem"}} >
+        <h1 style={{paddingBottom: "4px", margin: "auto"}}>{ event.title }</h1>
         <div dangerouslySetInnerHTML={{__html: event.content}}></div>
     </div>
     )
