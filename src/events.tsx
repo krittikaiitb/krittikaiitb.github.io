@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import html from 'remark-html'
+import remarkUnwrapImages from 'remark-unwrap-images'
 import {remark} from 'remark'
 
 
@@ -41,7 +42,7 @@ export function getEventBySlug(slug: string){
 
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
-  const content = remark().use(html).processSync(matterResult.content).toString()
+  const content = remark().use(remarkUnwrapImages).use(html).processSync(matterResult.content).toString()
   // const content = matterResult.content
   // Combine the data with the id
   return {

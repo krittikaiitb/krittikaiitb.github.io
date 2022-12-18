@@ -10,14 +10,14 @@ type EventData = {
 
 export default function Events({allEventsData}: {allEventsData: EventData[]}){
     return(
-        <div className="mt-4">
-            <h1>Events</h1>
-            <ul>
+        <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 6rem"}}>
+            <h1><b>Events</b></h1>
+            <ul style={{listStyle: "None"}}>
             {allEventsData.map(({slug, date, title, excerpt}: EventData) => (
                 <li key={slug}>
                     <Link href = {`/events/${slug}`}>{title}</Link>
-                    <br />
-                    {excerpt}
+                    <br/>
+                    <small>{excerpt}</small>
                 </li>
             ))}
             </ul>
