@@ -93,7 +93,7 @@ nav a:hover {
   background-color: #111 !important;
 }
 .carousel-img{
-  height: 92vh;
+  /* height: 92vh; */
   width: 100%;
   background-size: cover;
   background-position: center;

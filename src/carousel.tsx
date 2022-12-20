@@ -51,12 +51,12 @@ export default function HomeCarousel(){
     <Carousel slide={false} controls={true} prevLabel="" nextLabel="" indicators={false}>
       {data.map((dataVal, key)=>{return (
       <Carousel.Item key={key}>
-        <Image
+        <img
           className="d-block w-100 carousel-img"
           src={`${dataVal.img}`}
           alt={`${dataVal.alt}`}
           width={size.width}
-          height={size.height-66}
+          height={1/2*size.width}
           // placeholder="blur"
         />
 
