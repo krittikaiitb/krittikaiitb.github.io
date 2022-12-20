@@ -62,7 +62,8 @@ export default function HomeCarousel(){
 
         <Carousel.Caption>
           <h3>{dataVal.captionh}</h3>
-          <p>{dataVal.captionp}</p>
+
+          {(size.width > 600)? <p>{dataVal.captionp}</p>: <></>}
         </Carousel.Caption>
       </Carousel.Item>
       )

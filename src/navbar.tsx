@@ -1,20 +1,22 @@
 import Link from 'next/link'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import BsNavbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-const NavLink = ({href, text}: {href:string, text:string}) => (
-  <li className="nav-item mx-1">
-  <Link
+const NavLink = ({href, children}: {href:string, children:string}) => (
+  <Nav.Link
     className="btn btn-link text-light my-2 my-sm-0 mx-1"
     href={href}
   >
-    <b className="lead">{text}</b>
-  </Link>
-  </li>
+    <b className="lead">{children}</b>
+  </Nav.Link>
 
 )
 
 const DarkModeSwitch = () => (
-<li className="nav-item my-2 mx-md-0 mx-3">
-  <div className="custom-control custom-switch m-0 p-0">
+/* <li className=""> */
+  <div className="custom-control custom-switch p-0 nav-item my-2 mx-3" style={{display:"flex", flexDirection:"row", justifyContent:"center"}}>
     <input
       type="checkbox"
       className="custom-control-input d-none"
@@ -27,42 +29,38 @@ const DarkModeSwitch = () => (
       <div className="dark-mode-img" />
     </label>
   </div>
-</li>
+// </li>
 
 )
 
 const Navbar = ()=> (
-    <nav className="navbar fixed-top navbar-inverse navbar-expand-lg navbar-dark bg-dark topNavBar cinzel">
-  <Link href="/">
+  <>
+
+    <BsNavbar expand='md' bg="dark" variant="dark" className="navbar fixed-top navbar-inverse navbar-expand-lg navbar-dark bg-dark topNavBar cinzel">
+      <Container>
+  <BsNavbar.Brand href="/">
     <img
       src="/img/logo_gif.gif"
       alt="logo"
       className="rounded-lg"
       height="50px"
     />
-  </Link>
-  <Link className="navbar-brand mx-md-4 font-weight-light" href="/">
+  </BsNavbar.Brand>
+  <BsNavbar.Brand className="navbar-brand mx-md-4 font-weight-light" href="/">
     <h3 style={{ marginBottom: 0 }}>Krittika</h3>
-  </Link>
-  <button
-    className="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNav"
-    aria-controls="navbarNav"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span className="navbar-toggler-icon" />
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav ml-auto">
-      <NavLink href="/events" text="Events"></NavLink>
-      <NavLink href="/team" text="Team"></NavLink>
+  </BsNavbar.Brand>
+  <BsNavbar.Toggle aria-controls="responsive-navbar-nav" />  
+  <BsNavbar.Collapse id="responsive-navbar-nav">
+  <Nav className="ml-auto">
+   
+      <NavLink href="/events">Events</NavLink>
+      <NavLink href="/team">Team</NavLink>
       <DarkModeSwitch/>
-    </ul>
-  </div>
-</nav>
+  </Nav>
+  </BsNavbar.Collapse>
+  </Container>
+</BsNavbar>
+</>
 
 )
 
