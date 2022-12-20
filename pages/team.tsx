@@ -34,7 +34,7 @@ var mans2020:PersonProps[] = [
           {name: "Siddhant Tripathy", post: "Secretary", img: `/img/team/2019/Siddhant_Tripathy.jpg`},
 ]
 var mans2021:PersonProps[] = [
-    {name: "Manan Seth", post: "Secretary", img: `/img/team/default_profile.png`},
+    {name: "Manan Seth", post: "Secretary", img: `/img/team/2021/manan.jpg`},
 ]
 var mans2022:PersonProps[] = [
     {name: "Advait Mehla", post: "Manager", img: "/img/team/2022/advait.jpg"},
@@ -53,8 +53,8 @@ var convs2020:PersonProps[] = [
     {name: "Ananya", post: "Convener", img: `/img/team/default_profile.png`},
           {name: "Aneesh", post: "Convener", img: `/img/team/default_profile.png`},
           {name: "Devansh", post: "Convener", img: `/img/team/default_profile.png`},
-          {name: "Harshada", post: "Convener", img: `/img/team/2020/harshda.png`},
-          {name: "Manan", post: "Convener", img: `/img/team/default_profile.png`},
+          {name: "Harshda", post: "Convener", img: `/img/team/2020/harshda.png`},
+          {name: "Manan", post: "Convener", img: `/img/team/2021/manan.jpg`},
           {name: "Omkar", post: "Convener", img: `/img/team/default_profile.png`},
           {name: "Soham", post: "Convener", img: `/img/team/default_profile.png`},
           {name: "Sreeman", post: "Convener", img: `/img/team/default_profile.png`},
