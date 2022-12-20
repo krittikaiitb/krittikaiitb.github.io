@@ -51,7 +51,7 @@ export default function HomeCarousel(){
     <Carousel slide={false} controls={true} prevLabel="" nextLabel="" indicators={false}>
       {data.map((dataVal, key)=>{return (
       <Carousel.Item key={key}>
-        <img
+        <Image
           className="d-block w-100 carousel-img"
           src={`${dataVal.img}`}
           alt={`${dataVal.alt}`}
