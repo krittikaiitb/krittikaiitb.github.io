@@ -19,11 +19,21 @@ export default function events({event}: {event:Event}){
 }
 
 export const getStaticProps: GetStaticProps = function({ params }) {
+  if (params && params.slug){
     return {
       props: {
-        event : getEventBySlug(params.slug),
+        event : getEventBySlug(Array.isArray(params.slug) ? params.slug[0] : params.slug),
       },
     }
+    
+  }
+  else{
+    return {
+      props: { error: true },
+    };
+  
+  }
+
   }
 
   export function getStaticPaths() {
