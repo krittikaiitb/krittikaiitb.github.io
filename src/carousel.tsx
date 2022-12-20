@@ -1,9 +1,9 @@
 import Carousel from 'react-bootstrap/Carousel';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { useEffect, useState } from 'react';
-import slides1 from '../public/images/slides-1.jpeg';
-import slides2 from '../public/images/slides-2.jpeg';
-import slides3 from '../public/images/slides-3.jpeg';
+import slides1 from '../public/img/slides-1.jpeg';
+import slides2 from '../public/img/slides-2.jpeg';
+import slides3 from '../public/img/slides-3.jpeg';
 
 function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
@@ -40,10 +40,10 @@ function useWindowSize() {
 export default function HomeCarousel(){
     const size = useWindowSize();
 
-    const data: {img: string, captionh: string, captionp: string, alt?: string}[] = [
-      {img: "/img/slides-2.jpeg", captionh: "Orion Nebula", captionp: "Located near the belt of Orion, this is one of our objects spots to show to first-time telescope users. Photo, once again, was captured by us, but after stretching, this does not do justice to our original image, dm one of us to get the original image ;)", alt: "First slide"},
-      {img: "/img/slides-1.jpeg", captionh: "Pleiades", captionp: "A capture of the Pleides cluster using the gear we have here. Called Krittika in Indian culture, this star cluster is what our club is named after, so it holds some sentimental value. Please stop us if you find us staring at it for very long times at a stretch.", alt: "Second slide"},
-      {img: "/img/slides-3.jpeg", captionh: "Jupiter", captionp: "One of the first pictures we captured this year. On a good day you can also see 4 of its largest moons with our telescopes.", alt: "Third slide"},
+    const data: {img: StaticImageData, captionh: string, captionp: string, alt?: string}[] = [
+      {img: slides2, captionh: "Orion Nebula", captionp: "Located near the belt of Orion, this is one of our objects spots to show to first-time telescope users. Photo, once again, was captured by us, but after stretching, this does not do justice to our original image, dm one of us to get the original image ;)", alt: "First slide"},
+      {img: slides1, captionh: "Pleiades", captionp: "A capture of the Pleides cluster using the gear we have here. Called Krittika in Indian culture, this star cluster is what our club is named after, so it holds some sentimental value. Please stop us if you find us staring at it for very long times at a stretch.", alt: "Second slide"},
+      {img: slides3, captionh: "Jupiter", captionp: "One of the first pictures we captured this year. On a good day you can also see 4 of its largest moons with our telescopes.", alt: "Third slide"},
       
 
     ]
@@ -53,11 +53,11 @@ export default function HomeCarousel(){
       <Carousel.Item key={key}>
         <Image
           className="d-block w-100 carousel-img"
-          src={`${dataVal.img}`}
+          src={dataVal.img}
           alt={`${dataVal.alt}`}
           width={size.width}
           height={1/2*size.width}
-          // placeholder="blur"
+          placeholder="blur"
         />
 
         <Carousel.Caption>

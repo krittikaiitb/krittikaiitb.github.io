@@ -3,7 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import BsNavbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import Image from 'next/image';
+import krittikaGif from '../public/img/logo_gif.gif';
 const NavLink = ({href, children}: {href:string, children:string}) => (
   <Nav.Link
     className="btn btn-link text-light my-2 my-sm-0 mx-1"
@@ -39,11 +40,13 @@ const Navbar = ()=> (
     <BsNavbar expand='md' bg="dark" variant="dark" className="navbar fixed-top navbar-inverse navbar-expand-lg navbar-dark bg-dark topNavBar cinzel">
       <Container>
   <BsNavbar.Brand href="/">
-    <img
-      src="/img/logo_gif.gif"
+    <Image
+      src={krittikaGif}
       alt="logo"
       className="rounded-lg"
-      height="50px"
+      height={50}
+      width={75}
+      sizes="75px"
     />
   </BsNavbar.Brand>
   <BsNavbar.Brand className="navbar-brand mx-md-4 font-weight-light" href="/">
