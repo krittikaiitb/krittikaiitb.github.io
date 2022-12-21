@@ -10,7 +10,7 @@ type EventData = {
 
 export default function Events({allEventsData}: {allEventsData: EventData[]}){
     return(
-        <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 6rem"}}>
+        <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 6rem", paddingLeft:"20px",paddingRight:"20px"}}>
             <h1><b>Events</b></h1>
             <ul style={{listStyle: "None"}}>
             {allEventsData.map(({slug, date, title, excerpt}: EventData) => (
