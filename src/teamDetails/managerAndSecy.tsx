@@ -2,11 +2,6 @@
 import { PersonProps} from "../personCard"
 import PersonCard from "../personCard"
 
-var people:PersonProps[] = [
-  {name: "Kritti", post: "Manager", img:"img/team/2019/Kritti.jpg"},
-  {name: "Siddhant Tripathy", post:"Secretary", img:"img/team/2019/Siddhant_Tripathy.jpg"}
-]
-
 export default function ManagerList({arrayOfPeople}: {arrayOfPeople:PersonProps[]}){
 
   return(

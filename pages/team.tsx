@@ -26,7 +26,6 @@ function TeamContent({year, mans, convs, active=true}: {year:string, mans:Person
 
 var mans2019:PersonProps[] = [
     {name: "Vedant Shenoy", post: "Manager", img: `/img/team/2019/Vedant_Shenoy.jpg`},
-
     {name: "Kunal Deshmukh", post: "Secretary", img: `/img/team/2019/Kunal_Deshmukh.jpg`}
 ]
 var mans2020:PersonProps[] = [
@@ -82,9 +81,19 @@ var convs2022:PersonProps[] = [
           {name: "Apoorva", post: "Convener", img: `/img/team/2022/Apoorva.jpeg`},
           {name: "Anushika", post: "Convener", img: `/img/team/2022/Anushika.jpeg`},
           {name: "Mayank", post: "Convener", img: `/img/team/2022/Mayank.jpeg`},
+          {name: "Pal", post: "Enthusiast", img: `/img/team/2022/Pal.png`},
+          {name: "Ashwin", post: "Enthusiast", img: `/img/team/2022/Ashwin.png`},
+          {name: "Garv", post: "Enthusiast", img: `/img/team/2022/garv.png`},
+          {name: "Harshavardhan", post: "Enthusiast", img: `/img/team/2022/harshvardhan.png`},
+          {name: "Navdha", post: "Enthusiast", img: `/img/team/2022/Navdha.png`},
+          {name: "Ravi", post: "Enthusiast", img: `/img/team/2022/Ravi.jpg`},
+          {name: "Shravya", post: "Enthusiast", img: `/img/team/2022/Shravya.png`},
+          {name: "Arhaan", post: "Enthusiast", img: `/img/team/2022/Arhaan.jpeg`},
 ]
 
+var enthus2022:PersonProps[] = [
 
+]
 
 export default function Team(){
     return(<div className="mt-4">
