@@ -57,6 +57,7 @@ const Navbar = ()=> (
   <Nav className="ml-auto">
    
       <NavLink href="/events">Events</NavLink>
+      <NavLink href="/ksp">KSP</NavLink>
       <NavLink href="/team">Team</NavLink>
       <DarkModeSwitch/>
   </Nav>
