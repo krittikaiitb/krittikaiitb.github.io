@@ -9,7 +9,7 @@ export default function KSP(){
             <h2>KSP 4.0</h2>
             <p>For the summer of 2023, we have some stimulating projects lined up. The details will be released soon through our instagram page. Stay tuned.</p>
             <h2>KSP 3.0</h2>
-            <p>As we were moving back to an offline campus, KSP continued with full vigour. Here's a look at the reports of the projects done:</p>
+            <p>As we were moving back to an offline campus, KSP continued with full vigour. Here&apos;s a look at the reports of the projects done:</p>
             <ul>
 
             <li><h4><Link href='/KSPReports/2022/Gravitational_Waves_KSP_Report.pdf'>Generating Gravitational Waveforms using Numerical Relativity and Post Newtonian Terms</Link></h4></li>
@@ -21,10 +21,10 @@ export default function KSP(){
             <p>This project had 3 reports:  </p> 
                
                 <ul>
-                    <li><Link href='/KSPReports/2022/Anish_IITB_Krittika_SP3_0_2022_Final_Report.pdf'>Anish's Report</Link></li>    
+                    <li><Link href='/KSPReports/2022/Anish_IITB_Krittika_SP3_0_2022_Final_Report.pdf'>Anish&apos;s Report</Link></li>    
                      
-                    <li><Link href='/KSPReports/2022/Dhatri Dongre KSP Report.pdf'>Dhatri's Report</Link></li>    
-                    <li><Link href='public/KSPReports/2022/Pal Aggarwal KSP Report.pdf'>Pal's Report</Link></li>   
+                    <li><Link href='/KSPReports/2022/Dhatri Dongre KSP Report.pdf'>Dhatri&apos;s Report</Link></li>    
+                    <li><Link href='public/KSPReports/2022/Pal Aggarwal KSP Report.pdf'>Pal&apos;s Report</Link></li>   
                 </ul> 
                
                 </ul>
