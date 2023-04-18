@@ -7,7 +7,7 @@ export default function KSP(){
 
             <br></br>
             <h2>KSP 4.0</h2>
-            <p>For the summer of 2023, we have some stimulating projects lined up. The details will be released soon through our instagram page. Stay tuned.</p>
+            <p>For the summer of 2023, we have some stimulating projects lined up on a variety of topics. The details can be found in <Link href='https://bit.ly/ksp4info'>this google doc.</Link> The important links are aggregated at <Link href='https://l.instagram.com/?u=http%3A%2F%2Flinktr.ee%2Fkrittikaiitb&e=AT2SbLhLu135eFKQINljiLq1I_pgMDScfgLqAT_mkLkOcXxi6lYTnCIAI8cnsfSkAi3ej_kTD22zq0mc4RkdOZCWGl6uh5HtZWw7rw'>our linktree.</Link></p> The deadline for submitting the assignment is 6th May, 2023. Apply Soon!
             <h2>KSP 3.0</h2>
             <p>As we were moving back to an offline campus, KSP continued with full vigour. Here&apos;s a look at the reports of the projects done:</p>
             <ul>
