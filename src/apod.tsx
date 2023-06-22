@@ -3,7 +3,8 @@ import Image from 'next/image';
 function Apod(){
     const [apod, setApod] = useState();
     useEffect(() => {
-        const url = (process.env.NEXT_PUBLIC_IS_STATIC)? "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY" : "/api/apodAPI";
+        //const url = (process.env.NEXT_PUBLIC_IS_STATIC)? "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY" : "/api/apodAPI";
+        const url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
         fetch(url)
            .then((response) => {console.log(response); return response.json()})
            .then((data) => {
