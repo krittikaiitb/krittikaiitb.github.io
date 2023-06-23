@@ -24,7 +24,7 @@ export default function KSP(){
                     <li><Link href='/KSPReports/2022/Anish_IITB_Krittika_SP3_0_2022_Final_Report.pdf'>Anish&apos;s Report</Link></li>    
                      
                     <li><Link href='/KSPReports/2022/Dhatri Dongre KSP Report.pdf'>Dhatri&apos;s Report</Link></li>    
-                    <li><Link href='public/KSPReports/2022/Pal Aggarwal KSP Report.pdf'>Pal&apos;s Report</Link></li>   
+                    <li><Link href='/KSPReports/2022/Pal Aggarwal KSP Report.pdf'>Pal&apos;s Report</Link></li>   
                 </ul> 
                
                 </ul>
