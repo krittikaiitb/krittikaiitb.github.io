@@ -7,12 +7,45 @@ export default function KSP(){
 
             <br></br>
             <h2>KSP 4.0</h2>
-            <p>For the summer of 2023, we have some stimulating projects lined up on a variety of topics. The details can be found in <Link href='https://bit.ly/ksp4info'>this google doc.</Link> The important links are aggregated at <Link href='https://l.instagram.com/?u=http%3A%2F%2Flinktr.ee%2Fkrittikaiitb&e=AT2SbLhLu135eFKQINljiLq1I_pgMDScfgLqAT_mkLkOcXxi6lYTnCIAI8cnsfSkAi3ej_kTD22zq0mc4RkdOZCWGl6uh5HtZWw7rw'>our linktree.</Link></p> The deadline for submitting the assignment is over. The projects are being carried on with effort, energy and enthusiasm.
+            <p>For the summer of 2023, the projects were carried on with effort, energy and enthusiasm. The details can be found in 
+                <Link href='https://bit.ly/ksp4info'> this google doc.</Link> Take a look at the project reports:</p>
+            <ul>
+                <li><h4><Link href="/KSPReports/2023/UVIT_Report.pdf">The Dance of Death: Magnetic Cataclysmic Variables</Link></h4></li>
+                <li><h4><Link href="/KSPReports/2023/Gaia/Gaia_Report_2023 (1).pdf">Canoeing through the Stars on Gaia</Link></h4></li>
+                <li><h4>Faintest of the Brightest- GRB Hunters</h4></li>
+                
+                <ul>
+                    <li><Link href="/KSPReports/2023/GRB/GRB_Ananya.pdf">Ananya's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/GRB_Ravi.pdf">Ravi's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/GRB_Shreyas.pdf">Shreyas' Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/GRB Project Report Rahul.pdf">Rahul's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/KSP_Endterm_Project_Report_Yash.pdf">Yash's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/ksp_sarvesh-1.pdf">Sarvesh's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/SohamMitraReportGRBHunters.pdf">Soham's Report</Link></li>
+                </ul>
+                <li><h4>Solar System Dynamics</h4></li>
+                <ul>
+                    <li><Link href="/KSPReports/2023/solar_system/KSP_Report_Suryansh_Srijan.pdf">Suryansh Srijan's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/solar_system/KSP 4.0 final report.pdf">Suryansh Patidar's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/solar_system/Krittika_Final_Report.pdf">Atharv's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/solar_system/kspfinal.pdf">Aditya's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/solar_system/The_Legrand_Orange_Book_Template__English_ (8).pdf">Ramesh's Report</Link></li>
+                </ul>
+                <li><h4>Exploring the Radio Sky</h4></li>
+                <ul>
+                    <li><Link href="/KSPReports/2023/Radio/KSP Radio Report Aadyot Bhardwaj.pdf">Aadyot's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/KSP_Radio_Astro_Report (2).pdf">Atreyi's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/KSP_Radio_Report___Karthik.pdf">Karthik's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/ksp.pdf">Ambica's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/Radio_KSP_Report.pdf">Mehul's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/Report.pdf">Darsh's Report</Link></li>
+                </ul>
+            </ul>
             <h2>KSP 3.0</h2>
             <p>As we were moving back to an offline campus, KSP continued with full vigour. Here&apos;s a look at the reports of the projects done:</p>
             <ul>
 
-            <li><h4><Link href='/KSPReports/2022/Gravitational_Waves_KSP_Report.pdf'>Generating Gravitational Waveforms using Numerical Relativity and Post Newtonian Terms</Link></h4></li>
+            <li><h4> <Link href='/KSPReports/2022/Gravitational_Waves_KSP_Report.pdf'>Generating Gravitational Waveforms using Numerical Relativity and Post Newtonian Terms</Link></h4></li>
             <li><h4> <Link href='/KSPReports/2022/KSP_Stellar_Flares_2022.pdf'>Solar Flares</Link></h4> </li>
             <li><h4> <Link href='/KSPReports/2022/Galactic Evolution.pdf'>Galactic Evolution Through N-Body Simulations</Link></h4> </li>
             <li><h4> <Link href='/KSPReports/2022/Gaia_Report_Final.pdf'>Decoding Stellar Physics Hidden in GAIA Data</Link></h4> </li>
@@ -28,6 +61,7 @@ export default function KSP(){
                 </ul> 
                
                 </ul>
+            <p>You can find testimonials of KSP mentees on <Link href="https://www.instagram.com/p/CrnxaW5saxw/">this post.</Link></p>
         </div>
     )
 }

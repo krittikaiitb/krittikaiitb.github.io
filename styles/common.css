@@ -79,6 +79,9 @@ nav a:hover {
     margin-top: 0 !important;
     /* remove the gap so it doesn't close */
   }
+  .dropdown-toggle{
+    text-align: center;
+  }
 }
 
 .dropdown-menu {
@@ -87,6 +90,15 @@ nav a:hover {
 
 .dropdown-item:hover {
   background-color: #111 !important;
+  color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #f8f9fa;
+}
+
+.dropdown-toggle::after {
+  display: none;
 }
 .carousel-img{
   /* height: 92vh; */
