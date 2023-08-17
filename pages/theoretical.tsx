@@ -3,7 +3,7 @@ export default function theoretical() {
     return(
         <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 6rem", paddingLeft:"20px",paddingRight:"20px"}}>
             <h1><b>Theoretical Astronomy</b></h1>
-            <p>We proudly conducted the course <b>Foundations of Astronomy & Astrophysics</b> as part of the Technical Summer School of Learners' 
+            <p>We proudly conducted the course <b>Foundations of Astronomy & Astrophysics</b> as part of the Technical Summer School of Learners&apos; 
                 Space. The course was structured into various modules, encompassing a wide range of topics from cosmology to supernovae, 
                 space telescopes to solar physics, and the hunt for exoplanets to the captivating world of multimessenger astronomy.
             </p>

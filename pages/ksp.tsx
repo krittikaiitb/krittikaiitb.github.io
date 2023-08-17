@@ -15,30 +15,30 @@ export default function KSP(){
                 <li><h4>Faintest of the Brightest- GRB Hunters</h4></li>
                 
                 <ul>
-                    <li><Link href="/KSPReports/2023/GRB/GRB_Ananya.pdf">Ananya's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/GRB/GRB_Ravi.pdf">Ravi's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/GRB/GRB_Shreyas.pdf">Shreyas' Report</Link></li>
-                    <li><Link href="/KSPReports/2023/GRB/GRB Project Report Rahul.pdf">Rahul's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/GRB/KSP_Endterm_Project_Report_Yash.pdf">Yash's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/GRB/ksp_sarvesh-1.pdf">Sarvesh's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/GRB/SohamMitraReportGRBHunters.pdf">Soham's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/GRB_Ananya.pdf">Ananya&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/GRB_Ravi.pdf">Ravi&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/GRB_Shreyas.pdf">Shreyas&apos; Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/GRB Project Report Rahul.pdf">Rahul&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/KSP_Endterm_Project_Report_Yash.pdf">Yash&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/ksp_sarvesh-1.pdf">Sarvesh&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/SohamMitraReportGRBHunters.pdf">Soham&apos;s Report</Link></li>
                 </ul>
                 <li><h4>Solar System Dynamics</h4></li>
                 <ul>
-                    <li><Link href="/KSPReports/2023/solar_system/KSP_Report_Suryansh_Srijan.pdf">Suryansh Srijan's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/solar_system/KSP 4.0 final report.pdf">Suryansh Patidar's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/solar_system/Krittika_Final_Report.pdf">Atharv's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/solar_system/kspfinal.pdf">Aditya's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/solar_system/The_Legrand_Orange_Book_Template__English_ (8).pdf">Ramesh's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/solar_system/KSP_Report_Suryansh_Srijan.pdf">Suryansh Srijan&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/solar_system/KSP 4.0 final report.pdf">Suryansh Patidar&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/solar_system/Krittika_Final_Report.pdf">Atharv&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/solar_system/kspfinal.pdf">Aditya&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/solar_system/The_Legrand_Orange_Book_Template__English_ (8).pdf">Ramesh&apos;s Report</Link></li>
                 </ul>
                 <li><h4>Exploring the Radio Sky</h4></li>
                 <ul>
-                    <li><Link href="/KSPReports/2023/Radio/KSP Radio Report Aadyot Bhardwaj.pdf">Aadyot's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/Radio/KSP_Radio_Astro_Report (2).pdf">Atreyi's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/Radio/KSP_Radio_Report___Karthik.pdf">Karthik's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/Radio/ksp.pdf">Ambica's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/Radio/Radio_KSP_Report.pdf">Mehul's Report</Link></li>
-                    <li><Link href="/KSPReports/2023/Radio/Report.pdf">Darsh's Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/KSP Radio Report Aadyot Bhardwaj.pdf">Aadyot&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/KSP_Radio_Astro_Report (2).pdf">Atreyi&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/KSP_Radio_Report___Karthik.pdf">Karthik&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/ksp.pdf">Ambica&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/Radio_KSP_Report.pdf">Mehul&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2023/Radio/Report.pdf">Darsh&apos;s Report</Link></li>
                 </ul>
             </ul>
             <h2>KSP 3.0</h2>
