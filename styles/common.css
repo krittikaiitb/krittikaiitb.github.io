@@ -73,7 +73,7 @@ nav a:hover {
 }
 
 /*Mobile-friendly hoverable dropdown*/
-@media(min-width:480px) {
+@media(min-width:150px) {
   .dropdown:hover .dropdown-menu {
     display: block !important;
     margin-top: 0 !important;

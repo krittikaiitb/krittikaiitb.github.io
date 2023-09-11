@@ -100,6 +100,7 @@ var convs2022:PersonProps[] = [
 ]*/
 
 var convs2023:PersonProps[] = [
+    {name: "Adarsh", post: "Enthusiast", img: `/img/team/2023/Adarsh.jpg`},
     {name: "Shreyas", post: "Convener", img: `/img/team/2023/Shreyas.jpg`},
     {name: "Dileep", post: "Convener", img: `/img/team/2023/Dileep.jpeg`},
     {name: "Suryansh Srijan", post: "Convener", img: `/img/team/2023/Suryansh_Srijan.jpg`},
@@ -108,10 +109,10 @@ var convs2023:PersonProps[] = [
     {name: "Aryan", post: "Convener", img: `/img/team/2023/Aryan.jpeg`},
     {name: "Sreekar", post: "Convener", img: `/img/team/2023/Sreekar.jpeg`},
     {name: "Aditya", post: "Enthusiast", img: `/img/team/2023/Aditya.jpeg`},
-    {name: "Anilesh", post: "Enthusiast", img: `/img/team/2023/Anilesh.jpeg`},
     {name: "Yashvi", post: "Convener", img: `/img/team/2023/Yashvi.jpg`},
     {name: "Manan", post: "Enthusiast", img: `/img/team/2023/Manan.jpeg`},
     {name: "Ronak", post: "Enthusiast", img: `/img/team/2023/Ronak.jpeg`},
+    {name: "Anilesh", post: "Enthusiast", img: `/img/team/2023/Anilesh.jpeg`},
     {name: "Suryansh Patidar", post: "Enthusiast", img: `/img/team/2023/Suryansh_Patidar.jpeg`},
     {name: "Tanishka", post: "Enthusiast", img: `/img/team/2023/Tanishka.png`},
     {name: "Tanish", post: "Enthusiast", img: `/img/team/2023/Tanish.png`},
