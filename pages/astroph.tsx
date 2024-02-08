@@ -20,7 +20,7 @@ var images:ImageProps[] = [
     {name: "M51 Whirlpool Galaxy", img: `/img/Astrophotography/m51.png`},
     {name: "M5 Globular Cluster", img: `/img/Astrophotography/m5.png`},
     {name: "Owl Nebula", img: `/img/Astrophotography/owl_nebula.png`},
-    {name: "Orion Nebula", img: `/img/Astrophotography/orion_nebUla.png`},
+    {name: "Orion Nebula", img: `/img/Astrophotography/orion_nebula.png`},
     {name: "Jupiter", img: `/img/Astrophotography/Jupiter.png`},
     {name: "Moon craters", img: `/img/Astrophotography/moon_crater.png`}
 ]
