@@ -16,12 +16,12 @@ const NavLink = ({href, children}: {href:string, children:string}) => (
 )
 
 const DarkModeSwitch = () => (
-/* <li className=""> */
   <div className="custom-control custom-switch p-0 nav-item my-2 mx-3" style={{display:"flex", flexDirection:"row", justifyContent:"center"}}>
     <input
       type="checkbox"
       className="custom-control-input d-none"
       id="darkSwitch"
+      defaultChecked
     />
     <label
       className="custom-control-label darkToggle"
@@ -30,8 +30,6 @@ const DarkModeSwitch = () => (
       <div className="dark-mode-img" />
     </label>
   </div>
-// </li>
-
 )
 
 const Navbar = ()=> (
@@ -63,6 +61,7 @@ const Navbar = ()=> (
         renderMenuOnMount={true} >
         <NavLink href="/computational">Computational</NavLink>
         <NavLink href="/theoretical">Theoretical</NavLink>
+        <NavLink href="/astroph">Astrophotography</NavLink>
       </NavDropdown>
       <NavLink href="/team">Team</NavLink>
       <DarkModeSwitch/>

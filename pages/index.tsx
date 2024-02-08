@@ -19,8 +19,8 @@ export default function Home() {
       Krittika: The Astronomy Club, IIT Bombay
     </h1>
     <p>
-      Who hasn’t been starstruck by the ethereal beauty of the midnight sky,
-      gazed at the moon’s comforting light and perhaps been thrilled at the
+      Who hasn&apos;t been starstruck by the ethereal beauty of the midnight sky,
+      gazed at the moon&apos;s comforting light and perhaps been thrilled at the
       sight of a meteor flashing in the darkness of night? And have you ever
       wished to be able to connect more deeply with all this celestial
       magnificence? If yes, this is where your wish will come true.
