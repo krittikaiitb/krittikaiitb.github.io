@@ -62,6 +62,17 @@ export default function KSP(){
                
                 </ul>
             <p>You can find testimonials of KSP mentees on <Link href="https://www.instagram.com/p/CrnxaW5saxw/">this post.</Link></p>
+            <h2>KSP 2.0</h2>
+            <p>KSP 2.0 marked the second year in KSP&apos;s journey. This time we had 2 collaborative projects. You can take a look at their detailed reports.</p>
+            <ul>
+                <li><h4><Link href="/KSPReports/2021/KSP_Report___Kirkwood_Gaps.pdf">Kirkwood Gaps</Link></h4></li>
+                <li><h4><Link href="/KSPReports/2021/Photometry and Supernovae.pdf">Photometry and Supernovae</Link></h4></li>
+            </ul>
+            <h2>KSP 1.0</h2>
+            <p>This marked the beginning of KSP. There was one project with the purpose of simulating an Analemma. You can take a look at its detailed report.</p>
+            <ul>
+                <li><h4><Link href="/KSPReports/2020/Analemma_Report.pdf">Analemma</Link></h4></li>
+            </ul>
         </div>
     )
 }
