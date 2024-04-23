@@ -12,7 +12,7 @@ var images:ImageProps[] = [
     {name: "Omega Centauri", img: `/img/Astrophotography/omega_centauri.png`},
     {name: "Conjugation of Moon, Venus and Jupiter", img: `/img/Astrophotography/moon_venus_jupiter.jpg`},
     {name: "Cosmic Cliffs", img: `/img/Astrophotography/cosmic_cliffs.png`},
-    {name: "Milkky Way", img: `/img/Astrophotography/milkyway.png`},
+    {name: "Milky Way", img: `/img/Astrophotography/milkyway.png`},
     {name: "M3 Globular Cluster", img: `/img/Astrophotography/M3GIT.png`},
     {name: "Sombrero Galaxy", img: `/img/Astrophotography/sombrero.png`},
     {name: "ISS Solar transit", img: `/img/Astrophotography/ISS_solar_transit.png`},
