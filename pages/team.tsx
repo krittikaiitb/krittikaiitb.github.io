@@ -44,6 +44,10 @@ var mans2023:PersonProps[] = [
     {name: "Ashwin Goyal", post: "Secretary", img: `/img/team/2023/Ashwin.jpg`},
     {name: "Arhaan Ahmed", post: "Manager", img: `/img/team/2023/Arhaan.jpeg`}
 ]
+var mans2024:PersonProps[] = [
+    {name: "Yashvi Bhuva", post: "Manager", img: `/img/team/2024/Yashvi_Bhuva.jpg`},
+    {name: "Tanishk Mohan", post: "Manager", img: `/img/team/2024/Tanishk_Mohan.jpg`}
+]
 var convs2019:PersonProps[] = [
     {name: "Arsh", post: "Convener", img: "/img/team/2019/Arsh_Khan.jpg"},
           {name: "Fathima", post: "Convener", img: "/img/team/2019/Fathima.jpg"},
@@ -119,12 +123,30 @@ var convs2023:PersonProps[] = [
     {name: "Mayank", post: "Enthusiast", img: `/img/team/2023/Mayank.jpeg`},
     {name: "Tarshit", post: "Enthusiast", img: `/img/team/2023/Tarshit.jpeg`}
 ]
+var convs2024:PersonProps[] = [
+    {name: "Jigyasa", post: "Convener", img: `/img/team/2024/Jigyasa.jpg`},
+    {name: "Kundan", post: "Enthusiast", img: `/img/team/2024/Kundan.jpg`},
+    {name: "Shruti", post: "Enthusiast", img: `/img/team/2024/Shruti.jpg`},
+    {name: "Vishwaajith", post: "Enthusiast", img: `/img/team/2024/Vishwaajith.jpg`},
+    {name: "Ganesh", post: "Enthusiast", img: `/img/team/2024/Ganesh.jpg`},
+    {name: "Arash", post: "Convener", img: `/img/team/2024/Arash.jpg`},
+    {name: "Sanidhya", post: "Convener", img: `/img/team/2024/Sanidhya.jpg`},
+    {name: "Arnav Jayswal", post: "Enthusiast", img: `/img/team/2024/Arnav_Jayswal.jpg`},
+    {name: "Arnav Bhate", post: "Enthusiast", img: `/img/team/2024/Arnav_Bhate.jpg`},
+    {name: "Vedant", post: "Enthusiast", img: `/img/team/2024/Vedant.jpg`},
+    {name: "Yash", post: "Convener", img: `/img/team/2024/Yash.jpg`},
+    {name: "Mrunal", post: "Convener", img: `/img/team/2024/Mrunal.jpg`},
+    {name: "Yashasvee", post: "Convener", img: `/img/team/2024/Yashasvee.jpg`},
+    {name: "Dishika", post: "Convener", img: `/img/team/2024/Dishika.jpg`},
+    {name: "Raghav", post: "Enthusiast", img: `/img/team/2024/Raghav.jpg`},
+    {name: "Anvit", post: "Convener", img: `/img/team/2024/Anvit.jpg`}
+]
 
 export default function Team(){
     return(<div className="mt-4">
 
         <Tab.Container
-            defaultActiveKey="2023"
+            defaultActiveKey="2024"
             id="myTab"
         >
             <Nav variant="pills" className="justify-content-center pillsColor">
@@ -133,9 +155,13 @@ export default function Team(){
                 <TeamYearLabel year="2021"></TeamYearLabel>
                 <TeamYearLabel year="2022"></TeamYearLabel>
                 <TeamYearLabel year="2023"></TeamYearLabel>
+                <TeamYearLabel year="2024"></TeamYearLabel>
             </Nav>
             <Tab.Content>
-                <Tab.Pane eventKey="2023" title="2023 (Present)" className="abc">
+                <Tab.Pane eventKey="2024" title="2024 (Present)" className="abc">
+                    <TeamContent year="2024" mans={mans2024} convs={convs2024}></TeamContent>
+                </Tab.Pane>
+                <Tab.Pane eventKey="2023" title="2023" className="abc">
                     <TeamContent year="2023" mans={mans2023} convs={convs2023}></TeamContent>
                 </Tab.Pane>
                 <Tab.Pane eventKey="2022" title="2022">
