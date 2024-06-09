@@ -42,7 +42,7 @@ var mans2022:PersonProps[] = [
 ]
 var mans2023:PersonProps[] = [
     {name: "Ashwin Goyal", post: "Secretary", img: `/img/team/2023/Ashwin.jpg`},
-    {name: "Arhaan Ahmed", post: "Manager", img: `/img/team/2023/Arhaan.jpeg`}
+    {name: "Arhaan Ahmed", post: "Manager", img: `/img/team/2023/Arhaan.jpg`}
 ]
 var mans2024:PersonProps[] = [
     {name: "Yashvi Bhuva", post: "Manager", img: `/img/team/2024/Yashvi_Bhuva.jpg`},
@@ -96,7 +96,7 @@ var convs2022:PersonProps[] = [
           {name: "Navdha", post: "Enthusiast", img: `/img/team/2022/Navdha.png`},
           {name: "Ravi", post: "Enthusiast", img: `/img/team/2022/Ravi.jpg`},
           {name: "Shravya", post: "Enthusiast", img: `/img/team/2022/Shravya.png`},
-          {name: "Arhaan", post: "Enthusiast", img: `/img/team/2022/Arhaan.jpeg`},
+          {name: "Arhaan", post: "Enthusiast", img: `/img/team/2022/Arhaan.jpg`},
 ]
 
 /*var enthus2022:PersonProps[] = [
