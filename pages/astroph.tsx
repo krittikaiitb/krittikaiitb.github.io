@@ -13,15 +13,15 @@ var images:ImageProps[] = [
     {name: "Conjugation of Moon, Venus and Jupiter", img: `/img/Astrophotography/moon_venus_jupiter.jpg`},
     {name: "Cosmic Cliffs", img: `/img/Astrophotography/cosmic_cliffs.png`},
     {name: "Milky Way", img: `/img/Astrophotography/milkyway.png`},
-    {name: "M3 Globular Cluster", img: `/img/Astrophotography/M3GIT.png`},
+    {name: "M3 Globular Cluster", img: `/img/Astrophotography/m3.png`},
     {name: "Sombrero Galaxy", img: `/img/Astrophotography/sombrero.png`},
     {name: "ISS Solar transit", img: `/img/Astrophotography/ISS_solar_transit.png`},
     {name: "Andromeda Galaxy", img: `/img/Astrophotography/Andromeda.jpg`},
-    {name: "M51 Whirlpool Galaxy", img: `/img/Astrophotography/m51.png`},
+    {name: "M51 Whirlpool Galaxy", img: `/img/Astrophotography/m51.jpg`},
     {name: "M5 Globular Cluster", img: `/img/Astrophotography/m5.png`},
     {name: "Owl Nebula", img: `/img/Astrophotography/owl_nebula.png`},
-    {name: "Orion Nebula", img: `/img/Astrophotography/orion_nebula.png`},
-    {name: "Jupiter", img: `/img/Astrophotography/Jupiter.png`},
+    {name: "Orion Nebula", img: `/img/Astrophotography/orion_nebula.jpg`},
+    {name: "Jupiter", img: `/img/Astrophotography/Jupiter.jpg`},
     {name: "Moon craters", img: `/img/Astrophotography/moon_crater.png`}
 ]
 
