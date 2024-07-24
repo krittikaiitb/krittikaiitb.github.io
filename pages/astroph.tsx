@@ -49,7 +49,19 @@ export default function astroph() {
                 </p>
                 <p>Ravi, a club member from the 2022-23 team, has written an excellent blog explaining 
                     <Link href="https://ravioli1369.github.io/blog/2023/astro-image-processing/"> Astro Image Processing</Link> in great detail. 
-                    Also, look at some of our splendid clicks of stars, planets, clusters, and nebulae.
+                </p>
+                <p>As part of Learners&apos; Space, we conducted a course on <b>Astronomical Imaging</b>. The course consisted of
+                    various modules covering the basics of astrophotography, the equipment required, and the post-processing techniques.
+                </p>
+                <p>Below are the modules that were covered in the course:
+                </p>
+                <ul>
+                    <li><h4><Link href="/Learners'_Space/Astrophotography/Introduction to Imaging Systems.pdf">Introduction to Imaging Systems</Link></h4></li>
+                    <li><h4><Link href="/Learners'_Space/Astrophotography/Understanding Space Telescopes.pdf">Understanding Space Telescopes</Link></h4></li>
+                    <li><h4><Link href="/Learners'_Space/Astrophotography/Image Sensors.pdf">Image Sensors</Link></h4></li>
+                    <li><h4><Link href="/Learners'_Space/Astrophotography/Stacking and Filters.pdf">Stacking and Filters</Link></h4></li>
+                </ul>
+                <p>Also, look at some of our splendid clicks of stars, planets, clusters, and nebulae.
                 </p>
             </div>
             <div className="mt-4">
