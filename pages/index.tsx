@@ -5,9 +5,6 @@ import HomeCarousel from '../src/carousel';
 export default function Home() {
   return (
     <div>
-      <Head>
-      </Head>
-     
       <main>
       <HomeCarousel></HomeCarousel>
       <div className="p-3" id="about">
