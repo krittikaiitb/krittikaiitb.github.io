@@ -12,18 +12,18 @@ export default function theoretical() {
             <h3>Basic Modules</h3>
             <ul>
                 <li><h4><Link href="/Learners'_Space/Basic_modules/Celestial Mechanics and Gravity.pdf">Celestial Mechanics and Gravity</Link></h4></li>
-                <li><h4><Link href="/Learners'_Space/Basic_modules/Coordinate System & Time.pdf">Coordinate Systems and Time</Link></h4></li>
+                <li><h4><Link href="/Learners'_Space/Basic_modules/Coordinate Systems and Time.pdf">Coordinate Systems and Time</Link></h4></li>
                 <li><h4><Link href="/Learners'_Space/Basic_modules/Radiation & its use in Astrophysics.pdf">Radiation & its use in Astrophysics</Link></h4></li>
                 <li><h4><Link href="/Learners'_Space/Basic_modules/Telescopes.pdf">Telescopes</Link></h4></li>
             </ul>
             <h3>Advanced Modules</h3>
             <ul>
-                <li><h4><Link href="/Learners'_Space/Advanced_modules/cosmology.pdf">Cosmology</Link></h4></li>
+                <li><h4><Link href="/Learners'_Space/Advanced_modules/Cosmology.pdf">Cosmology</Link></h4></li>
                 <li><h4><Link href="/Learners'_Space/Advanced_modules/Distance Ladder.pdf">Distance Ladder</Link></h4></li>
-                <li><h4><Link href="/Learners'_Space/Advanced_modules/Exoplanet detection.pdf">Exoplanet Detection</Link></h4></li>
-                <li><h4><Link href="/Learners'_Space/Advanced_modules/Mult-messenger astronomy.pdf">Multi-messenger Astronomy</Link></h4></li>
-                <li><h4><Link href="/Learners'_Space/Advanced_modules/Radio-astronomy.pdf">Radio Astronomy</Link></h4></li>
-                <li><h4><Link href="/Learners'_Space/Advanced_modules/solar physics.pdf">Solar Physics</Link></h4></li>
+                <li><h4><Link href="/Learners'_Space/Advanced_modules/Exoplanet Detection.pdf">Exoplanet Detection</Link></h4></li>
+                <li><h4><Link href="/Learners'_Space/Advanced_modules/Multi-messenger Astronomy.pdf">Multi-messenger Astronomy</Link></h4></li>
+                <li><h4><Link href="/Learners'_Space/Advanced_modules/Radio Astronomy.pdf">Radio Astronomy</Link></h4></li>
+                <li><h4><Link href="/Learners'_Space/Advanced_modules/Solar Physics.pdf">Solar Physics</Link></h4></li>
                 <li><h4><Link href="/Learners'_Space/Advanced_modules/Stellar Structure and Evolution.pdf">Stellar Structure and Evolution</Link></h4></li>
             </ul>
         </div>

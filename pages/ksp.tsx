@@ -5,7 +5,39 @@ export default function KSP(){
             <h1><b>Krittika Summer Projects</b></h1>
             <p>We run a range of exciting astrophysics projects through KSP every summer. This is one of the largest student led such programs in the country</p>
 
-            <br></br>
+            <br />
+            <h2>KSP 5.0</h2>
+            <p>Now in its fifth year, KSP had the largest variety of projects offered yet. You can take a look at all the project reports:</p>
+            <ul>
+                <li><h4><Link href="/KSPReports/2024/Binary black holes from scratch/KSP_binary_black_holes.pdf">Binary black holes from scratch</Link></h4></li>
+                <li><h4><Link href="/KSPReports/2024/Eclipsing Binaries/KSP_5_0_EB_Project_Report.pdf">Eclipsing Binaries</Link></h4></li>
+                <li><h4><Link href="/KSPReports/2024/Hunt for the QCD axion dark matter using gravitational microlensing/KSP_Project_Report_DarkMatterAxionsPBH.pdf">Hunt for the QCD axion dark matter using gravitational microlensing</Link></h4></li>
+                <li><h4><Link href="/KSPReports/2024/Modifications of stellar structure equations due to Rotation and Tidal stretching/KSPReport.pdf">Modifications of stellar structure equations due to Rotation and Tidal stretching</Link></h4></li>
+                <li><h4><Link href="/KSPReports/2024/Prospects of LSST, ILMT and AXIS for searching SMBHB candidates/KSP_Final.pdf">Prospects of LSST, ILMT and AXIS for searching SMBHB candidates</Link></h4></li>
+                <li><h4>Pinpricks on the vortex -  unveiling nearby galaxy evolution with star clusters</h4></li>
+                <ul>
+                    <li><Link href="/KSPReports/2024/Pinpricks on the vortex -  unveiling nearby galaxy evolution with star clusters/Star Cluster Analysis - Report.pdf">Manohara&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Pinpricks on the vortex -  unveiling nearby galaxy evolution with star clusters/ksp_project_report (4).pdf">Nishad&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Pinpricks on the vortex -  unveiling nearby galaxy evolution with star clusters/KSP_REPORT.pdf">Sanidhya&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Pinpricks on the vortex -  unveiling nearby galaxy evolution with star clusters/Final Report KSP.pdf">Soham&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Pinpricks on the vortex -  unveiling nearby galaxy evolution with star clusters/SuryaVinodEndtermReport.pdf">Surya&apos;s Report</Link></li>
+                </ul>
+                <li><h4>Radio Astronomy</h4></li>
+                <ul>
+                    <li><Link href="/KSPReports/2024/Radio Astronomy/KSP_Endterm_Report.pdf">Manit&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Radio Astronomy/Final_report.pdf">Niral&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Radio Astronomy/report.pdf">Nirav&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Radio Astronomy/Saatwik_KSP_Final.pdf">Saatwik&apos;s Report</Link></li>
+                </ul>
+                <li><h4>Study of the Nearest Hydrogen-Rich Core-Collapse Supernova: SN 2023ixf</h4></li>
+                <ul>
+                    <li><Link href="/KSPReports/2024/Study of the Nearest Hydrogen-Rich Core-Collapse Supernova SN 2023ixf/ksp_endterm.pdf">Aditi&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Study of the Nearest Hydrogen-Rich Core-Collapse Supernova SN 2023ixf/KSP_Project_Report_Divyansh_Tripathi.pdf">Divyansh&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Study of the Nearest Hydrogen-Rich Core-Collapse Supernova SN 2023ixf/Krittika.pdf">Gaurav&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Study of the Nearest Hydrogen-Rich Core-Collapse Supernova SN 2023ixf/KSP_study_of_sn2023ixf_Report.pdf">Jigyasa&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Study of the Nearest Hydrogen-Rich Core-Collapse Supernova SN 2023ixf/Report_Mayank_Soni.pdf">Mayank&apos;s Report</Link></li>
+                </ul>
+            </ul>
             <h2>KSP 4.0</h2>
             <p>For the summer of 2023, the projects were carried on with effort, energy and enthusiasm. The details can be found in 
                 <Link href='https://bit.ly/ksp4info'> this google doc.</Link> Take a look at the project reports:</p>
@@ -17,7 +49,7 @@ export default function KSP(){
                 <ul>
                     <li><Link href="/KSPReports/2023/GRB/GRB_Ananya.pdf">Ananya&apos;s Report</Link></li>
                     <li><Link href="/KSPReports/2023/GRB/GRB_Ravi.pdf">Ravi&apos;s Report</Link></li>
-                    <li><Link href="/KSPReports/2023/GRB/GRB_Shreyas.pdf">Shreyas&apos; Report</Link></li>
+                    <li><Link href="/KSPReports/2023/GRB/GRB_Shreyas.pdf">Shreyas&apos;s Report</Link></li>
                     <li><Link href="/KSPReports/2023/GRB/GRB Project Report Rahul.pdf">Rahul&apos;s Report</Link></li>
                     <li><Link href="/KSPReports/2023/GRB/KSP_Endterm_Project_Report_Yash.pdf">Yash&apos;s Report</Link></li>
                     <li><Link href="/KSPReports/2023/GRB/ksp_sarvesh-1.pdf">Sarvesh&apos;s Report</Link></li>
