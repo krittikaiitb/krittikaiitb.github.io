@@ -4,7 +4,7 @@ let nextConfig = {
   swcMinify: true,
   trailingSlash: true,
   output: "export",
-  basePath: "/",
+  basePath: "",
   images: {
     unoptimized: true,
   },
