@@ -3,6 +3,11 @@ let nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
+  output: "export",
+  basePath: "/",
+  images: {
+    unoptimized: true,
+  },
 };
 
 // Required for setting up github pages
