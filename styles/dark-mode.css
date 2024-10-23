@@ -92,7 +92,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 .cinzel{
-  font-family: 'Ubuntu', serif !important;
+  font-family: 'Ubuntu', sans-serif !important;
 }
 
 [data-theme="dark"] .form-control, [data-theme="dark"] #id_topic, [data-theme="dark"] #id_tags {
