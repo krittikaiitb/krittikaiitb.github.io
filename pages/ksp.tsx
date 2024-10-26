@@ -9,11 +9,18 @@ export default function KSP(){
             <h2>KSP 5.0</h2>
             <p>Now in its fifth year, KSP had the largest variety of projects offered yet. You can take a look at all the project reports:</p>
             <ul>
-                <li><h4><Link href="/KSPReports/2024/Binary black holes from scratch/KSP_binary_black_holes.pdf">Binary black holes from scratch</Link></h4></li>
                 <li><h4><Link href="/KSPReports/2024/Eclipsing Binaries/KSP_5_0_EB_Project_Report.pdf">Eclipsing Binaries</Link></h4></li>
                 <li><h4><Link href="/KSPReports/2024/Hunt for the QCD axion dark matter using gravitational microlensing/KSP_Project_Report_DarkMatterAxionsPBH.pdf">Hunt for the QCD axion dark matter using gravitational microlensing</Link></h4></li>
                 <li><h4><Link href="/KSPReports/2024/Modifications of stellar structure equations due to Rotation and Tidal stretching/KSPReport.pdf">Modifications of stellar structure equations due to Rotation and Tidal stretching</Link></h4></li>
                 <li><h4><Link href="/KSPReports/2024/Prospects of LSST, ILMT and AXIS for searching SMBHB candidates/KSP_final.pdf">Prospects of LSST, ILMT and AXIS for searching SMBHB candidates</Link></h4></li>
+                <li><h4>Binary black holes from scratch</h4></li>
+                <ul>
+                    <li><Link href="/KSPReports/2024/Binary black holes from scratch/KSP_binary_black_holes.pdf">Arash&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Binary black holes from scratch/KSP_Project_Report.pdf">Arya&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Binary black holes from scratch/KSP_Report_Chaitanya_Divyesh_Patel.pdf">Chaitanya&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Binary black holes from scratch/Final_KSP_Project_Report_BBHs_Gokul.pdf">Gokularamanan&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2024/Binary black holes from scratch/BH_Binary_Mergers_Report_SriramR.pdf">Sriram&apos;s Report</Link></li>
+                </ul>
                 <li><h4>Pinpricks on the vortex -  unveiling nearby galaxy evolution with star clusters</h4></li>
                 <ul>
                     <li><Link href="/KSPReports/2024/Pinpricks on the vortex -  unveiling nearby galaxy evolution with star clusters/Star Cluster Analysis - Report.pdf">Manohara&apos;s Report</Link></li>

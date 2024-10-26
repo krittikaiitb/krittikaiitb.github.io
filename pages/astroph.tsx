@@ -60,6 +60,7 @@ export default function astroph() {
                     <li><h4><Link href="/Learners'_Space/Astrophotography/Understanding Space Telescopes.pdf">Understanding Space Telescopes</Link></h4></li>
                     <li><h4><Link href="/Learners'_Space/Astrophotography/Image Sensors.pdf">Image Sensors</Link></h4></li>
                     <li><h4><Link href="/Learners'_Space/Astrophotography/Stacking and Filters.pdf">Stacking and Filters</Link></h4></li>
+                    <li><h4><Link href="/Learners'_Space/Astrophotography/Photometry and Spectroscopy.pdf">Photometry and Spectroscopy</Link></h4></li>
                 </ul>
                 <p>Also, look at some of our splendid clicks of stars, planets, clusters, and nebulae.
                 </p>
