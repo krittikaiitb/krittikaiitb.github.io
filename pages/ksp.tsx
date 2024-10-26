@@ -13,7 +13,7 @@ export default function KSP(){
                 <li><h4><Link href="/KSPReports/2024/Eclipsing Binaries/KSP_5_0_EB_Project_Report.pdf">Eclipsing Binaries</Link></h4></li>
                 <li><h4><Link href="/KSPReports/2024/Hunt for the QCD axion dark matter using gravitational microlensing/KSP_Project_Report_DarkMatterAxionsPBH.pdf">Hunt for the QCD axion dark matter using gravitational microlensing</Link></h4></li>
                 <li><h4><Link href="/KSPReports/2024/Modifications of stellar structure equations due to Rotation and Tidal stretching/KSPReport.pdf">Modifications of stellar structure equations due to Rotation and Tidal stretching</Link></h4></li>
-                <li><h4><Link href="/KSPReports/2024/Prospects of LSST, ILMT and AXIS for searching SMBHB candidates/KSP_Final.pdf">Prospects of LSST, ILMT and AXIS for searching SMBHB candidates</Link></h4></li>
+                <li><h4><Link href="/KSPReports/2024/Prospects of LSST, ILMT and AXIS for searching SMBHB candidates/KSP_final.pdf">Prospects of LSST, ILMT and AXIS for searching SMBHB candidates</Link></h4></li>
                 <li><h4>Pinpricks on the vortex -  unveiling nearby galaxy evolution with star clusters</h4></li>
                 <ul>
                     <li><Link href="/KSPReports/2024/Pinpricks on the vortex -  unveiling nearby galaxy evolution with star clusters/Star Cluster Analysis - Report.pdf">Manohara&apos;s Report</Link></li>
