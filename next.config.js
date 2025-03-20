@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 let nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   trailingSlash: true,
   output: "export",
   basePath: "",
