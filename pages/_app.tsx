@@ -25,9 +25,11 @@ let darkSwitch: HTMLInputElement;
  */
 function initTheme() {
   if(darkSwitch){
+  const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
   const darkThemeSelected =
-    localStorage.getItem('darkSwitch') !== null &&
-    localStorage.getItem('darkSwitch') === 'dark';
+    (localStorage.getItem("darkSwitch") !== null &&
+      localStorage.getItem("darkSwitch") === "dark") ||
+    (localStorage.getItem("darkSwitch") === null && darkThemeMq.matches);
   darkSwitch['checked'] = darkThemeSelected;
   darkThemeSelected ? document.body.setAttribute('data-theme', 'dark') :
     document.body.removeAttribute('data-theme');
@@ -47,7 +49,7 @@ function resetTheme() {
     localStorage.setItem('darkSwitch', 'dark');
   } else {
     document.body.removeAttribute('data-theme');
-    localStorage.removeItem('darkSwitch');
+    localStorage.setItem("darkSwitch", "light");
   }
 }
 
