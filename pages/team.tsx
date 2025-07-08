@@ -151,7 +151,7 @@ var convs2024:PersonProps[] = [
 
 var convs2025:PersonProps[] = [
     {name: "Aditi Singh", post: "Volcon", img: `/img/team/2025/Aditi_Singh.jpg`},
-    {name: "Aradhana R", post: "Volcon", img: `/img/team/2025/Aradhana R.jpg`},
+    {name: "Aradhana R", post: "Volcon", img: `/img/team/2025/Aradhana_R.jpg`},
     {name: "Arya Sarode", post: "Volcon", img: `/img/team/2025/Arya_Sarode.jpg`},
     {name: "Bhavesh R Karthik", post: "Volcon", img: `/img/team/2025/Bhavesh_R_Karthik.JPEG`},
     {name: "Durva", post: "Volcon", img: `/img/team/2025/Durva.jpg`},
