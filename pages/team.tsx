@@ -48,6 +48,13 @@ var mans2024:PersonProps[] = [
     {name: "Yashvi Bhuva", post: "Manager", img: `/img/team/2024/Yashvi_Bhuva.jpg`},
     {name: "Tanishk Mohan", post: "Manager", img: `/img/team/2024/Tanishk_Mohan.jpg`}
 ]
+
+var mans2025:PersonProps[] = [
+    {name: "Anvit Khade", post: "Manager", img: `/img/team/2025/Anvit_Khade.jpg`},
+    {name: "Yash Palwe", post: "Manager", img: `/img/team/2025/Yash_Palwe.jpeg`}
+]
+
+
 var convs2019:PersonProps[] = [
     {name: "Arsh", post: "Convener", img: "/img/team/2019/Arsh_Khan.jpg"},
           {name: "Fathima", post: "Convener", img: "/img/team/2019/Fathima.jpg"},
@@ -142,6 +149,23 @@ var convs2024:PersonProps[] = [
     {name: "Anvit", post: "Convener", img: `/img/team/2024/Anvit.jpg`}
 ]
 
+var convs2025:PersonProps[] = [
+    {name: "Aditi Singh", post: "Volcon", img: `/img/team/2025/Aditi_Singh.jpg`},
+    {name: "Aradhana R", post: "Volcon", img: `/img/team/2025/Aradhana R.jpg`},
+    {name: "Arya Sarode", post: "Volcon", img: `/img/team/2025/Arya_Sarode.jpg`},
+    {name: "Bhavesh R Karthik", post: "Volcon", img: `/img/team/2025/Bhavesh_R_Karthik.JPEG`},
+    {name: "Durva", post: "Volcon", img: `/img/team/2025/Durva.jpg`},
+    {name: "Guru Jahnavi Madana", post: "Volcon", img: `/img/team/2025/Guru_Jahnavi_Madana.jpg`},
+    {name: "Malay Kedia", post: "Volcon", img: `/img/team/2025/Malay_Kedia.jpeg`},
+    {name: "Pratham Srivastava", post: "Volcon", img: `/img/team/2025/Pratham_Srivastava.jpg`},
+    {name: "Rachit Ahuja", post: "Volcon", img: `/img/team/2025/Rachit_Ahuja.jpg`},
+    {name: "Rudra Arya", post: "Volcon", img: `/img/team/2025/Rudra_Arya.jpg`},
+    {name: "Ruhaan Singh", post: "Volcon", img: `/img/team/2025/Ruhaan_Singh.jpg`},
+    {name: "Sanvi Jain", post: "Volcon", img: `/img/team/2025/Sanvi_Jain.jpg`},
+    {name: "Vidit Bohra", post: "Volcon", img: `/img/team/2025/Vidit_Bohra.jpg`},
+    {name: "Vihang Vidwans", post: "Volcon", img: `/img/team/2025/Vihang_Vidwans.jpg`},
+]
+
 export default function Team(){
     return(<div className="mt-4">
 
@@ -156,9 +180,13 @@ export default function Team(){
                 <TeamYearLabel year="2022"></TeamYearLabel>
                 <TeamYearLabel year="2023"></TeamYearLabel>
                 <TeamYearLabel year="2024"></TeamYearLabel>
+                <TeamYearLabel year="2025"></TeamYearLabel>
             </Nav>
             <Tab.Content>
-                <Tab.Pane eventKey="2024" title="2024 (Present)" className="abc">
+                <Tab.Pane eventKey="2025" title="2025 (Present)" className="abc">
+                    <TeamContent year="2025" mans={mans2025} convs={convs2025}></TeamContent>
+                </Tab.Pane>
+                <Tab.Pane eventKey="2024" title="2024" className="abc">
                     <TeamContent year="2024" mans={mans2024} convs={convs2024}></TeamContent>
                 </Tab.Pane>
                 <Tab.Pane eventKey="2023" title="2023" className="abc">
