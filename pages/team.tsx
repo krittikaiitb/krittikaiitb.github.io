@@ -146,7 +146,7 @@ var convs2024:PersonProps[] = [
     {name: "Yashasvee", post: "Convener", img: `/img/team/2024/Yashasvee.jpg`},
     {name: "Dishika", post: "Convener", img: `/img/team/2024/Dishika.jpg`},
     {name: "Raghav", post: "Enthusiast", img: `/img/team/2024/Raghav.jpg`},
-    {name: "Anvit", post: "Convener", img: `/img/team/2024/Anvit.jpg`}
+    {name: "Anvit", post: "Convener", img: `/img/team/2024/Anvit.jpg`},
     {name: "Manaswi", post: "Enthusiast", img: `/img/team/2024/Manaswi.png`}
 ]
 
