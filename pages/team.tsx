@@ -46,7 +46,7 @@ var mans2023:PersonProps[] = [
 ]
 var mans2024:PersonProps[] = [
     {name: "Yashvi Bhuva", post: "Manager", img: `/img/team/2024/Yashvi_Bhuva.jpg`},
-    {name: "Tanishk Mohan", post: "Manager", img: `/img/team/2024/Tanishk_Mohan.jpg`}
+    {name: "Tanishk Mohan", post: "Secretary", img: `/img/team/2024/Tanishk_Mohan.jpg`}
 ]
 
 var mans2025:PersonProps[] = [
@@ -147,30 +147,31 @@ var convs2024:PersonProps[] = [
     {name: "Dishika", post: "Convener", img: `/img/team/2024/Dishika.jpg`},
     {name: "Raghav", post: "Enthusiast", img: `/img/team/2024/Raghav.jpg`},
     {name: "Anvit", post: "Convener", img: `/img/team/2024/Anvit.jpg`}
+    {name: "Manaswi", post: "Enthusiast", img: `/img/team/2024/Manaswi.png`}
 ]
 
 var convs2025:PersonProps[] = [
-    {name: "Aditi Singh", post: "Volcon", img: `/img/team/2025/Aditi_Singh.jpg`},
-    {name: "Aradhana R", post: "Volcon", img: `/img/team/2025/Aradhana_R.jpg`},
-    {name: "Arya Sarode", post: "Volcon", img: `/img/team/2025/Arya_Sarode.jpg`},
-    {name: "Bhavesh R Karthik", post: "Volcon", img: `/img/team/2025/Bhavesh_R_Karthik.JPEG`},
-    {name: "Durva", post: "Volcon", img: `/img/team/2025/Durva.jpg`},
-    {name: "Guru Jahnavi Madana", post: "Volcon", img: `/img/team/2025/Guru_Jahnavi_Madana.jpg`},
-    {name: "Malay Kedia", post: "Volcon", img: `/img/team/2025/Malay_Kedia.jpeg`},
-    {name: "Pratham Srivastava", post: "Volcon", img: `/img/team/2025/Pratham_Srivastava.jpg`},
-    {name: "Rachit Ahuja", post: "Volcon", img: `/img/team/2025/Rachit_Ahuja.jpg`},
-    {name: "Rudra Arya", post: "Volcon", img: `/img/team/2025/Rudra_Arya.jpg`},
-    {name: "Ruhaan Singh", post: "Volcon", img: `/img/team/2025/Ruhaan_Singh.jpg`},
-    {name: "Sanvi Jain", post: "Volcon", img: `/img/team/2025/Sanvi_Jain.jpg`},
-    {name: "Vidit Bohra", post: "Volcon", img: `/img/team/2025/Vidit_Bohra.jpg`},
-    {name: "Vihang Vidwans", post: "Volcon", img: `/img/team/2025/Vihang_Vidwans.jpg`},
+    {name: "Aditi Singh", post: "Enthusiast", img: `/img/team/2025/Aditi_Singh.jpg`},
+    {name: "Aradhana R", post: "Convener", img: `/img/team/2025/Aradhana_R.jpg`},
+    {name: "Arya Sarode", post: "Enthusiast", img: `/img/team/2025/Arya_Sarode.jpg`},
+    {name: "Bhavesh R Karthik", post: "Enthusiast", img: `/img/team/2025/Bhavesh_R_Karthik.JPEG`},
+    {name: "Durva", post: "Convener", img: `/img/team/2025/Durva.jpg`},
+    {name: "Guru Jahnavi Madana", post: "Convener", img: `/img/team/2025/Guru_Jahnavi_Madana.jpg`},
+    {name: "Malay Kedia", post: "Enthusiast", img: `/img/team/2025/Malay_Kedia.jpeg`},
+    {name: "Pratham Srivastava", post: "Convener", img: `/img/team/2025/Pratham_Srivastava.jpg`},
+    {name: "Rachit Ahuja", post: "Enthusiast", img: `/img/team/2025/Rachit_Ahuja.jpg`},
+    {name: "Rudra Arya", post: "Convener", img: `/img/team/2025/Rudra_Arya.jpg`},
+    {name: "Ruhaan Singh", post: "Convener", img: `/img/team/2025/Ruhaan_Singh.jpg`},
+    {name: "Sanvi Jain", post: "Enthusiast", img: `/img/team/2025/Sanvi_Jain.jpg`},
+    {name: "Vidit Bohra", post: "Convener", img: `/img/team/2025/Vidit_Bohra.jpg`},
+    {name: "Vihang Vidwans", post: "Convener", img: `/img/team/2025/Vihang_Vidwans.jpg`}
 ]
 
 export default function Team(){
     return(<div className="mt-4">
 
         <Tab.Container
-            defaultActiveKey="2024"
+            defaultActiveKey="2025"
             id="myTab"
         >
             <Nav variant="pills" className="justify-content-center pillsColor">
