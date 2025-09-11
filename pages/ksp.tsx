@@ -6,6 +6,32 @@ export default function KSP(){
             <p>We run a range of exciting astrophysics projects through KSP every summer. This is one of the largest student led such programs in the country</p>
 
             <br />
+            <h2>KSP 6.0</h2>
+            <p>Now in its sixth year, KSP has had one of the most interesting projects offered. You can take a look at all the project reports:</p>
+            <ul>
+                <li><h4><Link href="/KSPReports/2025/Imaging A Bright Neutron Star/End_term_report_Radio_imaging_final.pdf">Imaging A Bright Neutron Star</Link></h4></li>
+                <li><h4><Link href="/KSPReports/2025/Thermonuclear Bursts In Neutron Star X-Ray Binaries/Thermonuclear Bursts In Neutron Star Xray Binaries.pdf">Thermonuclear Bursts In Neutron Star XRay Binaries</Link></h4></li>
+                <li><h4>Visualizing Geodesics In Schwarzchild SpaceTime</h4></li>
+                <ul>
+                    <li><Link href="/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Aryan.pdf">Aryan&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Gayatri.pdf">Gayatri&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Rudra.pdf">Rudra&apos;s Report</Link></li>
+                    <li><Link href="public/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Vedant.pdf">Vedant&apos;s Report</Link></li>
+                </ul>
+                <li><h4>Gamma Ray Bursts - Theory And Analysis</h4></li>
+                <ul>
+                    <li><Link href="/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Aditya.pdf">Aditya&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Jahnavi.pdf">Jahnavi&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Pratham.pdf">Pratham&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Pratyush.pdf">Pratyush&apos;s Report</Link></li>
+                </ul>
+                <li><h4>Design And Analysis Of Radomes</h4></li>
+                <ul>
+                    <li><Link href="/KSPReports/2025/Design And Analysis Of Radomes/Aleena.pdf">Aleena&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2025/Design And Analysis Of Radomes/Manohara.pdf">Manohara&apos;s Report</Link></li>
+                    <li><Link href="/KSPReports/2025/Design And Analysis Of Radomes/Sandipan.pdf">Sandipan&apos;s Report</Link></li>
+                </ul>
+            </ul>
             <h2>KSP 5.0</h2>
             <p>Now in its fifth year, KSP had the largest variety of projects offered yet. You can take a look at all the project reports:</p>
             <ul>
