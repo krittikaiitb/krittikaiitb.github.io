@@ -163,6 +163,8 @@ var convs2025:PersonProps[] = [
     {name: "Rudra Arya", post: "Convener", img: `/img/team/2025/Rudra_Arya.jpg`},
     {name: "Ruhaan Singh", post: "Convener", img: `/img/team/2025/Ruhaan_Singh.jpg`},
     {name: "Sanvi Jain", post: "Enthusiast", img: `/img/team/2025/Sanvi_Jain.jpg`},
+    {name: "Shakthi", post: "Convener", img: `/img/team/2025/Shakthi.jpeg`},
+    {name: "Vedanth Vijaykumar", post: "Convener", img: `/img/team/2025/Vedanth_Vijaykumar.jpeg`},
     {name: "Vidit Bohra", post: "Convener", img: `/img/team/2025/Vidit_Bohra.jpg`},
     {name: "Vihang Vidwans", post: "Convener", img: `/img/team/2025/Vihang_Vidwans.jpg`}
 ]
