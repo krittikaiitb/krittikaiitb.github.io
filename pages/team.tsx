@@ -1,5 +1,6 @@
 import { PersonProps } from "../src/personCard"
 import ConvenerList from "../src/teamDetails/conveners"
+import TeamList from "../src/teamDetails/stellar_team"
 import ManagerList from "../src/teamDetails/managerAndSecy"
 import Tab from 'react-bootstrap/Tab'; // See https://react-bootstrap.github.io/components/tabs/ for working of tabs
 import Nav from 'react-bootstrap/Nav';
@@ -19,6 +20,20 @@ function TeamContent({year, mans, convs, active=true}: {year:string, mans:Person
           <p className="display-4 pt-4 pb-4 text-center">Team {year}</p>
           <ManagerList arrayOfPeople={mans}></ManagerList>
           <ConvenerList arrayOfPeople={convs}></ConvenerList>
+        </div>
+        </div>
+    )
+}
+
+// To add 'stellar team' at the title instead of 'convenors'
+function TeamContent_2026({year, mans, convs, active=true}: {year:string, mans:PersonProps[], convs:PersonProps[], active?:boolean}){
+    let a = (active)?" show active":"";
+    return(
+        <div className={"tab-pane fade p-3" + a} id={"team-" + year} role="tabpanel" aria-labelledby={"team-" + year + "-tab"}>
+        <div className="card shadow-lg container mt-4 mb-5 aboutCard">
+          <p className="display-4 pt-4 pb-4 text-center">Team {year}</p>
+          <ManagerList arrayOfPeople={mans}></ManagerList>
+          <TeamList arrayOfPeople={convs}></TeamList>
         </div>
         </div>
     )
@@ -52,6 +67,11 @@ var mans2024:PersonProps[] = [
 var mans2025:PersonProps[] = [
     {name: "Anvit Khade", post: "Manager", img: `/img/team/2025/Anvit_Khade.jpg`},
     {name: "Yash Palwe", post: "Manager", img: `/img/team/2025/Yash_Palwe.jpeg`}
+]
+
+var mans2026:PersonProps[] = [
+    {name: "Guru Jahnavi Madana", post: "Manager", img: `/img/team/2025/Guru_Jahnavi_Madana.jpg`},
+    {name: "Vihang Vidwans", post: "Manager", img: `/img/team/2025/Vihang_Vidwans.jpg`}
 ]
 
 
@@ -169,11 +189,28 @@ var convs2025:PersonProps[] = [
     {name: "Vihang Vidwans", post: "Convener", img: `/img/team/2025/Vihang_Vidwans.jpg`}
 ]
 
+var convs2026:PersonProps[] = [
+    {name: "Aditya Jha", post: "VolCon", img: `/img/team/2026/Aditya_Jha.jpg`},
+    {name: "Anisha Dash", post: "VolCon", img: `/img/team/2026/Anisha_Dash.jpg`},
+    {name: "Arham Nimani", post: "VolCon", img: `/img/team/2026/Arham_Nimani.jpg`},
+    {name: "Ayushi Tiwari", post: "VolCon", img: `/img/team/2026/Ayushi_Tiwari.jpg`},
+    {name: "Ishaan Varma", post: "VolCon", img: `/img/team/2026/Ishaan_Varma.jpg`},
+    {name: "Jatin Dhandhaniya", post: "VolCon", img: `/img/team/2026/Jatin_Dhandhaniya.jpg`},
+    {name: "Mihika Maheshwari", post: "VolCon", img: `/img/team/2026/Mihika_Maheshwari.jpg`},
+    {name: "Paras Gore", post: "VolCon", img: `/img/team/2026/Paras_Gore.jpg`},
+    {name: "Rishabh Jain", post: "VolCon", img: `/img/team/2026/Rishabh_Jain.jpg`},
+    {name: "Ritvik Nainawatee", post: "VolCon", img: `/img/team/2026/Ritvik_Nainawatee.jpg`},
+    {name: "Shriyans Akshit", post: "Volcon", img: `/img/team/2026/Shriyans_Akshit.jpg`},
+    {name: "Siddhi Mehta", post: "VolCon", img: `/img/team/2026/Siddhi_Mehta.jpg`},
+    {name: "Srushti Jadhav", post: "VolCon", img: `/img/team/2026/Srushti_Jadhav.jpg`},
+    {name: "Uddipta Talukdar", post: "VolCon", img: `/img/team/2026/Uddipta_Talukdar.jpg`}
+]
+
 export default function Team(){
     return(<div className="mt-4">
 
         <Tab.Container
-            defaultActiveKey="2025"
+            defaultActiveKey="2026"
             id="myTab"
         >
             <Nav variant="pills" className="justify-content-center pillsColor">
@@ -184,9 +221,13 @@ export default function Team(){
                 <TeamYearLabel year="2023"></TeamYearLabel>
                 <TeamYearLabel year="2024"></TeamYearLabel>
                 <TeamYearLabel year="2025"></TeamYearLabel>
+                <TeamYearLabel year="2026"></TeamYearLabel>
             </Nav>
             <Tab.Content>
-                <Tab.Pane eventKey="2025" title="2025 (Present)" className="abc">
+                <Tab.Pane eventKey="2026" title="2026 (Present)" className="abc">
+                    <TeamContent_2026 year="2026" mans={mans2026} convs={convs2026}></TeamContent_2026>
+                </Tab.Pane>
+                <Tab.Pane eventKey="2025" title="2025" className="abc">
                     <TeamContent year="2025" mans={mans2025} convs={convs2025}></TeamContent>
                 </Tab.Pane>
                 <Tab.Pane eventKey="2024" title="2024" className="abc">
