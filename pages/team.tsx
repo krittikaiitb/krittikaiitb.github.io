@@ -70,7 +70,7 @@ var mans2025:PersonProps[] = [
 ]
 
 var mans2026:PersonProps[] = [
-    {name: "Guru Jahnavi Madana", post: "Manager", img: `/img/team/2025/Guru_Jahnavi_Madana.jpg`},
+    {name: "Guru Jahnavi Madana", post: "Manager", img: `/img/team/2026/Guru_Jahnavi_Madana.jpg`},
     {name: "Vihang Vidwans", post: "Manager", img: `/img/team/2026/Vihang_Vidwans.jpg`}
 ]
 
