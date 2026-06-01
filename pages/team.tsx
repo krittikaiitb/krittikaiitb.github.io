@@ -199,7 +199,7 @@ var convs2026:PersonProps[] = [
     {name: "Mihika Maheshwari", post: "VolCon", img: `/img/team/2026/Mihika_Maheshwari.jpg`},
     {name: "Paras Gore", post: "VolCon", img: `/img/team/2026/Paras_Gore.jpg`},
     {name: "Rishabh Jain", post: "VolCon", img: `/img/team/2026/Rishabh_Jain.jpg`},
-    {name: "Ritvik Nainawatee", post: "VolCon", img: `/img/team/2026/Ritvik_Nainawatee.jpg`},
+    {name: "Ritvik Nainawatee", post: "VolCon", img: `/img/team/2026/Ritvik_Nainawatee.png`},
     {name: "Shriyans Akshit", post: "Volcon", img: `/img/team/2026/Shriyans_Akshit.jpg`},
     {name: "Siddhi Mehta", post: "VolCon", img: `/img/team/2026/Siddhi_Mehta.jpg`},
     {name: "Srushti Jadhav", post: "VolCon", img: `/img/team/2026/Srushti_Jadhav.jpg`},
