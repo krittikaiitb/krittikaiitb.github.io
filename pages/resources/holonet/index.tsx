@@ -9,7 +9,7 @@ interface ImageProps{
 }
 
 var images:ImageProps[] = [
-    {name: "Holonet Talk 01", img: `/img/Astrophotography/carina_nebula.png`, link: `/holonet_talks/Galgatic_Centre.pdf`, speaker:"The Galgatic Centre"},
+    {name: "Holonet Talk 01", img: `/img/Astrophotography/carina_nebula.png`, link: `/holonet_talks/Galactic_Centre.pdf`, speaker:"The Galactic Centre"},
     {name: "Holonet Talk 02", img: `/img/Astrophotography/leotriplet.png`, link: `/holonet_talks/Time_Domain_Astronomy.pdf`, speaker:"Introduction to Time Domain Astronomy"}
 ]
 
