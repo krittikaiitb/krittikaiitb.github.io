@@ -9,14 +9,14 @@ interface ImageProps{
 }
 
 var images:ImageProps[] = [
-    {name: "Holonet Talk 01", img: `/img/Astrophotography/carina_nebula.png`, link: `/holonet_talks/Galactic_Centre.pdf`, speaker:"The Galactic Centre"},
-    {name: "Holonet Talk 02", img: `/img/Astrophotography/leotriplet.png`, link: `/holonet_talks/Time_Domain_Astronomy.pdf`, speaker:"Introduction to Time Domain Astronomy"}
+    {name: "HoloNet Talk 01", img: `/img/Astrophotography/leotriplet.png`, link: `/holonet_talks/Time_Domain_Astronomy.pdf`, speaker:"Introduction to Time Domain Astronomy"},
+    {name: "HoloNet Talk 02", img: `/img/Astrophotography/carina_nebula.png`, link: `/holonet_talks/Galactic_Centre.pdf`, speaker:"The Galactic Centre"}
 ]
 
 function ImageCard({name, link, speaker, img="/img/team/default_profile.png"}: ImageProps){
     return(
       <div className="col-md-4 mb-4">
-        <Link href={link} className="text-decoration-none">
+        <Link href={link} className="text-decoration-none text-reset">
             <div className="card border-0 shadow bg-light">
                 <img src={img} className="card-img-top" alt="..."/>
                 <div className="card-body text-center">
@@ -33,7 +33,7 @@ export default function astroph() {
     return(
         <div>
             <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px",paddingRight:"20px"}}>
-                <h1><b>Holonet Talk Series</b></h1>
+                <h1 style="text-align:center;"><b>HoloNet Talk Series</b></h1>
             </div>
 
             <div className="mt-4">
