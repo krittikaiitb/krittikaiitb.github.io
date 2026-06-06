@@ -11,12 +11,18 @@ date: string;
 img?: string;
 }
 
+interface ResourceCardProps{
+    name: string;
+    link: string;
+    img?: string;
+}
+
 interface ModalProps {
 talk: TalkProps;
 onClose: () => void;
 }
 
-function ResourceCard({name, link, img="/img/team/default_profile.png"}: TalkProps){
+function ResourceCard({name, link, img="/img/team/default_profile.png"}: ResourceCardProps){
     return(
       <div className="col-md-4 mb-4">
         <Link href={link} target="_blank" className="text-decoration-none text-reset">
