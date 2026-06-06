@@ -1,19 +1,19 @@
 import Link from 'next/link';
 import PhotoAlbum from "react-photo-album";
 
-interface ImageProps{
+interface ResourceProps{
     name: string,
     link: string,
     img?: string,
 }
 
-var images:ImageProps[] = [
-    {name: "HoloNet Talk Series", img: `/img/Astrophotography/carina_nebula.png`, link: `/resources/holonet`},
-    {name: "Astro101 Series", img: `/img/Astrophotography/leotriplet.png`, link: `/resources/holonet`},
-    {name: "AP Series", img: `/img/Astrophotography/omega_centauri.png`, link: `/resources/holonet`}
+var resources:ResourceProps[] = [
+    {name: "HoloNet Talk Series", img: `/holonet_talks/holonet.png`, link: `/resources/holonet`},
+    {name: "Astro101 Series", img: `/img/Astrophotography/leotriplet.png`, link: `/resources`},
+    {name: "AP Series", img: `/img/Astrophotography/omega_centauri.png`, link: `/resources`}
 ]
 
-function ImageCard({name, link, img="/img/team/default_profile.png"}: ImageProps){
+function ResourceCard({name, link, img="/img/team/default_profile.png"}: ResourceProps){
     return(
       <div className="col-md-4 mb-4">
         <Link href={link} className="text-decoration-none text-reset">
@@ -28,11 +28,11 @@ function ImageCard({name, link, img="/img/team/default_profile.png"}: ImageProps
     )
 }
 
-export default function astroph() {
+export default function Resources() {
     return(
         <div>
-            <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px",paddingRight:"20px", textAlign: "center"}}>
-                <h1><b>Resources</b></h1>
+            <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px",paddingRight:"20px"}}>
+                <h1 style={{textAlign:"center"}}><b>Resources</b></h1>
             </div>
 
             <div className="mt-4">
@@ -40,7 +40,7 @@ export default function astroph() {
                     <p className="display-4 pt-2 pb-2 text-center"></p>
                     <div className="container">
                         <div className="row row-cols-md-3 row-cols-2 justify-content-center">
-                            {images.map((image, key) => <ImageCard name={image.name} link={image.link} img={image.img} key={key}></ImageCard>)}
+                            {resources.map((resource, key) => <ResourceCard name={resource.name} link={resource.link} img={resource.img} key={key}></ResourceCard>)}
                         </div>
                     </div>
                 </div>
