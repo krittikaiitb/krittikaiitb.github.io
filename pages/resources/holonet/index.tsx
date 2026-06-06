@@ -32,8 +32,8 @@ function ImageCard({name, link, speaker, img="/img/team/default_profile.png"}: I
 export default function astroph() {
     return(
         <div>
-            <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px",paddingRight:"20px"}}>
-                <h1 style="text-align:center;"><b>HoloNet Talk Series</b></h1>
+            <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px", paddingRight:"20px", textAlign:"center"}}>
+                <h1><b>HoloNet Talk Series</b></h1>
             </div>
 
             <div className="mt-4">

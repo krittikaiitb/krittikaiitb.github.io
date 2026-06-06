@@ -31,8 +31,8 @@ function ImageCard({name, link, img="/img/team/default_profile.png"}: ImageProps
 export default function astroph() {
     return(
         <div>
-            <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px",paddingRight:"20px"}}>
-                <h1 style="text-align:center;"><b>Resources</b></h1>
+            <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px",paddingRight:"20px", textAlign: "center"}}>
+                <h1><b>Resources</b></h1>
             </div>
 
             <div className="mt-4">
