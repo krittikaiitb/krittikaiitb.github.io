@@ -25,7 +25,7 @@ function TalkCard({name, talkname, img="/img/team/default_profile.png", onClick,
     )
 }
 
-export default function holonet() {
+export default function Holonet() {
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [selectedTalk, setSelectedTalk] = useState<TalkProps | null>(null);
