@@ -55,6 +55,7 @@ const Navbar = ()=> (
   <Nav className="ml-auto">
    
       <NavLink href="/ksp">KSP</NavLink>
+      <NavLink href="/resources">Resources</NavLink>
       <NavDropdown 
         title="Tutorials"
         className='lead'

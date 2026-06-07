@@ -39,15 +39,15 @@ function ResourceCard({name, link, img="/img/team/default_profile.png"}: Resourc
 
 export default function ModalBox({ talk, onClose }: ModalProps) {
 return (
-    <div className="modal-overlay" onClick={onClose} style={{position: "fixed",inset: 0, zIndex: 1000,}}>
+    <div className="modal-overlay" onClick={onClose} style={{position: "fixed",inset: 0, zIndex: 9999}}>
         <div className="modal-content" onClick={(e)=>e.stopPropagation()}>
-            <div className="flex" style={{position:"fixed", top:"50%", left:"50%", transform:"translate(-50%,-50%)",width:"90vw",maxWidth:"800px", maxHeight:"85vh", zIndex:1, overflow: "auto", backgroundColor:"#222"}}>
+            <div className="flex bg-white shadow bg-light" style={{zIndex:1, position:"fixed", top:"50%", left:"50%", transform:"translate(-50%,-50%)",width:"90vw",maxWidth:"800px", maxHeight:"85vh", overflow: "auto"}}>
                 <div className="overflow-hidden" style={{ padding:"2px 16px"}}>
                     <nav className="px-1 py-3">
                         <button onClick={onClose} className="px-3 py-1 rounded" style={{float:"right"}}>✕</button>
                     </nav>
 
-                    <div className="" style={{color:"white", font:""}}>
+                    <div>
                         <br></br>
                             <h2 className="font-semibold" style={{textAlign:"center"}}>{talk.name}</h2>
                             <h4 className="font-semibold" style={{textAlign:"center"}}>{talk.talkname}</h4>

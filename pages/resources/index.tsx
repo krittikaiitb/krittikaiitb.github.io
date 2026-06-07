@@ -8,9 +8,9 @@ interface ResourceProps{
 }
 
 var resources:ResourceProps[] = [
-    {name: "HoloNet Talk Series", img: `/holonet_talks/holonet.png`, link: `/resources/holonet`},
-    {name: "Astro101 Series", img: `/img/Astrophotography/leotriplet.png`, link: `/resources`},
-    {name: "AP Series", img: `/img/Astrophotography/omega_centauri.png`, link: `/resources`}
+    {name: "HoloNet Talk Series", img: `/img/resources/holonet/holonet.png`, link: `/resources/holonet`},
+    {name: "Astro101 Series", img: `/img/resources/astro101.png`, link: `/resources`},
+    {name: "AP Series", img: `/img/Astrophotography/orion_nebula.jpg`, link: `/resources`}
 ]
 
 function ResourceCard({name, link, img="/img/team/default_profile.png"}: ResourceProps){
