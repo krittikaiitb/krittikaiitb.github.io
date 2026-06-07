@@ -41,7 +41,7 @@ export default function ModalBox({ talk, onClose }: ModalProps) {
 return (
     <div className="modal-overlay" onClick={onClose} style={{position: "fixed",inset: 0, zIndex: 1000,}}>
         <div className="modal-content" onClick={(e)=>e.stopPropagation()}>
-            <div className="flex" style={{position:"fixed", top:"15vh", width:"50vw", zIndex:1, left:"25vw", overflow: "auto", backgroundColor:"#222"}}>
+            <div className="flex" style={{position:"fixed", top:"50%", left:"50%", transform:"translate(-50%,-50%)",width:"90vw",maxWidth:"800px", maxHeight:"85vh", zIndex:1, overflow: "auto", backgroundColor:"#222"}}>
                 <div className="overflow-hidden" style={{ padding:"2px 16px"}}>
                     <nav className="px-1 py-3">
                         <button onClick={onClose} className="px-3 py-1 rounded" style={{float:"right"}}>✕</button>
