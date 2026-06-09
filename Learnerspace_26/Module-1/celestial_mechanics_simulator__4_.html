@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celestial Mechanics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Outfit',sans-serif}
+canvas#cosmos{position:fixed;inset:0;z-index:0}
+#deck{position:fixed;inset:0;z-index:10;pointer-events:none}
+
+/* ── SLIDE BASE ── */
+.slide{position:absolute;inset:0;display:grid;opacity:0;pointer-events:none;will-change:opacity,transform}
+.slide.is-active{opacity:1;pointer-events:all;z-index:2}
+
+/* ── THEMES ── */
+.dark{background:transparent;color:#f0eadc}
+.blue{background:#1a3cc8;color:#fff}
+.navy{background:#0a1e6e;color:#fff}
+.teal{background:#0a5e5e;color:#fff}
+.purple{background:#2a0a5e;color:#fff}
+.graphite{background:#0e1219;color:#f0eadc}
+.amber{background:#5e2a00;color:#fff}
+.slate{background:#111825;color:#f0eadc}
+
+/* ── LAYOUTS ── */
+.lc{justify-items:center;align-items:center;text-align:center;padding:5vh 8vw}
+.ll{align-items:center;padding:6vh 8vw}
+.lt{align-items:start;padding:6vh 8vw;grid-template-rows:auto 1fr}
+.l2{grid-template-columns:1fr 1fr;align-items:center;padding:6vh 7vw;gap:4vw}
+.l2t{grid-template-columns:1.1fr .9fr;align-items:start;padding:6vh 7vw;gap:4vw}
+
+/* ── TYPE ── */
+.tag{font-family:'DM Mono',monospace;font-size:clamp(11px,.9vw,14px);
+  letter-spacing:.4em;text-transform:uppercase;opacity:.5;margin-bottom:.7rem;display:block}
+.tag.g{color:#e8c882;opacity:1}.tag.w{opacity:.55}
+.tag.sec{font-size:clamp(9px,.75vw,11px);letter-spacing:.5em;
+  background:rgba(255,255,255,.08);padding:.3em 1em;border-radius:999px;
+  display:inline-block;margin-bottom:1rem}
+
+h1{font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(3.5rem,8.5vw,9rem);line-height:.96;letter-spacing:-.02em}
+h1 em,.dark h1 em,.graphite h1 em,.slate h1 em{font-style:italic;color:#e8c882}
+.blue h1 em,.navy h1 em,.teal h1 em,.purple h1 em,.amber h1 em{font-style:italic;color:#ffd97a}
+
+h2{font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.2rem,4.8vw,5.2rem);line-height:1.04}
+h2 em{font-style:italic}
+.dark h2 em,.graphite h2 em,.slate h2 em{color:#e8c882}
+.blue h2 em,.navy h2 em,.teal h2 em,.purple h2 em,.amber h2 em{color:#ffd97a}
+
+h3{font-family:'Cormorant Garamond',serif;font-weight:400;
+  font-size:clamp(1.5rem,2.8vw,3rem);line-height:1.2}
+
+.huge{font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(3rem,7vw,8rem);line-height:1;font-style:italic;color:#ffd97a}
+
+/* math */
+.math{font-family:'DM Mono',monospace;
+  font-size:clamp(1.2rem,2.5vw,2.8rem);line-height:1.65;display:block}
+.math.lg{font-size:clamp(1.8rem,3.5vw,4rem)}
+.math.sm{font-size:clamp(.9rem,1.6vw,1.8rem)}
+.math.xs{font-size:clamp(.8rem,1.2vw,1.3rem)}
+
+.fr{display:inline-flex;flex-direction:column;align-items:center;
+  vertical-align:middle;font-family:'DM Mono',monospace;line-height:1.1}
+.fr .n{border-bottom:2.5px solid currentColor;padding:0 .18em .1em}
+.fr .d{padding:.1em .18em 0}
+
+/* body */
+.body{font-size:clamp(1rem,1.5vw,1.45rem);line-height:1.72;font-weight:300;max-width:620px}
+.body strong{font-weight:600}.body em{font-style:italic}
+
+/* rule */
+.rule{width:44px;height:2px;background:currentColor;opacity:.2;margin:.7rem 0}
+.rule.c{margin:.7rem auto}
+
+/* list */
+.bl{list-style:none;counter-reset:bl}
+.bl li{counter-increment:bl;padding:.55rem 0 .55rem 2.6rem;
+  position:relative;font-size:clamp(1rem,1.6vw,1.5rem);
+  font-weight:300;line-height:1.45;
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.bl li:last-child{border:none}
+.bl li::before{content:counter(bl,decimal-leading-zero);
+  position:absolute;left:0;top:.58rem;
+  font-family:'DM Mono',monospace;font-size:.68em;opacity:.4}
+.bl li strong{font-weight:600}
+
+.bl.arrow li::before{content:'→';font-family:'Outfit',sans-serif;font-size:.9em;opacity:.45}
+
+/* eq steps */
+.eqstep{display:block;font-family:'DM Mono',monospace;
+  font-size:clamp(1.3rem,2.6vw,3rem);line-height:1.55;
+  opacity:0;transition:opacity .45s ease,transform .45s ease;transform:translateX(-18px)}
+.eqstep.show{opacity:1;transform:none}
+.eqstep .c{font-size:.38em;opacity:.45;font-family:'Outfit',sans-serif;
+  font-weight:300;display:inline-block;margin-left:1.5rem;vertical-align:middle}
+
+/* compare boxes */
+.cbox{padding:2.2vh 2vw;border-radius:10px;border:1px solid rgba(255,255,255,.13)}
+.cbox .ct{font-family:'DM Mono',monospace;font-size:clamp(9px,.75vw,11px);
+  letter-spacing:.3em;text-transform:uppercase;opacity:.45;margin-bottom:.6rem}
+.cbox .ce{font-family:'DM Mono',monospace;font-size:clamp(1rem,1.8vw,2rem);
+  line-height:1.5;margin-bottom:.6rem}
+.cbox .cb{font-size:clamp(.82rem,1.2vw,1.15rem);opacity:.7;line-height:1.6;font-weight:300}
+.ok{background:rgba(40,190,100,.09);border-color:rgba(40,190,100,.28)}
+.bad{background:rgba(220,70,70,.09);border-color:rgba(220,70,70,.28)}
+.neu{background:rgba(180,160,100,.09);border-color:rgba(180,160,100,.28)}
+
+/* code block */
+.code{font-family:'DM Mono',monospace;font-size:clamp(.85rem,1.4vw,1.5rem);
+  line-height:1.9;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;padding:1.4rem 2rem;display:inline-block}
+.kw{color:#ffd97a}.fn{color:#a8d4f0}.cm{opacity:.38;font-family:'Outfit',sans-serif;font-size:.65em}
+
+/* ── NAV ── */
+#progress{position:fixed;top:0;left:0;height:3px;
+  background:linear-gradient(90deg,#c8a96e,#7ea8c4);
+  z-index:300;transition:width .4s ease;width:0%;pointer-events:none}
+#ctr{position:fixed;top:1.3rem;right:2rem;z-index:200;
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:rgba(255,255,255,.3);letter-spacing:.2em}
+#section-label{position:fixed;top:1.3rem;left:2rem;z-index:200;
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:rgba(255,255,255,.25);letter-spacing:.25em;text-transform:uppercase}
+#nav{position:fixed;bottom:1.4rem;left:1.8rem;
+  transform:none;z-index:200;
+  display:flex;align-items:center;gap:.6rem}
+.dot{width:4px;height:4px;border-radius:50%;
+  background:rgba(255,255,255,.22);transition:all .3s;cursor:pointer}
+.dot.on{background:rgba(255,255,255,.75);width:12px;border-radius:2px}
+.dot.sec-start{background:rgba(232,200,130,.45)}
+.dot.sec-start.on{background:#e8c882}
+#nav button{background:none;border:1px solid rgba(255,255,255,.15);
+  border-radius:50%;width:22px;height:22px;color:rgba(255,255,255,.4);
+  font-size:.65rem;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;transition:.2s}
+#nav button:hover{border-color:rgba(255,255,255,.6);color:#fff}
+#hint{position:fixed;bottom:1.4rem;left:50%;transform:translateX(-50%);
+  z-index:200;font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.3em;color:rgba(255,255,255,.18);text-transform:uppercase;
+  animation:hf 2.5s ease-in-out infinite alternate;white-space:nowrap}
+@keyframes hf{from{opacity:.08}to{opacity:.32}}
+</style>
+</head>
+<body>
+<canvas id="cosmos"></canvas>
+<div id="progress"></div>
+<div id="ctr">01 / 25</div>
+<div id="section-label">Intro</div>
+<div id="hint">scroll · arrows · swipe</div>
+
+<div id="deck">
+
+<!-- ══ 0 · TITLE ══════════════════════════════════════════ -->
+<div class="slide dark lc is-active" data-i="0" data-sec="Intro">
+  <div>
+    <span class="tag g" style="letter-spacing:.55em;font-size:clamp(9px,.75vw,12px)">Krittika presents</span>
+    <h1>Celestial Mechanics<br>&amp; <em>Gravity</em></h1>
+    <div class="rule c" style="margin-top:1.1rem"></div>
+    <p class="body" style="text-align:center;margin:.5rem auto 0;color:#b8a98a">
+      From Newton's pen to a spacecraft threading between moons
+    </p>
+    <p style="margin-top:1.8rem;font-family:'DM Mono',monospace;font-size:clamp(10px,.85vw,13px);
+      letter-spacing:.35em;color:rgba(232,200,130,.45);text-transform:uppercase">
+      Ishaan &nbsp;·&nbsp; Arham
+    </p>
+  </div>
+</div>
+
+<!-- ══ 1 · ROADMAP ════════════════════════════════════════ -->
+<div class="slide slate ll" data-i="1" data-sec="Intro">
+  <div style="max-width:800px">
+    <span class="tag g">What we'll cover today</span>
+    <h2>Five <em>Acts</em></h2>
+    <div class="rule"></div>
+    <ul class="bl">
+      <li><strong>The Math Foundation</strong> | Analytical vs Numerical methods</li>
+      <li><strong>The Two-Body Problem</strong> | Kepler, ellipses, barycenters</li>
+      <li><strong>Chaos</strong> | The Three-Body Problem &amp; N-body systems</li>
+      <li><strong>Spaceflight</strong> | Hohmann transfers &amp; gravity slingshots</li>
+      <li><strong>Extremes</strong> | Tides, Roche limit, black holes</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 1A · RESOURCES -->
+<div class="slide slate ll" data-sec="Intro">
+  <div style="max-width:800px">
+    <span class="tag g">Resources</span>
+    <h2>Further <em>Reading</em></h2>
+    <div class="rule"></div>
+    This page has some links to resources for topics that are taught in this presentation
+
+    <ul style="margin-left:2rem;font-size:clamp(1rem,1.5vw,1.4rem);line-height:1.8">
+      <li><a href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods" target="_blank" style="color:inherit">Runge-Kutta-4(RK4)</a></li>
+      <li><a href="./Derivations/Hohmann_Transfer_Derivation-1.pdf" target="_blank" style="color:inherit">Hohmann Transfer Derivation</a></li> 
+      <li><a href="./Derivations/Gravitational_Slingshot_derivation-1.pdf" target="_blank" style="color:inherit">Gravitational Slingshot Derivation</a></li> 
+      <li><a href="https://en.wikipedia.org/wiki/Tidal_force" target="_blank" style="color:inherit">Tidal Forces</a></li> 
+      <li><a href="https://en.wikipedia.org/wiki/Roche_limit" target="_blank" style="color:inherit">Roche Limit</a></li> 
+      <li><a href="https://en.wikipedia.org/wiki/Tests_of_general_relativity" target="_blank" style="color:inherit">Tests of General Relativity</a></li> 
+      <li><a href="https://en.wikipedia.org/wiki/Gravitational_lens" target="_blank" style="color:inherit">Gravitational Lensing</a></li> 
+      <li><a href="https://github.com/Sam-MARTis/Black-Hole" target="_blank" style="color:inherit">Black Hole Simulator</a></li> 
+
+    </ul>
+  </div>
+</div>
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SECTION 1: MATH FOUNDATION                           -->
+<!-- ══════════════════════════════════════════════════════ -->
+
+<!-- 2 · SECTION CARD -->
+<div class="slide dark lc" data-i="2" data-sec="§1 Math Foundation">
+  <div>
+    <span class="tag g" style="letter-spacing:.6em">Section 01</span>
+    <h1 style="font-size:clamp(2.8rem,7vw,8rem)">The<br><em>Mathematical</em><br>Foundation</h1>
+  </div>
+</div>
+
+<!-- 3 · THE CORE EQUATION -->
+<div class="slide blue lt" data-i="3" data-sec="§1 Math Foundation">
+  <div>
+    <span class="tag w">The equation of motion</span>
+    <h2>Everything starts with <em>F = ma</em><br><br></h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:1.5vh;justify-content:center">
+    <div style="display:flex;align-items:center;gap:2.5vw;flex-wrap:wrap">
+      <span class="math lg">a &nbsp;=&nbsp;</span>
+      <span class="math lg"><span class="fr" style="font-size:1em"><span class="n">GM</span><span class="d">r²</span></span></span>
+    </div>
+    <div style="height:2px;background:rgba(255,255,255,.18);max-width:580px;margin:.8vh 0"></div>
+    <span class="math" style="color:#ffd97a"><span class="fr" style="font-size:1em"><span class="n">dv</span><span class="d">dt</span></span> &nbsp;=&nbsp; <span class="fr" style="font-size:1em"><span class="n">d²x</span><span class="d">dt²</span></span> &nbsp;=&nbsp; <span class="fr" style="font-size:1em"><span class="n">GM₁M₂</span><span class="d">x²</span></span></span>
+    <p class="body sm" style="margin-top:.5rem;opacity:.6;font-size:clamp(.9rem,1.3vw,1.25rem)">
+      If you can solve this differential then you can predict the position at every future moment. <br>
+      It may look simple but it is deceptively difficult.
+    </p>
+  </div>
+</div>
+
+<!-- 4 · ANALYTICAL vs NUMERICAL -->
+<div class="slide dark l2" data-i="4" data-sec="§1 Math Foundation">
+  <div>
+    <span class="tag g">Two approaches</span>
+    <h2>Solve it <em>exactly</em><br> or <em>approximate</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="color:#b8a98a">
+      Some systems have a clean, closed-form answer.<br>
+      Most don't. So we approximate and iterate.
+    </p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:1.5vh">
+    <div class="cbox ok">
+      <div class="ct">Analytical Solution</div>
+      <div class="ce">r(θ) = a(1−e²)/(1+e cosθ)</div>
+      <div class="cb">Will give you the exact solution <br><strong>However, it's practical only for 2-body systems.</strong></div>
+    </div>
+    <div class="cbox neu">
+      <div class="ct">Numerical Solution</div>
+      <div class="ce">xₙ₊₁ = xₙ + vₙ·Δt</div>
+      <div class="cb">Approximate and iterative but it works for <strong>any</strong> system complexity.</div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SECTION 2: TWO-BODY                                  -->
+<!-- ══════════════════════════════════════════════════════ -->
+
+<!-- 8 · SECTION CARD -->
+<div class="slide dark lc" data-i="8" data-sec="§2 Two-Body Problem">
+  <div>
+    <span class="tag g" style="letter-spacing:.6em">Section 02</span>
+    <h1 style="font-size:clamp(2.8rem,7vw,8rem)">The<br><em>Two-Body</em><br>Problem</h1>
+  </div>
+</div>
+
+<!-- 9 · BARYCENTER -->
+<div class="slide navy l2" data-i="9" data-sec="§2 Two-Body Problem">
+  <div>
+    <span class="tag w">Two-body dynamics</span>
+    <h2>They orbit each<br>other's <em>barycenter</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="opacity:.75">
+      Two masses don't orbit <em>each other</em>, instead they both orbit their shared <strong>centre of mass</strong>. The heavier body barely wobbles while the lighter body swings wide.
+    </p>
+    <p class="body" style="margin-top:.8vh;opacity:.5;font-size:clamp(.88rem,1.3vw,1.2rem)">
+      Earth–Moon barycenter: 4,700 km from Earth's centre.<strong> (inside the Earth)</strong><br>
+      Sun–Jupiter barycenter: just <strong>above the Sun's surface.</strong>
+    </p>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 320 220" width="100%" style="max-width:380px">
+      <defs>
+        <radialGradient id="s1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffd97a"/><stop offset="100%" stop-color="#c8a030" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="p1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#a8d4f0"/><stop offset="100%" stop-color="#3060a0" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- barycenter -->
+      <circle cx="140" cy="110" r="3" fill="rgba(255,255,255,.5)"/>
+      <line x1="140" y1="110" x2="140" y2="90" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="145" y="88" fill="rgba(255,255,255,.4)" font-size="9" font-family="DM Mono,monospace">barycenter</text>
+      <!-- star small orbit -->
+      <circle cx="140" cy="110" r="20" fill="none" stroke="rgba(255,217,122,.15)" stroke-width=".8" stroke-dasharray="3 3"/>
+      <!-- planet large orbit -->
+      <circle cx="140" cy="110" r="100" fill="none" stroke="rgba(168,212,240,.15)" stroke-width=".8" stroke-dasharray="3 3"/>
+      <!-- animate star -->
+      <circle r="16" fill="url(#s1)">
+        <animateMotion dur="6s" repeatCount="indefinite">
+          <mpath href="#so"/>
+        </animateMotion>
+      </circle>
+      <path id="so" d="M160,110 A20,20 0 1,1 159.9,108" fill="none"/>
+      <!-- animate planet -->
+      <circle r="8" fill="url(#p1)">
+        <animateMotion dur="6s" begin = 3s repeatCount="indefinite" keyTimes="0;1" calcMode="linear">
+          <mpath href="#po"/>
+        </animateMotion>
+      </circle>
+      <path id="po" d="M240,110 A100,100 0 1,1 240.1,108" fill="none"/>
+    </svg>
+  </div>
+</div>
+
+<!-- 10 · KEPLER'S LAWS -->
+<div class="slide dark ll" data-i="10" data-sec="§2 Two-Body Problem">
+  <div style="max-width:820px">
+    <span class="tag g">What the analytical solution tells us</span>
+    <h2>Kepler's Three <em>Laws</em></h2>
+    <div class="rule"></div>
+    <ul class="bl">
+      <li><strong>Orbits are ellipses </strong> |    the star sits at one focus, not the centre.</li>
+      <li><strong>Equal areas, equal times </strong> |    closer to the star = faster. Far away = slower.</li>
+      <li><strong>T² ∝ a³ </strong> |    period squared is proportional to orbit size cubed.</li>
+    </ul>
+    <p class="body" style="margin-top:1.5vh;color:#b8a98a;font-size:clamp(.9rem,1.3vw,1.25rem)">
+      All three follow <em>automatically</em> from solving the equation of motion analytically.<br>
+      Kepler found them empirically. Newton then<strong>proved them</strong> from first principles.
+    </p>
+  </div>
+</div>
+
+
+<!-- 10A · DERIVING THE ORBIT EQUATION — SETUP -->
+<div class="slide navy ll" data-sec="§2 Two-Body Problem">
+  <div style="max-width:900px;width:100%">
+    <span class="tag w">Deriving the orbit equation — step 1</span>
+    <h2>From force to <em>geometry</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="opacity:.8;margin-bottom:2vh">
+      We have the equation of motion. Now we want the <strong>shape</strong> of the orbit> The distance 'r' as a function of angle θ. The conservation of these two quantities makes this possible:
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2vw">
+      <div class="cbox neu" style="border-color:rgba(168,212,240,.3);background:rgba(168,212,240,.06)">
+        <div class="ct">Conservation of Energy</div>
+        <div class="ce" style="font-family:'DM Mono',monospace;font-size:clamp(1rem,1.8vw,1.9rem);line-height:2;display:flex;flex-direction:column;gap:.1rem">
+          <span>E =
+            <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.1">
+              <span style="border-bottom:2px solid currentColor;padding:0 .2em .06em">1</span>
+              <span style="padding:.06em .2em 0">2</span>
+            </span>
+            mv²  −
+            <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.1">
+              <span style="border-bottom:2px solid currentColor;padding:0 .2em .06em">GMm</span>
+              <span style="padding:.06em .2em 0">r</span>
+            </span>
+          </span>
+        </div>
+        <div class="cb" style="margin-top:.5rem">Total mechanical energy stays constant throughout the orbit.</div>
+      </div>
+      <div class="cbox neu" style="border-color:rgba(100,220,150,.3);background:rgba(100,220,150,.06)">
+        <div class="ct">Conservation of Angular Momentum</div>
+        <div class="ce" style="font-family:'DM Mono',monospace;font-size:clamp(1rem,1.8vw,1.9rem);line-height:2;display:flex;flex-direction:column;gap:.1rem">
+          <span>L = mr²
+            <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.1">
+              <span style="border-bottom:2px solid currentColor;padding:0 .2em .06em">dθ</span>
+              <span style="padding:.06em .2em 0">dt</span>
+            </span>
+            = const
+          </span>
+        </div>
+        <div class="cb" style="margin-top:.5rem">The planet sweeps equal areas in equal times. <span style="color:#64dc96">← Kepler's 2nd Law, right here.</span></div>
+      </div>
+    </div>
+    <p class="body" style="margin-top:1.5vh;opacity:.5;font-size:clamp(.85rem,1.2vw,1.1rem)">
+      Because L is conserved, (dθ/dt = L/mr²) angular velocity is tied to r. This lets us change variables from time to angle.
+    </p>
+  </div>
+</div>
+
+<!-- 10B · DERIVING — BINET SUBSTITUTION -->
+<div class="slide navy ll" data-sec="§2 Two-Body Problem">
+  <div style="max-width:900px;width:100%">
+    <span class="tag w">Deriving the orbit equation — step 2</span>
+    <h2>The <em>substitution</em> that cracks it open</h2>
+    <div class="rule"></div>
+    <p class="body" style="opacity:.75;margin-bottom:2vh">
+      Let <strong>u = 1/r</strong>. Rewrite the radial equation of motion in polar coordinates using u and θ. It now becomes the equation for a harmonic oscillator with a constant term.
+    </p>
+    <div style="display:flex;flex-direction:column;gap:1.2vh">
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:1.4rem 2rem">
+        <div style="font-family:'DM Mono',monospace;font-size:clamp(.7rem,.95vw,.9rem);opacity:.4;letter-spacing:.35em;text-transform:uppercase;margin-bottom:.9rem">Binet's Equation (the key result of the substitution)</div>
+        <div style="font-family:'DM Mono',monospace;font-size:clamp(1.2rem,2.2vw,2.5rem);line-height:1.5;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+          <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.1">
+            <span style="border-bottom:2.5px solid #fff;padding:0 .25em .08em">d²u</span>
+            <span style="padding:.08em .25em 0">dθ²</span>
+          </span>
+          <span>+ u  =</span>
+          <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.1">
+            <span style="border-bottom:2.5px solid #ffd97a;padding:0 .25em .08em;color:#ffd97a">GM</span>
+            <span style="padding:.08em .25em 0;color:#ffd97a">(L/m)²</span>
+          </span>
+        </div>
+      </div>
+      <div style="background:rgba(100,220,150,.07);border:1px solid rgba(100,220,150,.25);border-radius:10px;padding:1.4rem 2rem">
+        <div style="font-family:'DM Mono',monospace;font-size:clamp(.7rem,.95vw,.9rem);opacity:.45;letter-spacing:.35em;text-transform:uppercase;margin-bottom:.9rem">General solution (this is just y″ + y = const)</div>
+        <div style="font-family:'DM Mono',monospace;font-size:clamp(1.2rem,2.2vw,2.5rem);line-height:1.5;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+          <span>u(θ)  =</span>
+          <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.1">
+            <span style="border-bottom:2.5px solid #64dc96;padding:0 .25em .08em;color:#64dc96">GM</span>
+            <span style="padding:.08em .25em 0;color:#64dc96">(L/m)²</span>
+          </span>
+          <span>+  C cosθ</span>
+        </div>
+        <p style="font-size:clamp(.8rem,1.1vw,1rem);opacity:.5;margin-top:.7rem;font-family:'Outfit',sans-serif;font-weight:300">
+          C is an integration constant set by initial conditions. Visually it represents the elongation of the orbit.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 10C · DERIVING — FINAL ORBIT EQUATION -->
+<div class="slide blue ll" data-sec="§2 Two-Body Problem">
+  <div style="max-width:920px;width:100%">
+    <span class="tag w">Deriving the orbit equation — step 3</span>
+    <h2>Substitute back: <em>r = 1/u</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="opacity:.75;margin-bottom:2vh">
+      Replace u with 1/r. Define eccentricity <strong>e = C·(L/m)²/GM</strong> and semi-latus rectum <strong>ℓ = (L/m)²/GM</strong>. Rearranging gives the orbit equation:
+    </p>
+    <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:2rem 2.8rem;margin-bottom:2vh;display:inline-block">
+      <div style="font-family:'DM Mono',monospace;font-size:clamp(.7rem,.9vw,.85rem);opacity:.4;letter-spacing:.4em;text-transform:uppercase;margin-bottom:1.2rem">The Orbit Equation</div>
+      <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap">
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(2rem,3.5vw,3.8rem);line-height:1">r  =</span>
+        <div style="display:flex;flex-direction:column;align-items:center;line-height:1.2">
+          <span style="font-family:'DM Mono',monospace;font-size:clamp(2rem,3.5vw,3.8rem);border-bottom:3px solid #ffd97a;padding:0 .3em .12em;color:#ffd97a">a(1 − e²)</span>
+          <span style="font-family:'DM Mono',monospace;font-size:clamp(2rem,3.5vw,3.8rem);padding:.12em .3em 0;color:#ffd97a">1 + e cosθ</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2vw">
+      <div class="cbox neu" style="border-color:rgba(255,217,122,.3);background:rgba(255,217,122,.06)">
+        <div class="ct">a — semi-major axis</div>
+        <div class="cb">Sets the <strong>size</strong> of the ellipse. <span style="color:#ffd97a">Kepler's 3rd: T² ∝ a³</span> falls straight out.</div>
+      </div>
+      <div class="cbox neu" style="border-color:rgba(168,212,240,.3);background:rgba(168,212,240,.06)">
+        <div class="ct">e — eccentricity</div>
+        <div class="cb">e=0 → circle &nbsp; e&lt;1 → ellipse &nbsp; e=1 → parabola &nbsp; e&gt;1 → hyperbola</div>
+      </div>
+      <div class="cbox neu" style="border-color:rgba(100,220,150,.3);background:rgba(100,220,150,.06)">
+        <div class="ct">θ — true anomaly</div>
+        <div class="cb">Angle from closest approach. At θ=0, r is minimum. <span style="color:#64dc96">Kepler's 1st: the shape is an ellipse.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 10D · KEPLER'S LAWS — ALL THREE POINTED OUT -->
+<div class="slide blue ll" data-sec="§2 Two-Body Problem">
+  <div style="max-width:940px;width:100%">
+    <span class="tag w">What the derivation gave us for free</span>
+    <h2>All three <em>Kepler's Laws</em></h2>
+    <div class="rule"></div>
+    <div style="display:flex;flex-direction:column;gap:1.3vh">
+      <div style="background:rgba(255,255,255,.06);border-left:3px solid #e8c882;border-radius:0 10px 10px 0;padding:1.2rem 1.8rem">
+        <div style="font-family:'DM Mono',monospace;font-size:clamp(.7rem,.9vw,.85rem);color:#e8c882;letter-spacing:.35em;text-transform:uppercase;margin-bottom:.45rem">1st Law — Ellipses</div>
+        <div style="font-size:clamp(.95rem,1.45vw,1.35rem);font-weight:300;line-height:1.65;opacity:.88">
+          r = a(1−e²)/(1+e cosθ) <em>is</em> the polar equation of a conic section. For 0 &lt; e &lt; 1, it is an ellipse with the Sun at one focus. <strong>Emerges directly from the inverse-square law.</strong> If you change gravity to 1/r³ you'd get spirals instead of ellipses.
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-left:3px solid #64dc96;border-radius:0 10px 10px 0;padding:1.2rem 1.8rem">
+        <div style="font-family:'DM Mono',monospace;font-size:clamp(.7rem,.9vw,.85rem);color:#64dc96;letter-spacing:.35em;text-transform:uppercase;margin-bottom:.45rem">2nd Law — Equal Areas</div>
+        <div style="font-size:clamp(.95rem,1.45vw,1.35rem);font-weight:300;line-height:1.65;opacity:.88">
+          L = mr²(dθ/dt) = const → dA/dt = L/2m = const. The rate of area swept is constant. <strong>This is just conservation of angular momentum, stated geometrically.</strong> No calculus needed to see it once you have L = const.
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-left:3px solid #a8d4f0;border-radius:0 10px 10px 0;padding:1.2rem 1.8rem">
+        <div style="font-family:'DM Mono',monospace;font-size:clamp(.7rem,.9vw,.85rem);color:#a8d4f0;letter-spacing:.35em;text-transform:uppercase;margin-bottom:.45rem">3rd Law — T² ∝ a³</div>
+        <div style="font-size:clamp(.95rem,1.45vw,1.35rem);font-weight:300;line-height:1.65;opacity:.88">
+          Integrate dA/dt over one full period T. Area of ellipse = πab. So T = 2πab/(L/m). Plug in b = a√(1−e²) and ℓ = (L/m)²/GM: <strong>T² = (4π²/GM)·a³.</strong>Thus the period depends only on size and not shape.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 10E · INTERACTIVE TWO BODY SIM -->
+<div class="slide graphite lt" data-i="12" data-sec="§2 Two-Body Problem">
+  <div>
+    <span class="tag g">Interactive Demonstration</span>
+    <h2>Two-Body <em>Gravity Simulator</em></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:320px 1fr;gap:2vw;height:100%">
+    <div class="cbox neu" style="align-self:start">
+      <div class="ct">Parameters</div>
+      <div style="display:flex;flex-direction:column;gap:.7rem;font-size:.9rem">
+        <label>Mass 1 <input id="m1" type="range" min="100" max="2000" value="1200"></label>
+        <label>Mass 2 <input id="m2" type="range" min="10" max="500" value="40"></label>
+        <label>Initial Velocity <input id="v0" type="range" min="0" max="8" step="0.1" value="3"></label>
+        
+        <button id="circularOrbitBtn" style="padding:.5rem">Circular Orbit</button>
+        <button id="escapeBtn" style="padding:.5rem">Escape Trajectory</button>
+        <button id="reset2body" style="padding:.5rem">Reset Simulation</button>
+      </div>
+      <p class="body" style="font-size:.8rem;margin-top:1rem">
+        Adjust masses and velocity, and compare circular versus escape trajectories. <br>
+        (Note that collision physics is not implemented and it will give you unexpected results if the bodies come very close to each other, You can have fun by changing the settings to get some wonky results!)
+      </p>
+    </div>
+    <canvas id="twoBodyCanvas" width="900" height="500"
+      style="width:100%;height:100%;border:1px solid rgba(255,255,255,.15);border-radius:10px"></canvas>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SECTION 3: CHAOS / THREE-BODY                        -->
+<!-- ══════════════════════════════════════════════════════ -->
+
+<!-- 11 · SECTION CARD -->
+<div class="slide dark lc" data-i="12" data-sec="§3 Chaos">
+  <div>
+    <span class="tag g" style="letter-spacing:.6em">Section 03</span>
+    <h1 style="font-size:clamp(2.8rem,7vw,8rem)">Chaos &amp;<br>The <em>Three-Body</em><br>Problem</h1>
+  </div>
+</div>
+
+<!-- 11B · MOON BRIDGE — why three bodies? -->
+<div class="slide dark ll" data-sec="§3 Chaos">
+  <div style="max-width:820px">
+    <span class="tag g">Why study three bodies?</span>
+    <h2>The Moon created a problem<br><em>Newton couldn't solve</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="color:#b8a98a;margin-bottom:1.2vh">
+      The two-body problem is beautiful because it has an exact analytical solution. But the real Solar System is never made of only two objects. Even the Earth–Moon system is constantly perturbed by the Sun.
+    </p>
+    <p class="body" style="color:#b8a98a;margin-bottom:1.2vh">
+      By the 1800s, astronomers wanted something extremely practical: <strong>predict the Moon's position with perfect accuracy.</strong> Accurate lunar predictions were essential for navigation, calendar keeping, and astronomy.
+    </p>
+    <p class="body" style="color:#b8a98a;margin-bottom:1.5vh">
+      This led mathematicians to a deeper question:
+    </p>
+    <div style="background:rgba(255,255,255,.05);border-left:3px solid #e8c882;border-radius:0 10px 10px 0;padding:1rem 1.6rem;margin-bottom:1.5vh">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,1.8vw,1.7rem);color:#e8c882;line-height:1.5;font-weight:300">
+        If we can solve two gravitating bodies exactly, can we solve three?
+      </p>
+    </div>
+    <p style="font-size:clamp(.85rem,1.25vw,1.15rem);color:rgba(232,200,130,.5);font-style:italic;font-weight:300;line-height:1.5">
+      The search for the Moon's motion would ultimately reveal the existence of chaos itself.
+    </p>
+  </div>
+</div>
+
+<!-- 12 · THE PRIZE -->
+<div class="slide purple ll" data-i="13" data-sec="§3 Chaos">
+  <div style="max-width:820px">
+    <span class="tag w">1888 — King Oscar II of Sweden</span>
+    <h2><em>"Solve"</em> the three-body problem<br>and win a prize</h2>
+    <div class="rule"></div>
+    <p class="body" style="opacity:.78;margin-bottom:1.2vh">
+      In 1888, King Oscar II of Sweden offered a prize for progress on the three-body problem. Henri Poincaré's entry transformed the field.
+    </p>
+    <p class="body" style="opacity:.75;margin-bottom:1.2vh">
+      Instead of finding a general solution, he discovered something far more important: <strong>tiny differences in initial conditions can grow dramatically over time.</strong> His work revealed that deterministic equations can still produce behaviour that is fundamentally unpredictable.
+    </p>
+    <p style="font-size:clamp(.9rem,1.4vw,1.3rem);color:rgba(232,200,130,.6);font-style:italic;font-weight:300;line-height:1.5;margin-top:1.5vh">
+      The three-body problem became the birthplace of modern chaos theory.
+    </p>
+  </div>
+</div>
+
+<!-- 13 · CHAOS / BUTTERFLY -->
+<div class="slide purple l2" data-i="14" data-sec="§3 Chaos">
+  <div>
+    <span class="tag w">Sensitive dependence on initial conditions</span>
+    <h2>Change <em>0.1%</em>.<br>Lose the planet.</h2>
+    <div class="rule"></div>
+    <p class="body" style="opacity:.75">
+      Alter the initial position of one body by just 0.1%. A fraction of a millimetre in a planetary context and the long-term trajectory becomes <strong>completely different.</strong>
+    </p>
+    <p class="body" style="margin-top:.8vh;opacity:.5;font-size:clamp(.88rem,1.3vw,1.2rem)">
+      This is the <em>butterfly effect</em>, formalized for celestial mechanics.<br>
+      This is not numerical error, the system itself is chaotic.
+    </p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:1.5vh">
+    <div class="cbox bad" style="border-color:rgba(160,100,220,.4);background:rgba(160,100,220,.08)">
+      <div class="ct">2009 Supercomputer Study</div>
+      <div class="ce">Move Mercury by 1 mm</div>
+      <div class="cb">Over 5 billion years, 1% of simulations ended with <strong>planets colliding</strong> or being ejected from the solar system.</div>
+    </div>
+    <div class="cbox neu" style="margin-top:.3rem">
+      <div class="ct">The implication</div>
+      <div class="cb">The solar system's long-term stability is <strong>probabilistic</strong>, not guaranteed.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 13B · THREE-BODY FORCE EQUATIONS + VIDEO 1 (COM animation) -->
+<div class="slide navy l2" data-sec="§3 Chaos" style="gap:3vw;padding:4vh 6vw">
+  <div style="max-width:460px;display:flex;flex-direction:column;gap:.7vh">
+    <span class="tag w">Writing down the three-body problem</span>
+    <h2 style="font-size:clamp(1.6rem,3vw,3rem);line-height:1.05">Three bodies.<br><em>Nine equations.</em></h2>
+    <div class="rule" style="margin:.4rem 0"></div>
+    <!-- Equation for m1 — highlighted -->
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:.8rem 1.2rem">
+      <div style="font-family:'DM Mono',monospace;font-size:clamp(.6rem,.75vw,.75rem);opacity:.38;letter-spacing:.3em;text-transform:uppercase;margin-bottom:.5rem">Body 1</div>
+      <div style="font-family:'DM Mono',monospace;font-size:clamp(.85rem,1.35vw,1.3rem);display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;line-height:1">
+        <span>m₁ r̈₁ =</span>
+        <div style="display:inline-flex;flex-direction:column;align-items:center">
+          <span style="border-bottom:2px solid #a8d4f0;padding:0 .15em .05em;color:#a8d4f0;font-size:.95em">Gm₁m₂(r₂−r₁)</span>
+          <span style="padding:.05em .15em 0;color:#a8d4f0;font-size:.95em">|r₂−r₁|³</span>
+        </div>
+        <span>+</span>
+        <div style="display:inline-flex;flex-direction:column;align-items:center">
+          <span style="border-bottom:2px solid #e8c882;padding:0 .15em .05em;color:#e8c882;font-size:.95em">Gm₁m₃(r₃−r₁)</span>
+          <span style="padding:.05em .15em 0;color:#e8c882;font-size:.95em">|r₃−r₁|³</span>
+        </div>
+      </div>
+    </div>
+    <!-- m2 and m3 compact -->
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:.8rem 1.2rem">
+      <div style="font-family:'DM Mono',monospace;font-size:clamp(.6rem,.75vw,.75rem);opacity:.35;letter-spacing:.3em;text-transform:uppercase;margin-bottom:.5rem">Bodies 2 &amp; 3</div>
+      <div style="font-family:'DM Mono',monospace;font-size:clamp(.75rem,1.15vw,1.1rem);display:flex;flex-direction:column;gap:.55rem;line-height:1">
+        <div style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap">
+          <span>m₂ r̈₂ = G</span>
+          <div style="display:inline-flex;flex-direction:column;align-items:center">
+            <span style="border-bottom:1.5px solid #a8d4f0;padding:0 .12em .04em;color:#a8d4f0">m₂m₁(r₁−r₂)</span>
+            <span style="padding:.04em .12em 0;color:#a8d4f0">|r₁−r₂|³</span>
+          </div>
+          <span>+ G</span>
+          <div style="display:inline-flex;flex-direction:column;align-items:center">
+            <span style="border-bottom:1.5px solid #e8c882;padding:0 .12em .04em;color:#e8c882">m₂m₃(r₃−r₂)</span>
+            <span style="padding:.04em .12em 0;color:#e8c882">|r₃−r₂|³</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap">
+          <span>m₃ r̈₃ = G</span>
+          <div style="display:inline-flex;flex-direction:column;align-items:center">
+            <span style="border-bottom:1.5px solid #a8d4f0;padding:0 .12em .04em;color:#a8d4f0">m₃m₁(r₁−r₃)</span>
+            <span style="padding:.04em .12em 0;color:#a8d4f0">|r₁−r₃|³</span>
+          </div>
+          <span>+ G</span>
+          <div style="display:inline-flex;flex-direction:column;align-items:center">
+            <span style="border-bottom:1.5px solid #64dc96;padding:0 .12em .04em;color:#64dc96">m₃m₂(r₂−r₃)</span>
+            <span style="padding:.04em .12em 0;color:#64dc96">|r₂−r₃|³</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:clamp(.72rem,.95vw,.88rem);opacity:.38;font-family:'DM Mono',monospace;line-height:1.5">
+      9 coupled nonlinear ODEs. No closed-form solution exists.
+    </p>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;height:100%">
+    <video autoplay loop muted playsinline
+      style="width:100%;max-height:80vh;border-radius:10px;object-fit:contain;border:1px solid rgba(255,255,255,.1)">
+      <source src="./media/threebody_com.mp4" type="video/mp4">
+    </video>
+    <p style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;opacity:.3;text-transform:uppercase">Centre of mass — three-body</p>
+  </div>
+</div>
+
+<!-- 13C · TWENTY ISLANDS OF ORDER — periodic solutions video -->
+<div class="slide dark l2" data-sec="§3 Chaos" style="gap:3vw;padding:4vh 6vw">
+  <div style="max-width:440px;display:flex;flex-direction:column;gap:1vh">
+    <span class="tag g">Known Periodic Solutions</span>
+    <h2 style="font-size:clamp(1.6rem,3vw,3.2rem);line-height:1.08">Twenty <em>islands of order</em><br>inside a chaotic ocean</h2>
+    <div class="rule" style="margin:.4rem 0"></div>
+    <p class="body" style="opacity:.8;font-size:clamp(.82rem,1.2vw,1.1rem);line-height:1.6;margin-bottom:.4vh">
+      For over 300 years, the three-body problem seemed completely hopeless. Then, beginning with the figure-eight solution discovered in 1993, mathematicians found a small collection of special trajectories where three bodies <strong>repeat their motion forever</strong>. Today, only about <strong>20 families</strong> of stable periodic solutions are known.
+    </p>
+    <div style="display:flex;flex-direction:column;gap:.7vh">
+      <div class="cbox ok" style="border-color:rgba(100,220,150,.3);background:rgba(100,220,150,.06);padding:.75rem 1rem">
+        <div class="ct">Periodic Orbit — definition</div>
+        <div style="font-family:'DM Mono',monospace;font-size:clamp(.82rem,1.25vw,1.2rem);line-height:1.6;margin:.3rem 0;display:flex;flex-direction:column;gap:.1rem">
+          <span>Position(T) = Position(0)</span>
+          <span>Velocity(T) = Velocity(0)</span>
+        </div>
+        <div class="cb">The entire system repeats <strong>forever</strong>.</div>
+      </div>
+      <div class="cbox neu" style="padding:.75rem 1rem">
+        <div class="ct">Why it matters</div>
+        <div class="cb">These solutions prove that chaos is not the whole story. Even inside the three-body problem, <strong>tiny pockets of perfect order</strong> still exist.</div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;height:100%">
+    <video autoplay loop muted playsinline
+      style="width:100%;max-height:80vh;border-radius:10px;object-fit:contain;border:1px solid rgba(255,255,255,.1)">
+      <source src="./media/arham_3body.mp4" type="video/mp4">
+    </video>
+    <p style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;opacity:.3;text-transform:uppercase">Known stable periodic solutions of the three-body problem</p>
+  </div>
+</div>
+
+<!-- 14 · LAGRANGE POINTS -->
+<div class="slide dark l2" data-i="15" data-sec="§3 Chaos">
+  <div>
+    <span class="tag g">The exceptions — Euler &amp; Lagrange</span>
+    <h2>Five <em>parking spots</em><br>in the chaos</h2>
+    <div class="rule"></div>
+    <p class="body" style="color:#b8a98a">
+      While no general three-body solution exists, there are <strong>5 special points</strong> (L1–L5) where gravity and centrifugal force balance perfectly. A third small body can sit there stably.
+    </p>
+    <p class="body" style="margin-top:.8vh;color:#b8a98a;opacity:.7;font-size:clamp(.88rem,1.3vw,1.2rem)">
+      <strong>L1, L2, L3</strong> — on the line between the two bodies. Semi-stable (will drift if nudged).<br>
+      <strong>L4, L5</strong> — 60° ahead/behind in orbit. Fully stable. Jupiter has 10,000+ asteroids at L4/L5 (Trojans).
+    </p>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 320 280" width="100%" style="max-width:370px">
+      <!--
+        Ellipse: cx=148 cy=140, rx=118, ry=78. Sun at left focus.
+        c = sqrt(118²-78²) = sqrt(13924-6084) = sqrt(7840) ≈ 88.5
+        Sun at x = 148-88 = 60, y=140.
+        Earth at rightmost point: x=148+118=266, y=140.
+        L1: between Sun and Earth on the line, ~2/3 from Sun = x≈60+140*.62=147
+        L2: beyond Earth on same line = x≈266+38=304 (near right edge)
+        L3: opposite side of Sun = x≈60-118-30=leftmost - 30 ≈ 1
+        L4: 60° ahead of Earth in orbit — parametric angle of Earth = 0°(rightmost),
+            L4 at angle -60° from Earth along ellipse:
+            x=148+118*cos(-60°)=148+59=207, y=140+78*sin(-60°)=140-67.5=72.5
+        L5: at +60°: x=207, y=140+67.5=207.5
+      -->
+      <!-- Elliptical orbit -->
+      <ellipse cx="148" cy="140" rx="118" ry="78"
+        fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.1" stroke-dasharray="4 3"/>
+      <!-- Sun at left focus -->
+      <circle cx="60" cy="140" r="14" fill="#ffd97a" opacity=".85"/>
+      <text x="60" y="163" text-anchor="middle" fill="#ffd97a" font-size="9" font-family="DM Mono,monospace" opacity=".7">Sun</text>
+      <!-- Earth at rightmost -->
+      <circle cx="266" cy="140" r="7" fill="#a8d4f0"/>
+      <text x="266" y="160" text-anchor="middle" fill="#a8d4f0" font-size="9" font-family="DM Mono,monospace" opacity=".7">Earth</text>
+      <!-- L1 — between Sun and Earth -->
+      <circle cx="210" cy="140" r="4" fill="rgba(232,200,130,.85)"/>
+      <text x="210" y="128" text-anchor="middle" fill="#e8c882" font-size="9" font-family="DM Mono,monospace">L1</text>
+      <!-- L2 — beyond Earth (clipped near edge) -->
+      <circle cx="304" cy="140" r="4" fill="rgba(232,200,130,.85)"/>
+      <text x="304" y="128" text-anchor="middle" fill="#e8c882" font-size="9" font-family="DM Mono,monospace">L2</text>
+      <!-- L3 — opposite side on ellipse, leftmost x=148-118=30 -->
+      <circle cx="30" cy="140" r="4" fill="rgba(232,200,130,.85)"/>
+      <text x="30" y="128" text-anchor="middle" fill="#e8c882" font-size="9" font-family="DM Mono,monospace">L3</text>
+      <!-- L4 — 60° ahead (above) on ellipse -->
+      <circle cx="207" cy="73" r="4" fill="rgba(100,220,150,.9)"/>
+      <text x="218" y="66" fill="#64dc96" font-size="9" font-family="DM Mono,monospace">L4 ★</text>
+      <!-- L5 — 60° behind (below) on ellipse -->
+      <circle cx="207" cy="207" r="4" fill="rgba(100,220,150,.9)"/>
+      <text x="218" y="221" fill="#64dc96" font-size="9" font-family="DM Mono,monospace">L5 ★</text>
+      <!-- equilateral triangle dashes Sun–Earth–L4 and Sun–Earth–L5 -->
+      <line x1="60" y1="140" x2="207" y2="73" stroke="rgba(100,220,150,.18)" stroke-width=".8" stroke-dasharray="3 3"/>
+      <line x1="266" y1="140" x2="207" y2="73" stroke="rgba(100,220,150,.18)" stroke-width=".8" stroke-dasharray="3 3"/>
+      <line x1="60" y1="140" x2="207" y2="207" stroke="rgba(100,220,150,.18)" stroke-width=".8" stroke-dasharray="3 3"/>
+      <line x1="266" y1="140" x2="207" y2="207" stroke="rgba(100,220,150,.18)" stroke-width=".8" stroke-dasharray="3 3"/>
+      <!-- JWST note -->
+      <text x="160" y="14" text-anchor="middle" fill="rgba(255,255,255,.28)" font-size="8" font-family="DM Mono,monospace">JWST sits at L2</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SECTION 4: SPACEFLIGHT                               -->
+<!-- ══════════════════════════════════════════════════════ -->
+
+<!-- 15 · SECTION CARD -->
+<div class="slide dark lc" data-i="16" data-sec="§4 Spaceflight">
+  <div>
+    <span class="tag g" style="letter-spacing:.6em">Section 04</span>
+    <h1 style="font-size:clamp(2.8rem,7vw,8rem)">Applied<br><em>Astrodynamics</em></h1>
+  </div>
+</div>
+
+<!-- 16 · DELTA-V -->
+<div class="slide graphite ll" data-i="17" data-sec="§4 Spaceflight">
+  <div style="max-width:820px">
+    <span class="tag g">The currency of spaceflight</span>
+    <h2>Fuel is mass.<br>Mass is <em>everything.</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="color:#b8a98a">
+      In space, we don't optimize for <em>time.</em> We optimize for <strong>Δv</strong>, the total change in velocity required. Every Δv costs propellant. More propellant = heavier rocket = needs more propellant to lift it.
+    </p>
+    <div class="code" style="margin-top:2vh;font-size:clamp(.85rem,1.3vw,1.4rem)">
+      <span class="cm">Tsiolkovsky Rocket Equation</span><br>
+      Δv = v<sub>e</sub> · ln(<span class="fn">m₀ / m_f</span>)
+    </div>
+    <p class="body" style="margin-top:1vh;opacity:.5;font-size:clamp(.85rem,1.2vw,1.1rem)">
+      Every extra m/s of Δv requires exponentially more fuel. Efficiency is survival.
+    </p>
+  </div>
+</div>
+
+<!-- 17 · HOHMANN TRANSFER -->
+<div class="slide slate l2" data-i="18" data-sec="§4 Spaceflight">
+  <div>
+    <span class="tag g">Most fuel-efficient orbital manoeuvre</span>
+    <h2>The <em>Hohmann</em><br>Transfer</h2>
+    <div class="rule"></div>
+    <p class="body" style="color:#b8a98a">
+      To move from a low orbit to a high orbit, you don't need to thrust continuously. You burn fuel <strong>only twice</strong>:
+    </p>
+    <ul class="bl arrow" style="margin-top:1vh">
+      <li><strong>Burn 1</strong> : accelerate into an ellipse that grazes the target orbit</li>
+      <li><strong>Burn 2</strong> : at the top, circularize into the new orbit</li>
+    </ul>
+    <p class="body" style="margin-top:1vh;opacity:.5;font-size:clamp(.85rem,1.2vw,1.1rem)">
+      The transfer ellipse perfectly bridges the two circular orbits. Minimum Δv. Used for every satellite deployment and interplanetary mission.
+    </p>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem">
+    <canvas id="hohCanvas" width="320" height="300" style="width:320px;height:300px;display:block"></canvas>
+    <div id="hohLabel" style="font-family:'DM Mono',monospace;font-size:11px;
+      letter-spacing:.18em;color:rgba(255,255,255,.45);height:1.2em;text-align:center;
+      transition:color .3s"></div>
+  </div>
+</div>
+<script>
+(function(){
+  const cv = document.getElementById('hohCanvas');
+  if(!cv) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const cx = W/2 + 10, cy = H/2;
+
+  const R1 = 58;
+  const R2 = 118;
+  const a  = (R1 + R2) / 2;
+  const c  = a - R1;
+  const b  = Math.sqrt(a*a - c*c);
+  const ex = cx - c;
+
+  const DUR = { low:2.2, b1:0.4, trans:3.0, b2:0.4, high:2.4 };
+  const T = DUR.low + DUR.b1 + DUR.trans + DUR.b2 + DUR.high;
+
+  let t0 = null;
+  let sparks = [];
+  let b1fired = false, b2fired = false;
+  const label = document.getElementById('hohLabel');
+
+  function spawnSparks(x, y, col) {
+    for(let i=0;i<22;i++){
+      const ang = Math.random()*Math.PI*2;
+      const spd = Math.random()*4+1.5;
+      sparks.push({x,y,vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd,
+        life:1,decay:Math.random()*.055+.035,col,r:Math.random()*2.2+.8});
+    }
+  }
+
+  function getState(t) {
+    if(t < DUR.low) {
+      const ang = -(t / DUR.low) * Math.PI * 2;
+      return {phase:'low', px: cx + R1*Math.cos(ang), py: cy + R1*Math.sin(ang), burnProg:0};
+    }
+    t -= DUR.low;
+    if(t < DUR.b1) {
+      return {phase:'burn1', px: cx+R1, py: cy, burnProg: t/DUR.b1};
+    }
+    t -= DUR.b1;
+    if(t < DUR.trans) {
+      const ang = (t / DUR.trans) * Math.PI;
+      return {phase:'trans', px: ex + a*Math.cos(ang), py: cy - b*Math.sin(ang), burnProg:0};
+    }
+    t -= DUR.trans;
+    if(t < DUR.b2) {
+      return {phase:'burn2', px: cx-R2, py: cy, burnProg: t/DUR.b2};
+    }
+    t -= DUR.b2;
+    const ang = Math.PI - (t / DUR.high) * Math.PI * 1.5;
+    return {phase:'high', px: cx + R2*Math.cos(ang), py: cy + R2*Math.sin(ang), burnProg:0};
+  }
+
+  function drawDashedCircle(r, color) {
+    ctx.beginPath();
+    ctx.setLineDash([4,3]);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.4;
+    ctx.arc(cx, cy, r, 0, Math.PI*2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  function drawTransferArc(progress) {
+    if(progress <= 0) return;
+    const steps = 80;
+    const endAng = Math.PI * Math.min(progress, 1);
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(100,220,150,.88)';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([]);
+    for(let i=0;i<=steps;i++){
+      const ang = (i/steps)*endAng;
+      const px = ex + a*Math.cos(ang);
+      const py = cy - b*Math.sin(ang);
+      i===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+    }
+    ctx.stroke();
+  }
+
+  function frame(ts) {
+    if(!t0) t0 = ts;
+    const elapsed = (ts - t0) / 1000;
+    const tmod = elapsed % T;
+    const state = getState(tmod);
+
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = '#111825';
+    ctx.fillRect(0,0,W,H);
+
+    drawDashedCircle(R1, 'rgba(168,212,240,.45)');
+    drawDashedCircle(R2, 'rgba(232,200,130,.38)');
+
+    ctx.font = '9px "DM Mono",monospace';
+    ctx.fillStyle = 'rgba(168,212,240,.6)';
+    ctx.fillText('Low orbit', cx+R1+5, cy-6);
+    ctx.fillStyle = 'rgba(232,200,130,.55)';
+    ctx.fillText('High orbit', cx+R2-46, cy-R2+14);
+
+    let arcProg = 0;
+    if(state.phase === 'trans') arcProg = (tmod - DUR.low - DUR.b1) / DUR.trans;
+    else if(state.phase === 'burn2' || state.phase === 'high') arcProg = 1;
+    drawTransferArc(arcProg);
+
+    const sg = ctx.createRadialGradient(cx,cy,0,cx,cy,22);
+    sg.addColorStop(0,'#ffd97a'); sg.addColorStop(.5,'#c8a030'); sg.addColorStop(1,'rgba(200,160,48,0)');
+    ctx.beginPath(); ctx.arc(cx,cy,22,0,Math.PI*2); ctx.fillStyle=sg; ctx.fill();
+    ctx.beginPath(); ctx.arc(cx,cy,8,0,Math.PI*2); ctx.fillStyle='#ffd97a'; ctx.fill();
+
+    ctx.beginPath(); ctx.arc(cx+R1,cy,5,0,Math.PI*2); ctx.fillStyle='#64dc96'; ctx.fill();
+    ctx.fillStyle='#64dc96'; ctx.font='9px "DM Mono",monospace';
+    ctx.fillText('🔥 Burn 1', cx+R1+8, cy-5);
+    ctx.beginPath(); ctx.arc(cx-R2,cy,5,0,Math.PI*2); ctx.fillStyle='#ff9f60'; ctx.fill();
+    ctx.fillStyle='#ff9f60';
+    ctx.fillText('🔥 Burn 2', cx-R2-62, cy-5);
+
+    if(state.phase==='burn1' && !b1fired){ spawnSparks(cx+R1,cy,'#64dc96'); b1fired=true; }
+    if(state.phase!=='burn1') b1fired=false;
+    if(state.phase==='burn2' && !b2fired){ spawnSparks(cx-R2,cy,'#ff9f60'); b2fired=true; }
+    if(state.phase!=='burn2') b2fired=false;
+
+    for(let i=sparks.length-1;i>=0;i--){
+      const s=sparks[i];
+      s.x+=s.vx; s.y+=s.vy; s.vx*=.9; s.vy*=.9;
+      s.life-=s.decay;
+      if(s.life<=0){sparks.splice(i,1);continue;}
+      ctx.globalAlpha=s.life;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r*s.life,0,Math.PI*2);
+      ctx.fillStyle=s.col; ctx.fill();
+      ctx.globalAlpha=1;
+    }
+
+    if(state.burnProg > 0){
+      const glow = Math.sin(state.burnProg * Math.PI);
+      const col = state.phase==='burn1' ? '100,220,150' : '255,159,96';
+      const gg = ctx.createRadialGradient(state.px,state.py,0,state.px,state.py,26*glow);
+      gg.addColorStop(0,`rgba(${col},${.85*glow})`);
+      gg.addColorStop(1,`rgba(${col},0)`);
+      ctx.beginPath(); ctx.arc(state.px,state.py,26*glow,0,Math.PI*2);
+      ctx.fillStyle=gg; ctx.fill();
+    }
+
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = state.phase==='high' ? '#ffd97a' : '#ffffff';
+    ctx.beginPath(); ctx.arc(state.px,state.py,5.5,0,Math.PI*2);
+    ctx.fillStyle = state.phase==='high' ? '#ffd97a' : '#ffffff';
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    const phaseText = {
+      low:'Low orbit', burn1:'🔥 Burn 1 — accelerating',
+      trans:'Transfer ellipse', burn2:'🔥 Burn 2 — circularizing', high:'High orbit ✓'
+    };
+    if(label){
+      label.textContent = phaseText[state.phase]||'';
+      label.style.color = state.phase==='burn1'?'#64dc96':state.phase==='burn2'?'#ff9f60':'rgba(255,255,255,.45)';
+    }
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+
+<!-- 18 · GRAVITY SLINGSHOT -->
+<div class="slide amber l2" data-i="19" data-sec="§4 Spaceflight">
+  <div>
+    <span class="tag w">Deep space propulsion — free of charge</span>
+    <h2><em>Gravity</em> Slingshot<br>(Gravity Assist)</h2>
+    <div class="rule"></div>
+    <p class="body" style="opacity:.8">
+      Use a planet's gravity to accelerate by huge amounts. In the planet's frame, you enter and exit at the same speed (energy conserved). But in the <strong>Sun's frame</strong>, you steal a fraction of the planet's orbital momentum.
+    </p>
+    <p class="body" style="margin-top:.8vh;opacity:.5;font-size:clamp(.88rem,1.3vw,1.2rem)">
+      Voyager 1 used Jupiter + Saturn. Result: escape velocity from the solar system  with engines made in the 1970s<br>
+      <strong>No fuel burned.</strong>
+    </p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:1.5vh">
+    <div class="cbox ok" style="border-color:rgba(255,159,96,.3);background:rgba(255,159,96,.07)">
+      <div class="ct">Planet's frame</div>
+      <div class="ce">v_in = v_out</div>
+      <div class="cb">Energy is conserved. Speed unchanged on entry and exit.</div>
+    </div>
+    <div class="cbox ok">
+      <div class="ct">Sun's frame</div>
+      <div class="ce">Δv_max = +2V_planet</div>
+      <div class="cb">Spacecraft gains up to twice the planet's orbital speed. <strong>Free velocity boost.</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 · EULER METHOD — DERIVATION -->
+<div class="slide blue ll" data-i="5" data-sec="§1 Math Foundation" data-euler="true">
+  <div style="max-width:900px">
+    <span class="tag w">Numerical method 01 — Leonhard Euler, 1768</span>
+    <h2>The <em>Euler</em> Method</h2>
+    <div style="margin-top:2.5vh;display:flex;flex-direction:column;gap:.2rem">
+      <span class="eqstep" id="e0">dv/dt &nbsp;=&nbsp; a</span>
+      <span class="eqstep" id="e1">dv &nbsp;=&nbsp; a · dt</span>
+      <span class="eqstep" id="e2">Δv &nbsp;=&nbsp; a · Δt</span>
+      <span class="eqstep" id="e3" style="color:#ffd97a">v<sub>new</sub> = v₀ + a·Δt <span class="c">update velocity</span></span>
+      <span class="eqstep" id="e4" style="color:#ffd97a">x<sub>new</sub> = x₀ + v·Δt <span class="c">update position</span></span>
+    </div>
+    <p class="body" style="margin-top:1.5vh;opacity:.55;font-size:clamp(.88rem,1.3vw,1.2rem)">
+      Compute acceleration → nudge velocity → nudge position → repeat.<br>
+      It's simple and elegant but there's a catch
+    </p>
+  </div>
+</div>
+
+<!-- 6 · EULER FLAW -->
+<div class="slide navy l2" data-i="6" data-sec="§1 Math Foundation">
+  <div>
+    <span class="tag w">The problem with Euler</span>
+    <h2>Linear tangents<br>can't track <em>curves</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="opacity:.75;margin-top:.3rem">
+      Euler uses a straight-line approximation for what is a curved path. Each step the planet is slightly <em>wrong</em>. These errors pile up and orbits <strong>spiral outward</strong>.
+    </p>
+    <p class="body" style="margin-top:1vh;opacity:.55;font-size:clamp(.88rem,1.3vw,1.2rem)">
+      Error ∝ <strong>Δt</strong> &nbsp;→&nbsp; to halve error, halve Δt and double iterations.<br>
+      Millions of steps just to simulate a few seconds.
+    </p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:1.5vh">
+    <div class="cbox bad">
+      <div class="ct">Euler Error</div>
+      <div class="ce">ε ∝ Δt</div>
+      <div class="cb">Linear. Halve Δt → halve error. Needs <strong>tiny</strong> steps for higher accuracy, which makes it slow</div>
+    </div>
+    <div class="cbox ok" style="margin-top:.5rem">
+      <div class="ct">What we need</div>
+      <div class="ce">ε ∝ (Δt)⁴</div>
+      <div class="cb">Quartic. Halve Δt → error drops 16×. This is accurate with <strong>large</strong> steps. Thus it takes less iterations</div>
+    </div>
+  </div>
+</div>
+
+<!-- 7 · RK4 -->
+<div class="slide teal l2" data-i="7" data-sec="§1 Math Foundation">
+  <div>
+    <span class="tag w">The gold standard | Runge-Kutta 4</span>
+    <h2>RK4 : <em>Four slopes,<br>one brilliant step</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="margin-top:.3rem">
+      Instead of one tangent, RK4 samples the slope <strong>four times</strong> within a single Δt and takes a weighted average. Error: <strong>ε ∝ (Δt)⁴</strong>
+    </p>
+    <p class="body" style="margin-top:.8vh;opacity:.55;font-size:clamp(.85rem,1.2vw,1.1rem)">
+      If Euler needs Δt = 1s for stability, RK4 achieves the same accuracy at Δt = 10s.<br>
+      That's <strong>10× fewer calculations</strong>. Used in every serious physics simulator.
+    </p>
+  </div>
+  <div>
+    <div class="code">
+      k₁ = f(t, y)<br>
+      k₂ = f(t + <span class="kw">½</span>Δt, y + <span class="kw">½</span>k₁Δt)<br>
+      k₃ = f(t + <span class="kw">½</span>Δt, y + <span class="kw">½</span>k₂Δt)<br>
+      k₄ = f(t + Δt, y + k₃Δt)<br><br>
+      <span class="fn">y</span><sub>next</sub> = y + <span class="kw">⅙</span>(k₁+2k₂+2k₃+k₄)Δt
+    </div>
+    <p style="font-size:clamp(.8rem,1.1vw,1rem);opacity:.4;margin-top:.8rem;font-family:'DM Mono',monospace">
+      weighted average of four slope estimates
+    </p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SECTION 5: EXTREMES                                  -->
+<!-- ══════════════════════════════════════════════════════ -->
+
+<!-- 19 · SECTION CARD -->
+<div class="slide dark lc" data-i="20" data-sec="§5 Extreme Gravity">
+  <div>
+    <span class="tag g" style="letter-spacing:.6em">Section 05</span>
+    <h1 style="font-size:clamp(2.8rem,7vw,8rem)">Extreme<br><em>Gravitational</em><br>Phenomena</h1>
+  </div>
+</div>
+
+<!-- 20 · TIDAL FORCES -->
+<div class="slide slate l2" data-i="21" data-sec="§5 Extreme Gravity">
+  <div>
+    <span class="tag g">Differential gravity</span>
+    <h2><em>Tidal</em> Forces</h2>
+    <div class="rule"></div>
+    <p class="body" style="color:#b8a98a">
+      Gravity weakens with distance (1/r²). The side of Earth <em>facing</em> the Moon is pulled harder than the far side. This stretches the oceans into an ellipse that causes <strong>two high tides per day.</strong>
+    </p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:1.2vh">
+    <div class="cbox ok" style="border-color:rgba(168,212,240,.3);background:rgba(168,212,240,.06)">
+      <div class="ct">Spring Tides</div>
+      <div class="cb">Sun + Moon aligned → pulls add together → <strong>extreme tides.</strong></div>
+    </div>
+    <div class="cbox neu">
+      <div class="ct">Neap Tides</div>
+      <div class="cb">Sun ⊥ Moon → pulls partially cancel → <strong>weaker tides.</strong></div>
+    </div>
+    <div class="cbox bad" style="margin-top:.3rem">
+      <div class="ct">Taken further</div>
+      <div class="cb">Tidal forces can exceed a body's own self-gravity → structural destruction.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 21 · ROCHE LIMIT -->
+<div class="slide dark ll" data-i="22" data-sec="§5 Extreme Gravity">
+  <div style="max-width:820px">
+    <span class="tag g">When tidal force exceeds self-gravity</span>
+    <h2>The <em>Roche Limit</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="color:#b8a98a;margin-bottom:1.5vh">
+      Every body has self-gravity holding it together. As it falls closer to a massive planet, differential gravity grows. At the <strong>Roche Limit</strong>, tidal force exceeds self-gravity and the body is torn apart.
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5vw">
+      <div class="cbox neu">
+        <div class="ct">Saturn's Rings</div>
+        <div class="cb">Theorized to be a moon that crossed the Roche limit and shattered into millions of fragments. All orbiting at the same distance.</div>
+      </div>
+      <div class="cbox bad">
+        <div class="ct">Comet Shoemaker-Levy 9</div>
+        <div class="cb">Passed within Jupiter's Roche limit in 1992. Was torn into 21 fragments. Each crashed into Jupiter in 1994 which was observed from Earth.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MERCURY BRIDGE — crack in Newton's theory -->
+<div class="slide graphite ll" data-sec="§5 Extreme Gravity">
+  <div style="max-width:820px">
+    <span class="tag g">A crack in Newton's theory</span>
+    <h2>One planet refused<br>to obey <em>Newton</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="color:#b8a98a;margin-bottom:1.2vh">
+      For centuries, Newton's law of gravitation successfully explained the motion of planets, moons, comets, and tides. But there was one small problem.
+    </p>
+    <p class="body" style="color:#b8a98a;margin-bottom:1.5vh">
+      Mercury's orbit slowly rotates through space. This is a phenomenon called <strong>perihelion precession</strong>. Most of this could be explained by gravitational tugs from other planets. Yet after accounting for every known effect, an unexplained discrepancy remained:
+    </p>
+    <div style="text-align:center;margin:1.2vh 0 1.5vh">
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(3rem,6vw,6.5rem);color:#e8c882;line-height:1;font-weight:300">43 arcseconds</span>
+      <div style="font-family:'DM Mono',monospace;font-size:clamp(.7rem,.9vw,.85rem);letter-spacing:.4em;color:rgba(232,200,130,.45);text-transform:uppercase;margin-top:.3rem">per century — unexplained</div>
+    </div>
+    <p class="body" style="color:#b8a98a;font-size:clamp(.85rem,1.25vw,1.15rem);margin-bottom:.6vh">
+      The error was tiny. But in celestial mechanics, tiny errors matter. Either the observations were wrong or Newton's theory was incomplete.
+    </p>
+    <p style="font-size:clamp(.85rem,1.25vw,1.15rem);color:rgba(232,200,130,.5);font-style:italic;font-weight:300;line-height:1.5">
+      The solution arrived in 1915, when Einstein replaced gravity as a force with gravity as the curvature of spacetime.
+    </p>
+  </div>
+</div>
+
+<!-- NEWTON → EINSTEIN BRIDGE -->
+<div class="slide dark lc" data-sec="§5 Extreme Gravity">
+  <div style="max-width:700px">
+    <span class="tag g">A new picture of gravity</span>
+    <h2 style="font-size:clamp(2rem,4.5vw,5rem);margin-bottom:1.2rem">A new picture<br>of <em>gravity</em></h2>
+    <div class="rule c"></div>
+    <p class="body" style="text-align:center;color:#b8a98a;margin:.8rem auto 1.2rem">
+      Newton imagined gravity as a force acting across space.<br>
+      Einstein proposed something radically different.
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5vw;text-align:left;max-width:620px;margin:0 auto 1.5rem">
+      <div class="cbox neu" style="padding:.9rem 1.2rem">
+        <div class="ct">Newton</div>
+        <div class="cb" style="font-size:clamp(.85rem,1.2vw,1.1rem)">Gravity is a <strong>force</strong> that pulls masses toward each other across empty space.</div>
+      </div>
+      <div class="cbox neu" style="border-color:rgba(232,200,130,.3);background:rgba(232,200,130,.06);padding:.9rem 1.2rem">
+        <div class="ct" style="color:#e8c882">Einstein</div>
+        <div class="cb" style="font-size:clamp(.85rem,1.2vw,1.1rem)">Mass and energy <strong>curve spacetime itself</strong>. Planets follow the straightest possible paths through curved geometry.</div>
+      </div>
+    </div>
+    <p style="font-size:clamp(.85rem,1.25vw,1.15rem);color:rgba(232,200,130,.5);font-style:italic;font-weight:300;line-height:1.5;text-align:center">
+      To understand black holes, gravitational waves, and the orbit of Mercury,<br>we must leave Newton's universe behind.
+    </p>
+  </div>
+</div>
+
+<!-- 22 · BLACK HOLES -->
+<div class="slide dark ll" data-i="23" data-sec="§5 Extreme Gravity">
+  <div style="max-width:820px">
+    <span class="tag g">General Relativity — Einstein, 1915</span>
+    <h2>Mass <em>warps</em><br>spacetime itself</h2>
+    <div class="rule"></div>
+    <p class="body" style="color:#b8a98a">
+      Newton's gravity is a <em>force</em>. Einstein's gravity is <em>geometry</em>. Mass curves the fabric of spacetime and objects follow the straightest possible path through curved space : geodesics.
+    </p>
+    <p class="body" style="margin-top:1vh;color:#b8a98a;opacity:.7;font-size:clamp(.88rem,1.3vw,1.2rem)">
+      A black hole concentrates so much mass that spacetime curves infinitely. Not even light can follow a path that leads out. The escape velocity exceeds <em>c</em>.
+    </p>
+  </div>
+</div>
+
+<!-- 23 · EINSTEIN RING -->
+<div class="slide dark l2" data-i="24" data-sec="§5 Extreme Gravity">
+  <div>
+    <span class="tag g">Gravitational lensing</span>
+    <h2>Light bends.<br>Galaxies form <em>rings.</em></h2>
+    <div class="rule"></div>
+    <p class="body" style="color:#b8a98a">
+      A black hole between Earth and a distant galaxy bends the galaxy's light around it from all directions. The result: a perfect circular mirage called an <strong>Einstein Ring</strong>.
+    </p>
+    <p class="body" style="margin-top:.8vh;color:#b8a98a;opacity:.6;font-size:clamp(.85rem,1.2vw,1.1rem)">
+      Predicted by Einstein in 1915. First observed in 1988.<br>
+      Now used to detect dark matter and measure cosmic distances.
+    </p>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 280 280" width="100%" style="max-width:320px">
+      <defs>
+        <radialGradient id="bh" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#000"/><stop offset="70%" stop-color="#1a0a30"/><stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/>
+          <feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+      </defs>
+      <!-- Galaxy behind -->
+      <ellipse cx="140" cy="140" r="18" ry="6" fill="rgba(200,180,255,.3)" transform="rotate(15,140,140)"/>
+      <!-- Light paths -->
+      <path d="M20,140 Q70,60 140,140 Q210,60 260,140" fill="none" stroke="rgba(232,200,130,.5)" stroke-width="1.2" filter="url(#glow)"/>
+      <path d="M20,140 Q70,220 140,140 Q210,220 260,140" fill="none" stroke="rgba(232,200,130,.5)" stroke-width="1.2" filter="url(#glow)"/>
+      <!-- Einstein ring -->
+      <circle cx="140" cy="140" r="62" fill="none" stroke="rgba(232,200,130,.7)" stroke-width="2.5" filter="url(#glow)"/>
+      <!-- Black hole -->
+      <circle cx="140" cy="140" r="22" fill="url(#bh)"/>
+      <circle cx="140" cy="140" r="16" fill="#000"/>
+      <!-- Labels -->
+      <text x="20" y="132" fill="rgba(255,255,255,.35)" font-size="8" font-family="DM Mono,monospace">Earth</text>
+      <text x="230" y="132" fill="rgba(255,255,255,.35)" font-size="8" font-family="DM Mono,monospace">Galaxy</text>
+      <text x="140" y="220" text-anchor="middle" fill="rgba(232,200,130,.5)" font-size="9" font-family="DM Mono,monospace">Einstein Ring</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ══ 24 · CLOSING ════════════════════════════════════════ -->
+<div class="slide dark lc" data-i="25" data-sec="Closing">
+  <div>
+    <span class="tag g" style="letter-spacing:.55em">Krittika — Astronomy Club, IITB</span>
+    <h1 style="font-size:clamp(2.5rem,5.5vw,6.5rem)">Thank you.</h1>
+    <div class="rule c" style="margin-top:1rem"></div>
+    <p style="margin-top:1.2rem;font-size:clamp(.8rem,1.1vw,1rem);font-family:'DM Mono',monospace;
+      letter-spacing:.18em;color:rgba(232,200,130,.4);line-height:1.8;text-align:center">
+      For deeper dives into simulations, orbital mechanics, and more —<br>
+      refer to the <span style="color:rgba(232,200,130,.75)"><a href="https://github.com/krittikaiitb/tutorials" target="_blank" style="color: inherit">Krittika Learning Module</a></span>.
+    </p>
+    <p style="margin-top:1.4rem;font-family:'DM Mono',monospace;font-size:clamp(10px,.85vw,13px);
+      letter-spacing:.35em;color:rgba(232,200,130,.3);text-transform:uppercase">
+      Ishaan &nbsp;·&nbsp; Arham
+    </p>
+  </div>
+</div>
+
+</div><!-- #deck -->
+
+<div id="nav">
+  <button id="pb">&#8592;</button>
+  <div id="dots"></div>
+  <button id="nb">&#8594;</button>
+</div>
+
+<script>
+// ── SLIDE DATA ──────────────────────────────────────────────
+const TOTAL = 36;
+const slides = [...document.querySelectorAll('.slide')];
+let cur = 0, busy = false;
+
+const prog = document.getElementById('progress');
+const ctr  = document.getElementById('ctr');
+const secL = document.getElementById('section-label');
+const dotsEl = document.getElementById('dots');
+const hint = document.getElementById('hint');
+
+// Build dots — gold for section starts
+const secStarts = new Set([0,2,8,15,22,23,31]);
+for(let i=0;i<TOTAL;i++){
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' on':'')+(secStarts.has(i)?' sec-start':'');
+  d.addEventListener('click',()=>go(i));
+  dotsEl.appendChild(d);
+}
+
+function pad(n){return String(n+1).padStart(2,'0')}
+function updateUI(){
+  prog.style.width=(cur/(TOTAL-1)*100)+'%';
+  ctr.textContent=pad(cur)+' / '+pad(TOTAL-1);
+  const sec=slides[cur].dataset.sec||'';
+  secL.textContent=sec;
+  [...dotsEl.children].forEach((d,i)=>d.classList.toggle('on',i===cur));
+}
+
+function go(next){
+  if(busy||next===cur||next<0||next>=TOTAL)return;
+  busy=true;hint.style.opacity='0';
+  const from=slides[cur],to=slides[next],fwd=next>cur;
+  to.style.transition='none';
+  to.style.opacity='0';
+  to.style.transform=fwd?'translateY(50px)':'translateY(-50px)';
+  to.classList.add('is-active');
+  to.getBoundingClientRect();
+  const D=650,ease='cubic-bezier(0.4,0,0.2,1)';
+  from.style.transition=`opacity ${D}ms ${ease},transform ${D}ms ${ease}`;
+  from.style.opacity='0';from.style.transform=fwd?'translateY(-50px)':'translateY(50px)';
+  to.style.transition=`opacity ${D}ms ${ease},transform ${D}ms ${ease}`;
+  to.style.opacity='1';to.style.transform='translateY(0)';
+  cur=next;updateUI();
+  if(to.dataset.euler==='true') revealEuler();
+  setTimeout(()=>{
+    from.classList.remove('is-active');
+    from.style.cssText='';
+    busy=false;
+  },D+60);
+}
+
+updateUI();
+document.getElementById('pb').onclick=()=>go(cur-1);
+document.getElementById('nb').onclick=()=>go(cur+1);
+
+let lastW=0;
+window.addEventListener('wheel',e=>{
+  e.preventDefault();
+  const now=Date.now();if(now-lastW<950)return;lastW=now;
+  go(e.deltaY>0?cur+1:cur-1);
+},{passive:false});
+
+let ty0=0;
+window.addEventListener('touchstart',e=>{ty0=e.touches[0].clientY},{passive:true});
+window.addEventListener('touchend',e=>{
+  const dy=ty0-e.changedTouches[0].clientY;
+  if(Math.abs(dy)<50)return;go(dy>0?cur+1:cur-1);
+});
+window.addEventListener('keydown',e=>{
+  if(e.key==='ArrowDown'||e.key==='ArrowRight')go(cur+1);
+  if(e.key==='ArrowUp'||e.key==='ArrowLeft')go(cur-1);
+});
+
+function revealEuler(){
+  const steps=document.querySelectorAll('.eqstep');
+  steps.forEach(s=>s.classList.remove('show'));
+  steps.forEach((s,i)=>setTimeout(()=>s.classList.add('show'),250+i*420));
+}
+
+// ── COSMOS ───────────────────────────────────────────────────
+const cv=document.getElementById('cosmos');
+const ctx=cv.getContext('2d');
+let W,H,stars=[],shooters=[],t0=performance.now();
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;initStars()}
+
+function initStars(){
+  stars=[];
+  const N=Math.floor(W*H/1300);
+  for(let i=0;i<N;i++) stars.push({
+    x:Math.random()*W,y:Math.random()*H,
+    r:Math.random()*1.4+0.2,
+    vx:(Math.random()-.5)*.05,vy:(Math.random()-.5)*.035,
+    base:Math.random()*.48+.13,
+    sp:Math.random()*.65+.25,
+    ph:Math.random()*Math.PI*2
+  });
+}
+
+function spawnShooter(){
+  shooters.push({
+    x:Math.random()*W*.75+W*.1,y:Math.random()*H*.35,
+    len:Math.random()*130+65,
+    angle:Math.PI/4+(Math.random()-.5)*.4,
+    speed:Math.random()*8+10,
+    life:1,decay:Math.random()*.017+.013
+  });
+}
+
+function frame(ts){
+  const t=(ts-t0)/1000;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#06080f';ctx.fillRect(0,0,W,H);
+
+  [[W*.18+Math.sin(t*.11)*35,H*.28+Math.cos(t*.09)*22,W*.58,'rgba(55,35,115,.14)'],
+   [W*.8+Math.cos(t*.08)*28, H*.68+Math.sin(t*.1)*20, W*.52,'rgba(20,55,95,.11)'],
+   [W*.52+Math.sin(t*.07)*42,H*.1+Math.cos(t*.13)*16, W*.38,'rgba(75,25,55,.09)'],
+   [W*.35+Math.cos(t*.06)*30,H*.8+Math.sin(t*.12)*25, W*.45,'rgba(30,60,40,.08)']
+  ].forEach(([cx,cy,r,c])=>{
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+    g.addColorStop(0,c);g.addColorStop(1,'transparent');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  });
+
+  for(const s of stars){
+    s.x+=s.vx;s.y+=s.vy;
+    if(s.x<-2)s.x=W+2;if(s.x>W+2)s.x=-2;
+    if(s.y<-2)s.y=H+2;if(s.y>H+2)s.y=-2;
+    const bv=s.base+Math.sin(t*s.sp+s.ph)*.17;
+    const sc=1+Math.sin(t*s.sp+s.ph)*.11;
+    ctx.beginPath();ctx.arc(s.x,s.y,s.r*sc,0,Math.PI*2);
+    ctx.fillStyle=`rgba(220,215,200,${bv})`;ctx.fill();
+  }
+
+  if(Math.random()<.0038)spawnShooter();
+  for(let i=shooters.length-1;i>=0;i--){
+    const sh=shooters[i];
+    const x2=sh.x+Math.cos(sh.angle)*sh.len;
+    const y2=sh.y+Math.sin(sh.angle)*sh.len;
+    const g=ctx.createLinearGradient(sh.x,sh.y,x2,y2);
+    g.addColorStop(0,`rgba(240,230,200,${sh.life*.8})`);
+    g.addColorStop(1,'rgba(240,230,200,0)');
+    ctx.beginPath();ctx.moveTo(sh.x,sh.y);ctx.lineTo(x2,y2);
+    ctx.strokeStyle=g;ctx.lineWidth=1.3;ctx.stroke();
+    sh.x+=Math.cos(sh.angle)*sh.speed;sh.y+=Math.sin(sh.angle)*sh.speed;
+    sh.life-=sh.decay;if(sh.life<=0)shooters.splice(i,1);
+  }
+  requestAnimationFrame(frame);
+}
+
+resize();requestAnimationFrame(frame);
+window.addEventListener('resize',resize);
+
+// ── TWO BODY SIMULATOR ─────────────────────────────────────
+const tb=document.getElementById('twoBodyCanvas');
+if(tb){
+const tctx=tb.getContext('2d');
+const m1s=document.getElementById('m1');
+const m2s=document.getElementById('m2');
+const v0s=document.getElementById('v0');
+const circBtn=document.getElementById('circularOrbitBtn');
+const escBtn=document.getElementById('escapeBtn');
+document.getElementById('reset2body').onclick=()=>resetTB('custom');
+circBtn.onclick=()=>resetTB('circular');
+escBtn.onclick=()=>resetTB('escape');
+
+const G=6.67430e-11;
+const DIST=3.84e8;
+let b1,b2,tr1=[],tr2=[];
+let cam={x:0,y:0,scale:1.2}, targetCam={x:0,y:0,scale:1.2};
+let userZoom=1.2;
+
+function resetTB(mode='custom'){
+ const m1=(+m1s.value)*1e22;
+ const m2=(+m2s.value)*1e22;
+ const r1=DIST*m2/(m1+m2);
+ const r2=DIST*m1/(m1+m2);
+ const omega=Math.sqrt(G*(m1+m2)/(DIST**3));
+ let mul=(+v0s.value)/3.0;
+ if(mode==='circular') mul=1;
+ if(mode==='escape') mul=Math.sqrt(2)*1.05;
+ const v1=omega*r1*mul;
+ const v2=omega*r2*mul;
+ b1={x:-r1,y:0,vx:0,vy:-v1,m:m1};
+ b2={x:r2,y:0,vx:0,vy:v2,m:m2};
+ tr1=[]; tr2=[];
+ userZoom=1.2;
+ cam={x:0,y:0,scale:userZoom}; targetCam={x:0,y:0,scale:userZoom};
+}
+resetTB();
+
+
+function accel(s){
+ const dx=s.x2-s.x1,dy=s.y2-s.y1;
+ const r=Math.hypot(dx,dy)+1;
+ const a1=G*s.m2/(r*r*r), a2=G*s.m1/(r*r*r);
+ return {ax1:dx*a1,ay1:dy*a1,ax2:-dx*a2,ay2:-dy*a2};
+}
+function deriv(s){const a=accel(s);return {dx1:s.vx1,dy1:s.vy1,dvx1:a.ax1,dvy1:a.ay1,dx2:s.vx2,dy2:s.vy2,dvx2:a.ax2,dvy2:a.ay2};}
+function addState(s,k,f){return {x1:s.x1+k.dx1*f,y1:s.y1+k.dy1*f,vx1:s.vx1+k.dvx1*f,vy1:s.vy1+k.dvy1*f,x2:s.x2+k.dx2*f,y2:s.y2+k.dy2*f,vx2:s.vx2+k.dvx2*f,vy2:s.vy2+k.dvy2*f,m1:s.m1,m2:s.m2};}
+function stepTB(){
+ const dt=3600;
+ let s={x1:b1.x,y1:b1.y,vx1:b1.vx,vy1:b1.vy,x2:b2.x,y2:b2.y,vx2:b2.vx,vy2:b2.vy,m1:b1.m,m2:b2.m};
+ const k1=deriv(s),k2=deriv(addState(s,k1,dt/2)),k3=deriv(addState(s,k2,dt/2)),k4=deriv(addState(s,k3,dt));
+ const c=(a,b,c,d)=>(a+2*b+2*c+d)/6;
+ ['x1','y1','vx1','vy1','x2','y2','vx2','vy2'].forEach(()=>{});
+ s.x1+=dt*c(k1.dx1,k2.dx1,k3.dx1,k4.dx1); s.y1+=dt*c(k1.dy1,k2.dy1,k3.dy1,k4.dy1);
+ s.vx1+=dt*c(k1.dvx1,k2.dvx1,k3.dvx1,k4.dvx1); s.vy1+=dt*c(k1.dvy1,k2.dvy1,k3.dvy1,k4.dvy1);
+ s.x2+=dt*c(k1.dx2,k2.dx2,k3.dx2,k4.dx2); s.y2+=dt*c(k1.dy2,k2.dy2,k3.dy2,k4.dy2);
+ s.vx2+=dt*c(k1.dvx2,k2.dvx2,k3.dvx2,k4.dvx2); s.vy2+=dt*c(k1.dvy2,k2.dvy2,k3.dvy2,k4.dvy2);
+ b1={x:s.x1,y:s.y1,vx:s.vx1,vy:s.vy1,m:s.m1}; b2={x:s.x2,y:s.y2,vx:s.vx2,vy:s.vy2,m:s.m2};
+ tr1.push([b1.x,b1.y]); tr2.push([b2.x,b2.y]);
+ if(tr1.length>2500){tr1.shift();tr2.shift();}
+}
+function drawTB(){
+ stepTB();
+ tctx.clearRect(0,0,tb.width,tb.height);
+
+ let ox=0,oy=0; // barycenter fixed at origin
+
+ let maxR=1;
+ const pts=tr1.concat(tr2,[[b1.x,b1.y],[b2.x,b2.y]]);
+ pts.forEach(p=>{maxR=Math.max(maxR,Math.hypot(p[0]-ox,p[1]-oy));});
+ const baseScale=0.4*Math.min(tb.width,tb.height)/maxR;
+ targetCam.scale = baseScale * userZoom;
+ cam.scale = baseScale * userZoom;
+ targetCam.x=ox; targetCam.y=oy;
+ cam.scale += (targetCam.scale-cam.scale)*0.15;
+ cam.x += (targetCam.x-cam.x)*0.08;
+ cam.y += (targetCam.y-cam.y)*0.08;
+
+ const cx=tb.width/2, cy=tb.height/2;
+ const sx=x=>cx+(x-cam.x)*cam.scale;
+ const sy=y=>cy+(y-cam.y)*cam.scale;
+
+ 
+ // Adaptive grid centered on barycenter (origin)
+ const pixelsPerWorld = cam.scale;
+ const targetPx = 80;
+ let gridWorld = targetPx / Math.max(pixelsPerWorld,1e-9);
+
+ const pow10 = Math.pow(10, Math.floor(Math.log10(gridWorld)));
+ const norm = gridWorld / pow10;
+ if(norm < 2) gridWorld = 2 * pow10;
+ else if(norm < 5) gridWorld = 5 * pow10;
+ else gridWorld = 10 * pow10;
+
+ const leftW   = cam.x - tb.width /(2*cam.scale);
+ const rightW  = cam.x + tb.width /(2*cam.scale);
+ const topW    = cam.y - tb.height/(2*cam.scale);
+ const bottomW = cam.y + tb.height/(2*cam.scale);
+
+ tctx.strokeStyle='rgba(255,255,255,0.08)';
+ tctx.lineWidth=1;
+
+ let startX = Math.floor(leftW/gridWorld)*gridWorld;
+ for(let xw=startX; xw<=rightW; xw+=gridWorld){
+   const x=sx(xw);
+   tctx.beginPath();
+   tctx.moveTo(x,0);
+   tctx.lineTo(x,tb.height);
+   tctx.stroke();
+ }
+
+ let startY = Math.floor(topW/gridWorld)*gridWorld;
+ for(let yw=startY; yw<=bottomW; yw+=gridWorld){
+   const y=sy(yw);
+   tctx.beginPath();
+   tctx.moveTo(0,y);
+   tctx.lineTo(tb.width,y);
+   tctx.stroke();
+ }
+
+ // Barycenter marker at origin
+ tctx.strokeStyle='rgba(232,200,130,0.75)';
+ tctx.lineWidth=2;
+ tctx.beginPath();
+ tctx.moveTo(sx(0)-10,sy(0));
+ tctx.lineTo(sx(0)+10,sy(0));
+ tctx.moveTo(sx(0),sy(0)-10);
+ tctx.lineTo(sx(0),sy(0)+10);
+ tctx.stroke();
+
+ function drawTrail(tr,color,hide){
+   if(hide) return;
+   tctx.beginPath();
+   tr.forEach((p,i)=>{const x=sx(p[0]),y=sy(p[1]); if(i===0)tctx.moveTo(x,y); else tctx.lineTo(x,y);});
+   tctx.strokeStyle=color; tctx.stroke();
+ }
+ drawTrail(tr1,'rgba(255,217,122,.4)',false);
+ drawTrail(tr2,'rgba(168,212,240,.4)',false);
+
+ [[b1,'#ffd97a'],[b2,'#a8d4f0']].forEach(([b,col])=>{
+  tctx.beginPath();
+  tctx.arc(sx(b.x),sy(b.y),Math.max(5,Math.log10(b.m)-17),0,Math.PI*2);
+  tctx.fillStyle=col;tctx.fill();
+ });
+ requestAnimationFrame(drawTB);
+}
+drawTB();
+[m1s,m2s,v0s].forEach(el=>el.addEventListener('input',()=>resetTB('custom')));
+}
+</script>
+</body>
+</html>
