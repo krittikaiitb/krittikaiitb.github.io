@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React,{useState} from "react";
-import ModalBox, {TalkProps} from '../holonet/modal';
+import ModalBox, {TalkProps} from '../../modals/holonet_modal';
 
 var talks:TalkProps[] = [
     {name: "HoloNet Talk 01", talkname:"Introduction to Time Domain Astronomy", img: `/img/resources/holonet/time_astro.png`, link: `/holonet_talks/Time_Domain_Astronomy.pdf`, details:"This talk explores transients driven by compact objects - neutron stars and black holes, how their variability reveals physics under extreme conditions and realtime observing campaigns.", about:"Anirudh Salgundi is an Astrophysics researcher at the ATA Lab, University of North Carolina at Chapel Hill.  He was previously a research assistant at the STAR Lab, IIT Bombay. His current research focuses on fast transients, such as GRB's and electromagnetic counterparts of gravitational wave events.", date:"20 May, 2026"},
