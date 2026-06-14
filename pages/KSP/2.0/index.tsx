@@ -33,7 +33,7 @@ export default function Two() {
         <div>
             <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px", paddingRight:"20px"}}>
                 <h1 style={{textAlign:"center"}}><b>KSP 2.0</b></h1>
-                <p>KSP 2.0 marked the second year in KSP's journey. This time we had 2 collaborative projects. You can take a look at their detailed reports.</p>
+                <p>KSP 2.0 marked the second year in KSP&apos;s journey. This time we had 2 collaborative projects. You can take a look at their detailed reports.</p>
             </div>
 
             <div className="mt-4">

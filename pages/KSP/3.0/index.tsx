@@ -71,7 +71,7 @@ export default function Three() {
         <div>
             <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px", paddingRight:"20px"}}>
                 <h1 style={{textAlign:"center"}}><b>KSP 3.0</b></h1>
-                <p>As we were moving back to an offline campus, KSP continued with full vigour. Here's a look at the reports of the projects done:</p>
+                <p>As we were moving back to an offline campus, KSP continued with full vigour. Here&apos;s a look at the reports of the projects done:</p>
             </div>
 
             <div className="mt-4">
