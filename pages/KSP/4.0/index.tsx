@@ -9,18 +9,18 @@ interface OneProps{
 }
 
 var resources:OneProps[] = [
-    {name: "The Dance of Death: Magnetic Cataclysmic Variables", img: `/img/Astrophotography/moon_venus_jupiter.jpg`, link: `/KSPReports/2023/UVIT_Report.pdf`},
-    {name: "Canoeing through the Stars on Gaia", img: `/img/Astrophotography/moon_venus_jupiter.jpg`, link: `/KSPReports/2023/Gaia/Gaia_Report_2023 (1).pdf`}
+    {name: "The Dance of Death: Magnetic Cataclysmic Variables", img: `/img/ksp/binary.png`, link: `/KSPReports/2023/UVIT_Report.pdf`},
+    {name: "Canoeing through the Stars on Gaia", img: `/img/ksp/gaia.png`, link: `/KSPReports/2023/Gaia/Gaia_Report_2023 (1).pdf`}
 ]
 
 function OneCard({name, link, img="/img/team/default_profile.png"}: OneProps){
     return(
-      <div className="col-md-4 mb-4">
+      <div className="w-100 mb-4">
         <Link href={link} target="_blank" className="text-decoration-none text-reset">
-            <div className="card border-0 shadow bg-light h-100">
-                <img src={img} className="card-img-top" alt="..."/>
-                <div className="card-body text-center">
-                    <h6 className="card-title mb-0">{name}</h6>
+            <div className="card border-0 shadow bg-light h-100 flex-row mx-auto" style={{width:"90%"}}>
+                <img src={img} className="card-img-top" alt="..." style={{width:"18%",objectFit:"cover"}}/>
+                <div className="card-body d-flex justify-content-center align-items-center">
+                    <h5 className="card-title mb-0">{name}</h5>
                 </div>
             </div>
         </Link>
@@ -30,7 +30,7 @@ function OneCard({name, link, img="/img/team/default_profile.png"}: OneProps){
 
 var nums:NumProps[] = [
     {name: "Faintest of the Brightest- GRB Hunters",
-    img:`/img/Astrophotography/moon_venus_jupiter.jpg`,
+    img:`/img/ksp/grb.png`,
     members:[
         {name:"Ananya" ,pdf:"/KSPReports/2023/GRB/GRB_Ananya.pdf", img: `/img/Astrophotography/moon_venus_jupiter.jpg`},
         {name:"Ravi" ,pdf:"/KSPReports/2023/GRB/GRB_Ravi.pdf", img: `/img/Astrophotography/moon_venus_jupiter.jpg`},
@@ -41,7 +41,7 @@ var nums:NumProps[] = [
         {name:"Soham" ,pdf:"/KSPReports/2023/GRB/SohamMitraReportGRBHunters.pdf", img: `/img/Astrophotography/moon_venus_jupiter.jpg`}
     ]},
     {name: "Solar System Dynamics",
-    img:`/img/Astrophotography/moon_venus_jupiter.jpg`,
+    img:`/img/ksp/solarsystem.png`,
     members:[
         {name:"Suryansh Srijan" ,pdf:"/KSPReports/2023/solar_system/KSP_Report_Suryansh_Srijan.pdf", img: `/img/Astrophotography/moon_venus_jupiter.jpg`},
         {name:"Suryansh Patidar" ,pdf:"/KSPReports/2023/solar_system/KSP 4.0 final report.pdf", img: `/img/Astrophotography/moon_venus_jupiter.jpg`},
@@ -50,7 +50,7 @@ var nums:NumProps[] = [
         {name:"Ramesh" ,pdf:"/KSPReports/2023/solar_system/The_Legrand_Orange_Book_Template__English_ (8).pdf", img: `/img/Astrophotography/moon_venus_jupiter.jpg`}        
     ]},
     {name: "Exploring the Radio Sky",
-    img:`/img/Astrophotography/moon_venus_jupiter.jpg`,
+    img:`/img/ksp/radiowave.png`,
     members:[
         {name:"Aadyot" ,pdf:"/KSPReports/2023/Radio/KSP Radio Report Aadyot Bhardwaj.pdf", img: `/img/Astrophotography/moon_venus_jupiter.jpg`},
         {name:"Atreyi" ,pdf:"/KSPReports/2023/Radio/KSP_Radio_Astro_Report (2).pdf", img: `/img/Astrophotography/moon_venus_jupiter.jpg`},
@@ -67,11 +67,11 @@ interface NumCardProps extends NumProps{
 
 function NumCard({name, img="/img/team/default_profile.png", onClick, }: NumCardProps){
     return(
-        <div className="col-md-4 mb-4">
-            <div onClick={onClick} className="card border-0 shadow bg-light h-100" style={{cursor:"pointer"}}>
-                <img src={img} className="card-img-top" alt="..."></img>
-                <div className="card-body text-center">
-                    <h6 className="card-title mb-0">{name}</h6>
+        <div className="w-100 mb-4">
+            <div onClick={onClick} className="card border-0 shadow bg-light h-100 flex-row mx-auto" style={{cursor:"pointer",width:"90%"}}>
+                <img src={img} className="card-img-top" alt="..." style={{width:"18%",objectFit:"cover"}}></img>
+                <div className="card-body d-flex text-center justify-content-center align-items-center">
+                    <h5 className="card-title mb-0">{name}</h5>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@ export default function Four() {
                 <div className="card shadow-lg container mt-4 mb-4 aboutCard">
                     <p className="display-4 pt-2 pb-2 text-center"></p>
                     <div className="container">
-                        <div className="row row-cols-md-3 row-cols-2 justify-content-center">
+                        <div className="row justify-content-center">
                             {nums.map((num, key) => <NumCard key={key} {...num} onClick={() => handleOpenModal(num)}></NumCard>)}
                             {resources.map((one, key) => <OneCard name={one.name} link={one.link} img={one.img} key={key}></OneCard>)}
                         </div>

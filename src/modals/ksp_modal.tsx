@@ -10,10 +10,10 @@ interface CardProps{
 
 function Card({name, link, img="/img/team/default_profile.png"}: CardProps){
     return(
-      <div className="col-md-4 mb-4">
+      <div className="mb-4 mx-auto" style={{width:"90%"}}>
         <Link href={link} target="_blank" className="text-decoration-none text-reset">
             <div className="card border-0 shadow bg-light">
-                <img src={img} className="card-img-top" alt="..."/>
+                {/* <img src={img} className="card-img-top" alt="..."/> */}
                 <div className="card-body text-center">
                     <h6 className="card-title mb-0">{name}</h6>
                 </div>
@@ -46,10 +46,10 @@ return (
 
                     <div>
                         <br></br>
-                            <h4 className="font-semibold" style={{textAlign:"center"}}>{num.name}</h4>
+                            {/* <h4 className="font-semibold" style={{textAlign:"center"}}>{num.name}</h4> */}
                         <br></br>
 
-                        <div className="row row-cols-md-3 row-cols-2">
+                        <div>
                             {num.members.map((p,i) => (<Card key={i} name={`${p.name}'s report`} link={p.pdf} img={p.img}></Card>))}
                         </div>
 

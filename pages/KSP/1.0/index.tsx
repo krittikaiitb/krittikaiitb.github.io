@@ -8,17 +8,17 @@ interface OneProps{
 }
 
 var resources:OneProps[] = [
-    {name: "Analemma", img: `/img/Astrophotography/Andromeda.jpg`, link: `/KSPReports/2020/Analemma_Report.pdf`}
+    {name: "Analemma", img: `/img/ksp/analemma.png`, link: `/KSPReports/2020/Analemma_Report.pdf`}
 ]
 
 function OneCard({name, link, img="/img/team/default_profile.png"}: OneProps){
     return(
-      <div className="col-md-4 mb-4">
+      <div className="w-100 mb-4">
         <Link href={link} target="_blank" className="text-decoration-none text-reset">
-            <div className="card border-0 shadow bg-light h-100">
-                <img src={img} className="card-img-top" alt="..."/>
-                <div className="card-body text-center">
-                    <h6 className="card-title mb-0">{name}</h6>
+            <div className="card border-0 shadow bg-light h-100 flex-row mx-auto" style={{width:"90%"}}>
+                <img src={img} className="card-img-top" alt="..." style={{width:"18%",objectFit:"cover"}}/>
+                <div className="card-body d-flex justify-content-center align-items-center">
+                    <h5 className="card-title mb-0">{name}</h5>
                 </div>
             </div>
         </Link>
@@ -39,7 +39,7 @@ export default function One() {
                 <div className="card shadow-lg container mt-4 mb-4 aboutCard">
                     <p className="display-4 pt-2 pb-2 text-center"></p>
                     <div className="container">
-                        <div className="row row-cols-md-3 row-cols-2 justify-content-center">
+                        <div>
                             {resources.map((one, key) => <OneCard name={one.name} link={one.link} img={one.img} key={key}></OneCard>)}
                         </div>
                     </div>
