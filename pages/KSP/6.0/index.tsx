@@ -29,14 +29,7 @@ function OneCard({name, link, img="/img/team/default_profile.png"}: OneProps){
 }
 
 var nums:NumProps[] = [
-    {name: "Visualizing Geodesics In Schwarzchild SpaceTime",
-    img:`/img/ksp/geodesics.png`,
-    members:[
-        {name:"Aryan" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Aryan.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Gayatri" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Gayatri.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Rudra" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Rudra.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Vedant" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Vedant.pdf", img: `/img/Astrophotography/leotriplet.png`}
-    ]},
+
     {name: "Gamma Ray Bursts - Theory And Analysis",
     img:`/img/ksp/grb.png`,
     members:[
@@ -44,6 +37,14 @@ var nums:NumProps[] = [
         {name:"Jahnavi" ,pdf:"/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Jahnavi.pdf", img: `/img/Astrophotography/leotriplet.png`},
         {name:"Pratham" ,pdf:"/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Pratham.pdf", img: `/img/Astrophotography/leotriplet.png`},
         {name:"Pratyush" ,pdf:"/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Pratyush.pdf", img: `/img/Astrophotography/leotriplet.png`}
+    ]},
+    {name: "Visualizing Geodesics In Schwarzchild SpaceTime",
+    img:`/img/ksp/geodesics.png`,
+    members:[
+        {name:"Aryan" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Aryan.pdf", img: `/img/Astrophotography/leotriplet.png`},
+        {name:"Gayatri" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Gayatri.pdf", img: `/img/Astrophotography/leotriplet.png`},
+        {name:"Rudra" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Rudra.pdf", img: `/img/Astrophotography/leotriplet.png`},
+        {name:"Vedant" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Vedant.pdf", img: `/img/Astrophotography/leotriplet.png`}
     ]},
     {name: "Design And Analysis Of Radomes",
     img:`/img/ksp/radome.png`,

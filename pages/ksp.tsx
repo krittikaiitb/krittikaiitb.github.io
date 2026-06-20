@@ -8,12 +8,12 @@ interface ResourceProps{
 }
 
 var resources:ResourceProps[] = [
-    {name: "KSP 6.0", img: `/img/ksp/geodesics.png`, link:`/KSP/6.0`},
-    {name: "KSP 5.0", img: `/img/ksp/agn.png`, link:`/KSP/5.0`},
-    {name: "KSP 4.0", img: `/img/ksp/grb.png`, link:`/KSP/4.0`},
-    {name: "KSP 3.0", img: `/img/ksp/cluster.png`, link:`/KSP/3.0`},
-    {name: "KSP 2.0", img: `/img/ksp/kirkwood.png`, link:`/KSP/2.0`},
-    {name: "KSP 1.0", img: `/img/ksp/analemma.png`, link:`/KSP/1.0`}
+    {name: "KSP 6.0", img: `/img/ksp/geodesics.png`, link:`/ksp/6.0`},
+    {name: "KSP 5.0", img: `/img/ksp/agn.png`, link:`/ksp/5.0`},
+    {name: "KSP 4.0", img: `/img/ksp/grb.png`, link:`/ksp/4.0`},
+    {name: "KSP 3.0", img: `/img/ksp/cluster.png`, link:`/ksp/3.0`},
+    {name: "KSP 2.0", img: `/img/ksp/kirkwood.png`, link:`/ksp/2.0`},
+    {name: "KSP 1.0", img: `/img/ksp/analemma.png`, link:`/ksp/1.0`}
 ]
 
 function ResourceCard({name, link, img="/img/team/default_profile.png"}: ResourceProps){
