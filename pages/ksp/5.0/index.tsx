@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React,{useState} from "react";
-import ModalBox, {NumProps} from '../../../../src/modals/ksp_modal';
+import ModalBox, {NumProps} from '../../../src/modals/ksp_modal';
 
 interface OneProps{
     name: string,
