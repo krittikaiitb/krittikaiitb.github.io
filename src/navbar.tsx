@@ -54,7 +54,7 @@ const Navbar = ()=> (
   <BsNavbar.Collapse id="responsive-navbar-nav">
   <Nav className="ml-auto">
    
-      <NavLink href="/KSP">KSP</NavLink>
+      <NavLink href="/ksp">KSP</NavLink>
       <NavLink href="/resources">Resources</NavLink>
       <NavDropdown 
         title="Tutorials"

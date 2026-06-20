@@ -37,7 +37,7 @@ export default function Resources() {
             <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px",paddingRight:"20px"}}>
                 <h1 style={{textAlign:"center"}}><b>Krittika Summer Projects</b></h1>
                 <br></br>
-                <p>We run a range of exciting astrophysics projects through KSP every summer. This is one of the largest student led such programs in the country</p>
+                <p>We run a range of exciting astrophysics projects through KSP every summer. This is one of the largest student led such programs in the country.</p>
             </div>
 
             <div className="mt-4">
