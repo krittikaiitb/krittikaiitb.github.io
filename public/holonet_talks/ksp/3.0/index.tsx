@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React,{useState} from "react";
-import ModalBox, {NumProps} from '../../../src/modals/ksp_modal';
+import ModalBox, {NumProps} from '../../../../src/modals/ksp_modal';
 
 interface OneProps{
     name: string,
@@ -9,8 +9,10 @@ interface OneProps{
 }
 
 var resources:OneProps[] = [
-    {name: "Imaging a Bright Neutron Star", img: `/img/ksp/neutron.png`, link: `/KSPReports/2025/Imaging A Bright Neutron Star/End_term_report_Radio_imaging_final.pdf`},
-    {name: "Thermonuclear Bursts In Neutron Star XRay Binaries", img: `/img/ksp/xray.png`, link: `/KSPReports/2025/Thermonuclear Bursts In Neutron Star X-Ray Binaries/Thermonuclear Bursts In Neutron Star Xray Binaries.pdf`}
+    {name: "Generating Gravitational Waveforms using Numerical Relativity and Post Newtonian Terms", img: `/img/ksp/gwaves.png`, link: `/KSPReports/2022/Gravitational_Waves_KSP_Report.pdf`},
+    {name: "Galactic Evolution Through N-Body Simulations", img: `/img/ksp/gal_evolution.png`, link: `/KSPReports/2022/Galactic Evolution.pdf`},
+    {name: "Solar Flares", img: `/img/ksp/solarflare.png`, link: `/KSPReports/2022/KSP_Stellar_Flares_2022.pdf`},
+    {name: "Decoding Stellar Physics Hidden in GAIA Data", img: `/img/ksp/gaia.png`, link: `/KSPReports/2022/Gaia_Report_Final.pdf`}
 ]
 
 function OneCard({name, link, img="/img/team/default_profile.png"}: OneProps){
@@ -29,31 +31,12 @@ function OneCard({name, link, img="/img/team/default_profile.png"}: OneProps){
 }
 
 var nums:NumProps[] = [
-
-    {name: "Gamma Ray Bursts - Theory And Analysis",
-    img:`/img/ksp/grb.png`,
+    {name: "Estimating Age of A Cluster",
+    img:`/img/ksp/cluster.png`,
     members:[
-        {name:"Aditya" ,pdf:"/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Aditya.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Jahnavi" ,pdf:"/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Jahnavi.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Pratham" ,pdf:"/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Pratham.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Pratyush" ,pdf:"/KSPReports/2025/Gamma Ray Bursts - Theory And Analysis/Pratyush.pdf", img: `/img/Astrophotography/leotriplet.png`}
-    ]},
-    {name: "Visualizing Geodesics In Schwarzchild SpaceTime",
-    img:`/img/ksp/geodesics.png`,
-    members:[
-        {name:"Aryan" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Aryan.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Gayatri" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Gayatri.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Rudra" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Rudra.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Vedant" ,pdf:"/KSPReports/2025/Visualizing Geodesics Through Schwarzchild SpaceTime/Vedant.pdf", img: `/img/Astrophotography/leotriplet.png`}
-    ]},
-    {name: "Design And Analysis Of Radomes",
-    img:`/img/ksp/radome.png`,
-    members:[
-        {name:"Aleena" ,pdf:"/KSPReports/2025/Design And Analysis Of Radomes/Aleena.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Anvit" ,pdf:"/KSPReports/2025/Design And Analysis Of Radomes/Anvit.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Manohara" ,pdf:"/KSPReports/2025/Design And Analysis Of Radomes/Manohara.pdf", img: `/img/Astrophotography/leotriplet.png`},
-        {name:"Sandipan" ,pdf:"/KSPReports/2025/Design And Analysis Of Radomes/Sandipan.pdf", img: `/img/Astrophotography/leotriplet.png`}
-    ]}
+        {name:"Anish" ,pdf:"/KSPReports/2022/Anish_IITB_Krittika_SP3_0_2022_Final_Report.pdf", img: `/img/Astrophotography/milkyway.png`},
+        {name:"Dhatri" ,pdf:"/KSPReports/2022/Dhatri Dongre KSP Report.pdf", img: `/img/Astrophotography/milkyway.png`},
+        {name:"Pal" ,pdf:"/KSPReports/2022/Pal Aggarwal KSP Report.pdf", img: `/img/Astrophotography/milkyway.png`}    ]}
 ]
 
 interface NumCardProps extends NumProps{
@@ -73,7 +56,7 @@ function NumCard({name, img="/img/team/default_profile.png", onClick, }: NumCard
     )
 }
 
-export default function Six() {
+export default function Three() {
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [selected, setSelected] = useState<NumProps | null>(null);
@@ -87,8 +70,8 @@ export default function Six() {
 
         <div>
             <div className="mt-4" style={{maxWidth: "50rem", margin: "3rem auto 1rem", paddingLeft:"20px", paddingRight:"20px"}}>
-                <h1 style={{textAlign:"center"}}><b>KSP 6.0</b></h1>
-                <p>Now in its sixth year, KSP has had one of the most interesting projects offered. You can take a look at all the project reports:</p>
+                <h1 style={{textAlign:"center"}}><b>KSP 3.0</b></h1>
+                <p>As we were moving back to an offline campus, KSP continued with full vigour. Here&apos;s a look at the reports of the projects done:</p>
             </div>
 
             <div className="mt-4">
