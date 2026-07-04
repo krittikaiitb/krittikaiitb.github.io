@@ -38,7 +38,7 @@ export default function Two() {
 
             <div className="mt-4">
                 <div className="card shadow-lg container mt-4 mb-4 aboutCard">
-                    <p className="display-4 pt-2 pb-2 text-center"></p>
+                    <p className="display-4 pt-2 pb-2 text-center">2021</p>
                     <div className="container">
                         <div>
                             {resources.map((one, key) => <OneCard name={one.name} link={one.link} img={one.img} key={key}></OneCard>)}
