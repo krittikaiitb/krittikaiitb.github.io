@@ -9,6 +9,7 @@ interface ResourceProps{
 
 var resources:ResourceProps[] = [
     {name: "HoloNet Talk Series", img: `/img/resources/holonet/holonet.png`, link: `/resources/holonet`},
+    {name: "Talks", img: `/img/resources/talks/talks.jpg`, link: `/resources/talks`},
     {name: "Astro101 Series", img: `/img/resources/astro101.png`, link: `/resources`},
     {name: "AP Series", img: `/img/Astrophotography/orion_nebula.jpg`, link: `/resources`}
 ]
@@ -39,7 +40,7 @@ export default function Resources() {
                 <div className="card shadow-lg container mt-4 mb-4 aboutCard">
                     <p className="display-4 pt-2 pb-2 text-center"></p>
                     <div className="container">
-                        <div className="row row-cols-md-3 row-cols-2 justify-content-center">
+                        <div className="row row-cols-md-3 row-cols-2">
                             {resources.map((resource, key) => <ResourceCard name={resource.name} link={resource.link} img={resource.img} key={key}></ResourceCard>)}
                         </div>
                     </div>
