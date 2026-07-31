@@ -19,25 +19,25 @@ function TeamContent({year, mans, convs, active=true}: {year:string, mans:Person
         <div className="card shadow-lg container mt-4 mb-5 aboutCard">
           <p className="display-4 pt-4 pb-4 text-center">Team {year}</p>
           <ManagerList arrayOfPeople={mans}></ManagerList>
-          <ConvenerList arrayOfPeople={convs}></ConvenerList>
-        </div>
-        </div>
-    )
-}
-
-// To add 'stellar team' at the title instead of 'convenors'
-function TeamContent_2026({year, mans, convs, active=true}: {year:string, mans:PersonProps[], convs:PersonProps[], active?:boolean}){
-    let a = (active)?" show active":"";
-    return(
-        <div className={"tab-pane fade p-3" + a} id={"team-" + year} role="tabpanel" aria-labelledby={"team-" + year + "-tab"}>
-        <div className="card shadow-lg container mt-4 mb-5 aboutCard">
-          <p className="display-4 pt-4 pb-4 text-center">Team {year}</p>
-          <ManagerList arrayOfPeople={mans}></ManagerList>
           <TeamList arrayOfPeople={convs}></TeamList>
         </div>
         </div>
     )
 }
+
+// // To add 'stellar team' at the title instead of 'convenors'
+// function TeamContent_2026({year, mans, convs, active=true}: {year:string, mans:PersonProps[], convs:PersonProps[], active?:boolean}){
+//     let a = (active)?" show active":"";
+//     return(
+//         <div className={"tab-pane fade p-3" + a} id={"team-" + year} role="tabpanel" aria-labelledby={"team-" + year + "-tab"}>
+//         <div className="card shadow-lg container mt-4 mb-5 aboutCard">
+//           <p className="display-4 pt-4 pb-4 text-center">Team {year}</p>
+//           <ManagerList arrayOfPeople={mans}></ManagerList>
+//           <TeamList arrayOfPeople={convs}></TeamList>
+//         </div>
+//         </div>
+//     )
+// }
 
 var mans2019:PersonProps[] = [
     {name: "Vedant Shenoy", post: "Manager", img: `/img/team/2019/Vedant_Shenoy.jpg`},
@@ -71,7 +71,7 @@ var mans2025:PersonProps[] = [
 
 var mans2026:PersonProps[] = [
     {name: "Guru Jahnavi Madana", post: "Manager", img: `/img/team/2026/Guru_Jahnavi_Madana.jpg`},
-    {name: "Vihang Vidwans", post: "Manager", img: `/img/team/2026/Vihang_Vidwans.jpg`}
+    {name: "Vihang Vidwans", post: "Secretary", img: `/img/team/2026/Vihang_Vidwans.jpg`}
 ]
 
 
@@ -225,7 +225,7 @@ export default function Team(){
             </Nav>
             <Tab.Content>
                 <Tab.Pane eventKey="2026" title="2026 (Present)" className="abc">
-                    <TeamContent_2026 year="2026" mans={mans2026} convs={convs2026}></TeamContent_2026>
+                    <TeamContent year="2026" mans={mans2026} convs={convs2026}></TeamContent>
                 </Tab.Pane>
                 <Tab.Pane eventKey="2025" title="2025" className="abc">
                     <TeamContent year="2025" mans={mans2025} convs={convs2025}></TeamContent>
