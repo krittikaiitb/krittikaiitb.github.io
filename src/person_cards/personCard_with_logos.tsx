@@ -9,8 +9,8 @@ library.add(faInstagram, faLinkedin)
 export interface LogoPersonProps{
     name: string,
     post: string,
-    insta: string,
-    linkd: string,
+    insta?: string,
+    linkd?: string,
     img?: string,
 }
 
