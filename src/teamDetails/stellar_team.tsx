@@ -1,8 +1,9 @@
-import PersonCard from "../personCard"
-import { PersonProps } from "../personCard"
+// original stellar team file which does not have links to insta, linkedin
 
-// To add 'stellar team' at the title instead of 'convenors'
-export default function TeamList({arrayOfPeople}: {arrayOfPeople:PersonProps[]}){
+import PersonCard from "../person_cards/personCard"
+import { PersonProps } from "../person_cards/personCard"
+
+export default function ConvenerList({arrayOfPeople}: {arrayOfPeople:PersonProps[]}){
     return(
         <div className="container">
             <h1 className="h1 font-weight-light pt-4 pb-4 text-center">Stellar Team</h1>

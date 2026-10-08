@@ -1,3 +1,5 @@
+// original person card with only name, img, position/post
+
 export interface PersonProps{
     name: string,
     post: string,

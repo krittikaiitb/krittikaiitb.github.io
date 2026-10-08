@@ -1,7 +1,14 @@
-import { PersonProps } from "../src/personCard"
-import ConvenerList from "../src/teamDetails/conveners"
-import TeamList from "../src/teamDetails/stellar_team"
+// person props - og list with only name, img, post
+// logo person props - links to insta and linkedin added
+import { PersonProps } from "../src/person_cards/personCard"
+import { LogoPersonProps } from "../src/person_cards/personCard_with_logos"
+
+// ConvenerList - no social media Logo, LogoConvenorList- social media Logo;
+//  Manager, LogoManager - evident from title
+import ConvenerList from "../src/teamDetails/stellar_team"
 import ManagerList from "../src/teamDetails/managerAndSecy"
+import LogoConvenorList from "../src/teamDetails/stellar_team_with_logos"
+import LogoManagerList from "../src/teamDetails/managerAndSecy_with_logos"
 import Tab from 'react-bootstrap/Tab'; // See https://react-bootstrap.github.io/components/tabs/ for working of tabs
 import Nav from 'react-bootstrap/Nav';
 
@@ -12,6 +19,21 @@ function TeamYearLabel({year}: {year:string}){
     )
 }
 
+// With  social media logos
+function TeamContent_logo({year, mans, convs, active=true}: {year:string, mans:LogoPersonProps[], convs:LogoPersonProps[], active?:boolean}){
+    let a = (active)?" show active":"";
+    return(
+        <div className={"tab-pane fade p-3" + a} id={"team-" + year} role="tabpanel" aria-labelledby={"team-" + year + "-tab"}>
+        <div className="card shadow-lg container mt-4 mb-5 aboutCard">
+          <p className="display-4 pt-4 pb-4 text-center">Team {year}</p>
+          <LogoManagerList arrayOfPeople={mans}></LogoManagerList>
+          <LogoConvenorList arrayOfPeople={convs}></LogoConvenorList>
+        </div>
+        </div>
+    )
+}
+
+// Without social media logos
 function TeamContent({year, mans, convs, active=true}: {year:string, mans:PersonProps[], convs:PersonProps[], active?:boolean}){
     let a = (active)?" show active":"";
     return(
@@ -19,25 +41,11 @@ function TeamContent({year, mans, convs, active=true}: {year:string, mans:Person
         <div className="card shadow-lg container mt-4 mb-5 aboutCard">
           <p className="display-4 pt-4 pb-4 text-center">Team {year}</p>
           <ManagerList arrayOfPeople={mans}></ManagerList>
-          <TeamList arrayOfPeople={convs}></TeamList>
+          <ConvenerList arrayOfPeople={convs}></ConvenerList>
         </div>
         </div>
     )
 }
-
-// // To add 'stellar team' at the title instead of 'convenors'
-// function TeamContent_2026({year, mans, convs, active=true}: {year:string, mans:PersonProps[], convs:PersonProps[], active?:boolean}){
-//     let a = (active)?" show active":"";
-//     return(
-//         <div className={"tab-pane fade p-3" + a} id={"team-" + year} role="tabpanel" aria-labelledby={"team-" + year + "-tab"}>
-//         <div className="card shadow-lg container mt-4 mb-5 aboutCard">
-//           <p className="display-4 pt-4 pb-4 text-center">Team {year}</p>
-//           <ManagerList arrayOfPeople={mans}></ManagerList>
-//           <TeamList arrayOfPeople={convs}></TeamList>
-//         </div>
-//         </div>
-//     )
-// }
 
 var mans2019:PersonProps[] = [
     {name: "Vedant Shenoy", post: "Manager", img: `/img/team/2019/Vedant_Shenoy.jpg`},
@@ -69,9 +77,9 @@ var mans2025:PersonProps[] = [
     {name: "Yash Palwe", post: "Manager", img: `/img/team/2025/Yash_Palwe.jpeg`}
 ]
 
-var mans2026:PersonProps[] = [
-    {name: "Guru Jahnavi Madana", post: "Manager", img: `/img/team/2026/Guru_Jahnavi_Madana.jpg`},
-    {name: "Vihang Vidwans", post: "Secretary", img: `/img/team/2026/Vihang_Vidwans.jpg`}
+var mans2026:LogoPersonProps[] = [
+    {name: "Guru Jahnavi Madana", post: "Manager", img: `/img/team/2026/Guru_Jahnavi_Madana.jpg`, insta:``, linkd:``},
+    {name: "Vihang Vidwans", post: "Secretary", img: `/img/team/2026/Vihang_Vidwans.jpg`, insta:``, linkd:``}
 ]
 
 
@@ -126,9 +134,9 @@ var convs2022:PersonProps[] = [
           {name: "Arhaan", post: "Enthusiast", img: `/img/team/2022/Arhaan.jpg`},
 ]
 
-/*var enthus2022:PersonProps[] = [
+// /*var enthus2022:PersonProps[] = [
 
-]*/
+// ]*/
 
 var convs2023:PersonProps[] = [
     {name: "Adarsh", post: "Enthusiast", img: `/img/team/2023/Adarsh.jpg`},
@@ -189,15 +197,17 @@ var convs2025:PersonProps[] = [
     {name: "Vihang Vidwans", post: "Convener", img: `/img/team/2025/Vihang_Vidwans.jpg`}
 ]
 
-var convs2026:PersonProps[] = [
+var convs2026:LogoPersonProps[] = [
+    {name: "Abhinav Goyal", post: "VolCon", img: `/img/team/2026/Abhinav_Goyal.jpg`},
     {name: "Aditya Jha", post: "VolCon", img: `/img/team/2026/Aditya_Jha.jpg`},
     {name: "Anisha Dash", post: "VolCon", img: `/img/team/2026/Anisha_Dash.jpg`},
     {name: "Arham Nimani", post: "VolCon", img: `/img/team/2026/Arham_Nimani.jpg`},
     {name: "Ayushi Tiwari", post: "VolCon", img: `/img/team/2026/Ayushi_Tiwari.jpg`},
-    {name: "Ishaan Varma", post: "VolCon", img: `/img/team/2026/Ishaan_Varma.jpg`},
-    {name: "Jatin Dhandhaniya", post: "VolCon", img: `/img/team/2026/Jatin_Dhandhaniya.jpg`},
+    {name: "Ishaan Varma", post: "VolCon", img: `/img/team/2026/Ishaan_Varma.jpg`, insta:`https://www.instagram.com/amravnaahsi?utm_source=qr&igsh=MXZua2lub3h2bjNxeA==`},
+    {name: "Jatin Dhandhaniya", post: "VolCon", img: `/img/team/2026/Jatin_Dhandhaniya.jpg`, insta:`https://www.instagram.com/jatin.dhandhaniya?igsh=YjdrYjdkb2d6eXA=`},
     {name: "Mihika Maheshwari", post: "VolCon", img: `/img/team/2026/Mihika_Maheshwari.jpg`},
-    {name: "Paras Gore", post: "VolCon", img: `/img/team/2026/Paras_Gore.jpg`},
+    {name: "Paras Gore", post: "VolCon", img: `/img/team/2026/Paras_Gore.jpg`, insta:`https://www.instagram.com/paras.gore_?igsh=Yng5MHExc3Fjam9y`, linkd:`https://www.linkedin.com/in/parasgore2007`},
+    {name: "Prachi Dixit", post: "VolCon", img: `/img/team/2026/Prachi_Dixit.jpg`},
     {name: "Rishabh Jain", post: "VolCon", img: `/img/team/2026/Rishabh_Jain.jpg`},
     {name: "Ritvik Nainawatee", post: "VolCon", img: `/img/team/2026/Ritvik_Nainawatee.png`},
     {name: "Shriyans Akshit", post: "Volcon", img: `/img/team/2026/Shriyans_Akshit.jpg`},
@@ -225,7 +235,7 @@ export default function Team(){
             </Nav>
             <Tab.Content>
                 <Tab.Pane eventKey="2026" title="2026 (Present)" className="abc">
-                    <TeamContent year="2026" mans={mans2026} convs={convs2026}></TeamContent>
+                    <TeamContent_logo year="2026" mans={mans2026} convs={convs2026}></TeamContent_logo>
                 </Tab.Pane>
                 <Tab.Pane eventKey="2025" title="2025" className="abc">
                     <TeamContent year="2025" mans={mans2025} convs={convs2025}></TeamContent>

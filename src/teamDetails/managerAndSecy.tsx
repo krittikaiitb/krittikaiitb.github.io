@@ -1,6 +1,7 @@
+// original file for managers and secys that does NOT have redirection to insta/ linkedin
 
-import { PersonProps} from "../personCard"
-import PersonCard from "../personCard"
+import { PersonProps} from "../person_cards/personCard"
+import PersonCard from "../person_cards/personCard"
 
 export default function ManagerList({arrayOfPeople}: {arrayOfPeople:PersonProps[]}){
 
