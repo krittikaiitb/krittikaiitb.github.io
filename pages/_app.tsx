@@ -2,6 +2,7 @@
 import '../styles/common.css'
 import '../styles/dark-mode.css'
 import '../styles/events.css'
+import '../styles/tailwind.css'
 
 import Navbar from '../src/navbar'
 import Footer from '../src/footer'

@@ -7,6 +7,7 @@ let nextConfig = {
   images: {
     unoptimized: true,
   },
+  transpilePackages: ['react-pdf-flipbook-viewer'],
 };
 
 // Required for setting up github pages

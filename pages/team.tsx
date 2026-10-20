@@ -199,12 +199,12 @@ var convs2025:PersonProps[] = [
 
 var convs2026:LogoPersonProps[] = [
     {name: "Abhinav Goyal", post: "VolCon", img: `/img/team/2026/Abhinav_Goyal.jpg`, insta:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`, linkd:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`},
-    {name: "Aditya Jha", post: "VolCon", img: `/img/team/2026/Aditya_Jha.jpg`, insta:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`, linkd:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`},
+    {name: "Aditya Jha", post: "VolCon", img: `/img/team/2026/Aditya_Jha.jpg`, insta:`https://www.instagram.com/jhadityaa_/`, linkd:`https://www.linkedin.com/in/aditya-jha-919a14369/`},
     {name: "Anisha Dash", post: "VolCon", img: `/img/team/2026/Anisha_Dash.jpg`, insta:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`, linkd:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`},
     {name: "Arham Nimani", post: "VolCon", img: `/img/team/2026/Arham_Nimani.jpg`, insta:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`, linkd:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`},
     {name: "Ayushi Tiwari", post: "VolCon", img: `/img/team/2026/Ayushi_Tiwari.jpg`, insta:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`, linkd:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`},
     {name: "Ishaan Varma", post: "VolCon", img: `/img/team/2026/Ishaan_Varma.jpg`, insta:`https://www.instagram.com/amravnaahsi?utm_source=qr&igsh=MXZua2lub3h2bjNxeA==`, linkd:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`},
-    {name: "Jatin Dhandhaniya", post: "VolCon", img: `/img/team/2026/Jatin_Dhandhaniya.jpg`, insta:`https://www.instagram.com/jatin.dhandhaniya?igsh=YjdrYjdkb2d6eXA=`, linkd:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`},
+    {name: "Jatin Dhandhaniya", post: "VolCon", img: `/img/team/2026/Jatin_Dhandhaniya.jpg`, insta:`https://www.instagram.com/jatin.dhandhaniya?igsh=YjdrYjdkb2d6eXA=`, linkd:`https://www.linkedin.com/in/jatin-dhandhaniya-iitb?utm_source=share_via&utm_content=profile&utm_medium=member_android`},
     {name: "Mihika Maheshwari", post: "VolCon", img: `/img/team/2026/Mihika_Maheshwari.jpg`, insta:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`, linkd:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`},
     {name: "Paras Gore", post: "VolCon", img: `/img/team/2026/Paras_Gore.jpg`, insta:`https://www.instagram.com/paras.gore_?igsh=Yng5MHExc3Fjam9y`, linkd:`https://www.linkedin.com/in/parasgore2007`},
     {name: "Prachi Dixit", post: "VolCon", img: `/img/team/2026/Prachi_Dixit.jpg`, insta:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`, linkd:`https://youtu.be/QDia3e12czc?si=D6YIv-9sxBqHs-xr`},
