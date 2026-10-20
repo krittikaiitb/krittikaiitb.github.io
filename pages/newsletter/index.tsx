@@ -4,7 +4,7 @@ import React from 'react'
 
 const Page = () => {
   return (
-    <div className="block max-w-6xl mx-auto -mt-16">
+    <div className="block max-w-6xl mx-auto pt-1">
       <FlipbookViewer pdfUrl='/newsletter.pdf' className="flipbook-scope" />
     </div>
   )

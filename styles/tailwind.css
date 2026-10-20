@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .flipbook-scope:not(:fullscreen) {
-  --fb-h: 44rem;
+  --fb-h: 37rem;
   height: var(--fb-h) !important;
 }
 .flipbook-scope:not(:fullscreen) .react-pdf__Document > div > div:first-child {
