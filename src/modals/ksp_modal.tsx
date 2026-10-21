@@ -38,7 +38,7 @@ export default function ModalBox({ num, onClose }: NumModal) {
 return (
     <div className="modal-overlay" onClick={onClose} style={{position: "fixed",inset: 0, zIndex: 9999}}>
         <div className="modal-content" onClick={(e)=>e.stopPropagation()}>
-            <div className="flex bg-white shadow bg-light" style={{zIndex:1, position:"fixed", top:"50%", left:"50%", transform:"translate(-50%,-50%)",width:"90vw",maxWidth:"800px", maxHeight:"85vh", overflow: "auto"}}>
+            <div className="bg-white shadow bg-light" style={{display: "block",zIndex:1, position:"fixed", top:"50%", left:"50%", transform:"translate(-50%,-50%)",width:"90vw",maxWidth:"800px", maxHeight:"85vh", overflow: "auto"}}>
                 <div className="overflow-hidden" style={{ padding:"2px 16px"}}>
                     <nav className="px-1 py-3">
                         <button onClick={onClose} className="px-3 py-1 rounded" style={{float:"right"}}>✕</button>
@@ -61,3 +61,6 @@ return (
     </div>
 );
 }
+
+
+    
